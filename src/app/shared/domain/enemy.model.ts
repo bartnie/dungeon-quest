@@ -1,12 +1,13 @@
 import {EnemyType} from "./enemy-type.enum";
 import {EquipmentModel} from "./equipment.model";
+import {Observable} from "rxjs";
 
 export class EnemyModel {
   public currentHealth: number;
 
   constructor(
     public type: EnemyType,
-    public name: string,
+    public name: Promise<string>,
     public imagePath: string,
     public maxHealth: number,
     public offence: number,

@@ -15,7 +15,7 @@
 
   <span class="dungeon__name dungeon__name--hero">{{heroName}}</span>
   <span class="dungeon__level-text">Tier {{dungeonLevel}}</span>
-  <span class="dungeon__name dungeon__name--enemy">{{currentEnemy.name}} the {{currentEnemy.type}}</span>
+  <span class="dungeon__name dungeon__name--enemy">{{currentEnemy.name | async}} the {{currentEnemy.type}}</span>
   <span class="dungeon__enemy-stats">
       (Offence: {{currentEnemy.offence}} | Defence: {{currentEnemy.defence}}
     | Armor: {{currentEnemy.armor}} | Damage: {{currentEnemy.damage}})

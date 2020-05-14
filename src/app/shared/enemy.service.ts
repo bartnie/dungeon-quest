@@ -4,16 +4,19 @@ import {EnemyType} from "./domain/enemy-type.enum";
 import {AppConstants} from "../app.consts";
 import {EnemyTypeProbability} from "./domain/enemy-type-probability.model";
 import {EnemyTemplate} from "./domain/enemy-template.model";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {first} from "rxjs/operators";
+import {AppSecretConstants} from "../app.secret-consts";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnemyService {
 
+  constructor(private http: HttpClient) {
+  }
+
   prepareEnemy(level: number): EnemyModel {
-    // level -> enemyProbabilityMap<level, Map<probabilityRange, EnemyTemplate>> => EnemyTemplate -> builder EnemyModelu
-    // lub
-    // level -> enemyProbabilityMap<level, Map<probabilityRange, EnemyModel>> => EnemyModel, z min/max w konstruktorze i wylosowanym już na polach
     const enemyType = this.randomizeEnemyType(AppConstants.ENEMY_PROBABILITY_MAP.get(level));
     return this.prepareEnemyWithType(enemyType);
   }
@@ -33,7 +36,7 @@ export class EnemyService {
     const enemyTemplate: EnemyTemplate = AppConstants.ENEMY_TEMPLATES.get(enemyType);
     return new EnemyModel(
       enemyType,
-      "Spooky",
+      this.getRandomName(),
       enemyTemplate.imagePath,
       this.resolveRandom(enemyTemplate.minHealth, enemyTemplate.maxHealth),
       this.resolveRandom(enemyTemplate.minOffence, enemyTemplate.maxOffence),
@@ -47,5 +50,19 @@ export class EnemyService {
 
   private resolveRandom(from: number, to: number) {
     return Math.round(Math.random() * (Math.abs(to - from))) + Math.min(from, to);
+  }
+
+  private getRandomName(): Promise<string> {
+    return this.http.get<string>(
+       AppConstants.PROXY_URL + AppConstants.ENEMY_NAME_URL,
+      {
+        headers: new HttpHeaders(
+          {
+            'accept': '*/*',
+            'X-Api-Key': AppSecretConstants.ENEMY_NAME_API_KEY
+          })
+      }).pipe(
+      first()
+    ).toPromise();
   }
 }
