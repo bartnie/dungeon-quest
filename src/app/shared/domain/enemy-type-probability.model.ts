@@ -1,6 +1,6 @@
 import {EnemyType} from "./enemy-type.enum";
 
-export class EnemyTypeProbability {
-  constructor(public probability: number, public enemyType: EnemyType) {
-  }
+export interface EnemyTypeProbability {
+  probability: number,
+  enemyType: EnemyType
 }
