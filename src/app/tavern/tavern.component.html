@@ -1,0 +1,35 @@
+<section class="tavern">
+  <img src="https://i.pinimg.com/474x/9f/a3/2c/9fa32ca9eefa5b1021ec9fa5e2f7b41d.jpg" alt="Tavern welcome image"
+       class="tavern__image">
+  <div class="tavern__controls">
+    <button class="tavern__button tavern__button--sleep"
+            (click)="onSleep()">
+      <img src="https://visualpharm.com/assets/744/Single%20Bed-595b40b85ba036ed117de2cd.svg"
+           alt="Tavern sleep button icon"
+           class="tavern__button-icon">
+      Sleep
+    </button>
+    <button class="tavern__button tavern__button--work"
+            (click)="onWork()">
+      <img src="https://visualpharm.com/assets/92/Coins-595b40b85ba036ed117dbff4.svg" alt="Tavern work button icon"
+           class="tavern__button-icon">
+      Work
+    </button>
+  </div>
+</section>
+
+<section class="stamina">
+  <p class="stamina__label">Stamina:</p>
+  <app-status-bar [current]="heroService.stamina"
+                  [max]="heroService.maxStamina"
+                  [type]="statusBarTypes.STAMINA">
+  </app-status-bar>
+</section>
+
+<section class="health">
+  <p class="health__label">Health:</p>
+  <app-status-bar [current]="heroService.health"
+                  [max]="heroService.maxHealth"
+                  [type]="statusBarTypes.HEALTH">
+  </app-status-bar>
+</section>

@@ -1,0 +1,94 @@
+@import "../../../_variables.scss";
+
+.eq-details {
+  width: 20rem;
+  min-height: 30rem;
+
+  background-color: $platinum;
+  border-radius: 0.25rem;
+  border: 0.125rem solid $dark-blue;
+  overflow: hidden;
+
+  &__image-slot {
+    width: 10rem;
+    height: 10rem;
+    border: 0.125rem solid $dark-blue;
+    border-radius: 0.5rem;
+    background: $white;
+    margin: 1rem auto;
+  }
+
+  &__image {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    border-radius: 0.5rem;
+    margin: auto;
+  }
+
+  &__stats {
+    padding: 0.5rem;
+  }
+
+  &__name {
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  &__type {
+    display: block;
+    text-align: center;
+
+    margin: 0.5rem;
+  }
+
+  &__stats-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0.5rem;
+    background: $white;
+    border: 0.125rem solid $dark-blue;
+    border-radius: 0.5rem;
+
+
+    &-item {
+      margin: 1rem;
+      font-size: 1.25rem;
+      border-bottom: 1px solid $dark-blue;
+    }
+  }
+
+  &__button {
+    display: block;
+    margin: 1rem auto 1rem auto;
+    min-width: 10rem;
+    height: 3rem;
+
+    padding-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    outline: none;
+    box-shadow: 0 0.15rem $platinum;
+
+    &:hover {
+      font-weight: bold;
+      transform: scale(1.04);
+      box-shadow: 0 0;
+    }
+
+    &--sell {
+      background-color: $yellow;
+      border: 0.125rem solid $dark-yellow;
+    }
+
+    &-icon {
+      margin-right: 0.5rem;
+      height: 1.5rem;
+      background-color: white;
+      border-radius: 50%;
+      position: relative;
+      top: 0.4rem;
+    }
+  }
+}

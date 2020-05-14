@@ -1,0 +1,73 @@
+<section class="dummy">
+  <div class="dummy__part dummy__part--helmet">
+    <div class="dummy__slot dummy__slot--helmet"
+         draggable="true"
+         [ngClass]="{'dummy__slot--highlighted': equipmentTypes.HELMET === slotToHighlight}"
+         (dragover)="onDragover($event)"
+         (drop)="onDrop($event, equipmentTypes.HELMET)"
+         (dragstart)="onDragStart($event, equipmentTypes.HELMET)"
+         (click)="onItemSelected(equipmentTypes.HELMET)">
+      <img alt="" class="dummy__image"
+           *ngIf="currentEquipment.has(equipmentTypes.HELMET)"
+           [alt]="currentEquipment.get(equipmentTypes.HELMET)?.name"
+           [src]="currentEquipment.get(equipmentTypes.HELMET).imagePath">
+    </div>
+  </div>
+
+  <div class="dummy__part dummy__part--armor">
+    <div class="dummy__slot dummy__slot--armor "
+         draggable="true"
+         [ngClass]="{'dummy__slot--highlighted': equipmentTypes.ARMOR === slotToHighlight}"
+         (dragover)="onDragover($event)"
+         (drop)="onDrop($event, equipmentTypes.ARMOR)"
+         (dragstart)="onDragStart($event, equipmentTypes.ARMOR)"
+         (click)="onItemSelected(equipmentTypes.ARMOR)">
+      <img class="dummy__image"
+           *ngIf="currentEquipment.has(equipmentTypes.ARMOR)"
+           [alt]="currentEquipment.get(equipmentTypes.ARMOR)?.name"
+           [src]="currentEquipment.get(equipmentTypes.ARMOR).imagePath">
+    </div>
+  </div>
+
+  <div class="dummy__part dummy__part--weapon-and-shield">
+    <div class="dummy__slot dummy__slot--weapon"
+         draggable="true"
+         [ngClass]="{'dummy__slot--highlighted': equipmentTypes.WEAPON === slotToHighlight}"
+         (dragover)="onDragover($event)"
+         (drop)="onDrop($event, equipmentTypes.WEAPON)"
+         (dragstart)="onDragStart($event, equipmentTypes.WEAPON)"
+         (click)="onItemSelected(equipmentTypes.WEAPON)">
+      <img class="dummy__image"
+           *ngIf="currentEquipment.has(equipmentTypes.WEAPON)"
+           [alt]="currentEquipment.get(equipmentTypes.WEAPON)?.name"
+           [src]="currentEquipment.get(equipmentTypes.WEAPON).imagePath">
+    </div>
+    <div class="dummy__slot dummy__slot--shield"
+         draggable="true"
+         [ngClass]="{'dummy__slot--highlighted': equipmentTypes.SHIELD === slotToHighlight}"
+         (dragover)="onDragover($event)"
+         (drop)="onDrop($event, equipmentTypes.SHIELD)"
+         (dragstart)="onDragStart($event, equipmentTypes.SHIELD)"
+         (click)="onItemSelected(equipmentTypes.SHIELD)">
+      <img class="dummy__image"
+           *ngIf="currentEquipment.has(equipmentTypes.SHIELD)"
+           [alt]="currentEquipment.get(equipmentTypes.SHIELD)?.name"
+           [src]="currentEquipment.get(equipmentTypes.SHIELD).imagePath">
+    </div>
+  </div>
+
+  <div class="dummy__part dummy__part--boots">
+    <div class="dummy__slot dummy__slot--boots"
+         draggable="true"
+         [ngClass]="{'dummy__slot--highlighted': equipmentTypes.BOOTS === slotToHighlight}"
+         (dragover)="onDragover($event)"
+         (drop)="onDrop($event, equipmentTypes.BOOTS)"
+         (dragstart)="onDragStart($event, equipmentTypes.BOOTS)"
+         (click)="onItemSelected(equipmentTypes.BOOTS)">
+      <img class="dummy__image"
+           *ngIf="currentEquipment.has(equipmentTypes.BOOTS)"
+           [alt]="currentEquipment.get(equipmentTypes.BOOTS)?.name"
+           [src]="currentEquipment.get(equipmentTypes.BOOTS).imagePath">
+    </div>
+  </div>
+</section>

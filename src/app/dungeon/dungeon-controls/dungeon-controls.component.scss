@@ -1,0 +1,52 @@
+@import "../../../_variables.scss";
+
+.controls {
+
+  margin: 0 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1rem;
+
+  &__button {
+    height: 3rem;
+    min-width: 10rem;
+    //line-height: 3rem;
+    border-radius: 0.5rem;
+    outline: none;
+    box-shadow: 0 0.15rem $platinum;
+
+
+    &:hover {
+      font-weight: bold;
+      transform: scale(1.04);
+      box-shadow: 0 0;
+    }
+
+    &--default {
+      grid-column: 2;
+      //background-color: $light-blue;
+      border: 4px solid $light-blue;
+    }
+
+    &--rest {
+      grid-column: 3;
+
+      //background-color: $yellow;
+      border: 4px solid $yellow;
+
+    }
+
+    &--offence {
+      grid-column: 2;
+      //background-color: $ginger;
+      border: 4px solid $ginger;
+    }
+
+    &--defence {
+      grid-column: 3;
+      //background-color: $green;
+      border: 4px solid $green;
+    }
+  }
+}

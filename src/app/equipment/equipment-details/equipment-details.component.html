@@ -1,0 +1,27 @@
+<section class="eq-details"
+         (click)="onDeselectItem()">
+  <div class="eq-details__image-slot">
+    <img class="eq-details__image"
+         [alt]="item.name"
+         [src]="item.imagePath">
+  </div>
+
+  <div class="eq-details__stats">
+    <span class="eq-details__name">{{item.name}}</span>
+    <em class="eq-details__type">{{item.equipmentType}}</em>
+    <ul class="eq-details__stats-list">
+      <li class="eq-details__stats-list-item"
+          *ngFor="let modifier of item.modifiers">
+        {{modifier | equipmentModifier}}
+      </li>
+      <li class="eq-details__stats-list-item">Value: {{item.value}} gold</li>
+    </ul>
+  </div>
+
+  <div class="eq-details__controls">
+    <button class="eq-details__button eq-details__button--sell" (click)="onSellItem(item)">
+      <img src="https://visualpharm.com/assets/92/Coins-595b40b85ba036ed117dbff4.svg" class="eq-details__button-icon">
+      Sell
+    </button>
+  </div>
+</section>

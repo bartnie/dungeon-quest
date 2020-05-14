@@ -1,0 +1,57 @@
+@import "../../../_variables.scss";
+
+.dungeon {
+  &__image-slot {
+    border-radius: 0.25rem;
+    text-align: center;
+    width: 100%;
+    height: 25rem;
+
+    margin: auto;
+    background: url("https://i.pinimg.com/736x/e9/6f/e3/e96fe32702570c40595bf476fdf764c9.jpg");
+    background-size: 100% 100%;
+  }
+
+  &__image {
+    height: 100%;
+    transform: scaleX(-1);
+    margin-left: 20%;
+  }
+
+  &__info {
+    line-height: 1.15rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 0.5rem;
+  }
+
+  &__name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 0.5rem;
+
+    &--enemy {
+      text-align: end;
+    }
+  }
+
+  &__enemy-stats {
+    font-style: italic;
+    color: $dark-blue;
+    grid-column: 2;
+    display: block;
+    text-align: end;
+  }
+
+  &__bar {
+    &--enemy {
+      margin-left:0.125rem;
+    }
+
+    &--hero {
+      margin-right: 0.125rem;
+    }
+
+  }
+}

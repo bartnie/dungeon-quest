@@ -1,0 +1,8 @@
+<section class="status">
+  <div class="status__bar"
+       [style.background]="'linear-gradient(90deg, ' + getStatusBarColor() + ' ' + getCurrentPercentage() + '%, #EAEAEA ' + getCurrentPercentage() + '%)'">
+    <span class="status__info">
+      {{current}} / {{max}}
+    </span>
+  </div>
+</section>

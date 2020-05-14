@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {HeroService} from "./shared/hero.service";
+import {StatusBarType} from "./shared/status-bar/status-bar-type.enum";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dungeon-quest';
+  statusBarType = StatusBarType;
+
+  constructor(private heroService: HeroService) {
+  }
+
+  get stamina() {
+    return this.heroService.stamina;
+  }
+
+  get maxStamina() {
+    return this.heroService.maxStamina;
+  }
+
+  get health() {
+    return this.heroService.health;
+  }
+
+  get maxHealth() {
+    return this.heroService.maxHealth;
+  }
 }

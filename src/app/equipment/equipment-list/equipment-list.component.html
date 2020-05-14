@@ -1,0 +1,16 @@
+<ul class="eq-list"
+    (dragover)="onDragover($event)"
+    (drop)="onDrop($event)">
+  <li class="eq-list__item eq-list__item--taken"
+      *ngFor="let item of equipmentBag"
+      (click)="onItemSelected(item)">
+    <img class="eq-list__image" draggable="true"
+         [alt]="item?.name"
+         [src]="item?.imagePath"
+         (dragstart)="onDragStart($event, item)"
+         (dragend)="onDragEnd()">
+  </li>
+  <li class="eq-list__item eq-list__item--empty"
+      *repeat="BAG_CAPACITY - equipmentBag.length">
+  </li>
+</ul>

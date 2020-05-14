@@ -1,0 +1,64 @@
+@import "../../_variables.scss";
+
+.training {
+  margin-top: 4rem;
+  margin-bottom: 3.5rem;
+
+  &__image {
+    display: block;
+    margin: auto;
+    margin-bottom: 4rem;
+    height: 20rem;
+  }
+
+  &__button {
+    display: block;
+    margin: auto;
+    min-width: 10rem;
+    height: 3rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: normal;
+    color: $white;
+    outline: none;
+    box-shadow: 0 0.15rem $platinum;
+
+    &:hover {
+      font-weight: bold;
+      transform: scale(1.04);
+      box-shadow: 0 0;
+    }
+
+    &--offence {
+      background-color: $ginger;
+      border: 0.125rem solid $dark-ginger;
+    }
+
+    &--defence {
+      background-color: $green;
+      border: 0.125rem solid $dark-green;
+    }
+
+    &-icon {
+      margin-right: 0.125rem;
+      height: 1.5rem;
+      background-color: white;
+      border-radius: 50%;
+      position: relative;
+      top: 0.4rem;
+    }
+  }
+}
+
+
+.stamina {
+  width: 40%;
+  margin: auto;
+
+  &__label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+  }
+}
