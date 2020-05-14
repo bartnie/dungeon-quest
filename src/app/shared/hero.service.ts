@@ -55,7 +55,7 @@ export class HeroService {
   }
 
   addHealth(amount: number): void {
-    this.hero.currentHealth = this.hero.currentHealth + amount > this.maxHealth ? (this.maxHealth > this.hero.currentHealth ? this.maxStamina : this.hero.currentHealth) : this.hero.currentHealth + amount;
+    this.hero.currentHealth = this.hero.currentHealth + amount > this.maxHealth ? (this.maxHealth > this.hero.currentHealth ? this.maxHealth : this.hero.currentHealth) : this.hero.currentHealth + amount;
   }
 
   get offence(): number {
