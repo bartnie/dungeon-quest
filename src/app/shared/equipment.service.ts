@@ -35,7 +35,6 @@ export class EquipmentService {
 
   equip(item: EquipmentModel) {
     const index = this.matchItem(item);
-    console.log(index);
     this._bag.splice(index, 1);
     if (this._currentEquipment.has(item.equipmentType)) {
       this.takeOff(item.equipmentType)
@@ -69,11 +68,13 @@ export class EquipmentService {
 
   private matchItem(item: EquipmentModel): number {
     return this._bag.findIndex((element: EquipmentModel) => {
-      let modifiersMatch = true;
-      for (let i = 0; i < element.modifiers.length; i++) {
-        if (!(element.modifiers[i].modifierType == item.modifiers[i].modifierType &&
-          element.modifiers[i].modifier == item.modifiers[i].modifier)) {
-          modifiersMatch = false;
+      let modifiersMatch = element.modifiers.length === item.modifiers.length;
+      if (modifiersMatch) {
+        for (let i = 0; i < element.modifiers.length; i++) {
+          if (!(element.modifiers[i].modifierType === item.modifiers[i].modifierType &&
+            element.modifiers[i].modifier === item.modifiers[i].modifier)) {
+            modifiersMatch = false;
+          }
         }
       }
       return element.equipmentType === item.equipmentType &&
