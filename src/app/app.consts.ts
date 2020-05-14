@@ -1,5 +1,6 @@
 import {EnemyType} from "./shared/domain/enemy-type.enum";
 import {EnemyTypeProbability} from "./shared/domain/enemy-type-probability.model";
+import {EnemyTemplate} from "./shared/domain/enemy-template.model";
 
 export class AppConstants {
   public static INITIAL_NAME = 'Rycerz Agata';
@@ -37,11 +38,57 @@ export class AppConstants {
     [8, [{probability: 0.8, enemyType: EnemyType.DRAGON}, {probability: 0.2, enemyType: EnemyType.BEHEMOT}]],
     [9, [{probability: 1, enemyType: EnemyType.DRAGON}]],
   ])
+
+  public static ENEMY_TEMPLATES: Map<EnemyType, EnemyTemplate> = new Map([
+    [EnemyType.TROGLODYTE, {
+      minHealth: 10,
+      maxHealth: 15,
+      minOffence: 2,
+      maxOffence: 4,
+      minDefence: 1,
+      maxDefence: 4,
+      minArmor: 0,
+      maxArmor: 2,
+      minDamage: 1,
+      maxDamage: 3,
+      minGold: 10,
+      maxGold: 20,
+      chanceToDropItem: 0.1,
+      imagePath: 'https://vignette.wikia.nocookie.net/mightandmagic/images/8/89/H3CrTroglodyte.gif/revision/latest?cb=20091110232434&path-prefix=en'
+    }],
+    [EnemyType.BEHEMOT, {
+      minHealth: 30,
+      maxHealth: 40,
+      minOffence: 5,
+      maxOffence: 8,
+      minDefence: 4,
+      maxDefence: 8,
+      minArmor: 3,
+      maxArmor: 6,
+      minDamage: 3,
+      maxDamage: 5,
+      minGold: 50,
+      maxGold: 150,
+      chanceToDropItem: 0.4,
+      imagePath: 'https://www.wykop.pl/cdn/c3201142/comment_zvjbKR43H2YtrRJ1ArDAMI2QAuRRycfk.gif'
+    }],
+    [EnemyType.DRAGON, {
+      minHealth: 100,
+      maxHealth: 150,
+      minOffence: 20,
+      maxOffence: 30,
+      minDefence: 20,
+      maxDefence: 25,
+      minArmor: 10,
+      maxArmor: 20,
+      minDamage: 15,
+      maxDamage: 25,
+      minGold: 200,
+      maxGold: 1500,
+      chanceToDropItem: 0.8,
+      imagePath: 'https://thumbs.gfycat.com/ExcellentGoodnaturedDiscus-max-1mb.gif'
+    }],
+  ])
 }
 
-// http://names.drycodes.com/1?separator=space&nameOptions=boy_names
-// https://uzby.com/api.php?min=3&max=5
 
-// https://vignette.wikia.nocookie.net/mightandmagic/images/8/89/H3CrTroglodyte.gif/revision/latest?cb=20091110232434&path-prefix=en
-// https://thumbs.gfycat.com/ExcellentGoodnaturedDiscus-max-1mb.gif
-// https://static.wixstatic.com/media/6e2f33_c2e6aa54150f43a59fc59c109de7a4e9~mv2.gif
