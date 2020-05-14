@@ -25,6 +25,8 @@ export class AppConstants {
 
   public static BAG_CAPACITY = 20;
 
+  public static MAX_DUNGEON_LEVEL = 9;
+
   public static OFFENCE_DEFENCE_BONUS_COEFFICIENT = 0.1;
 //
   public static ENEMY_PROBABILITY_MAP: Map<number, EnemyTypeProbability[]> = new Map([

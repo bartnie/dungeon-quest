@@ -7,6 +7,7 @@ import {EquipmentModel} from "./domain/equipment.model";
 import {HeroService} from "./hero.service";
 import {AppConstants} from "../app.consts";
 import {BehaviorSubject} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class DungeonService {
   private _currentEnemy: EnemyModel;
   currentEnemy: BehaviorSubject<EnemyModel>;
 
-  constructor(private enemyService: EnemyService, private goldService: GoldService, private equipmentService: EquipmentService, private heroService: HeroService) {
+  constructor(private enemyService: EnemyService, private goldService: GoldService,
+              private equipmentService: EquipmentService, private heroService: HeroService, private router: Router) {
     this._dungeonLevel = 1;
     this._currentEnemy = enemyService.prepareEnemy(this._dungeonLevel);
     this.currentEnemy = new BehaviorSubject<EnemyModel>(this._currentEnemy);
@@ -40,12 +42,21 @@ export class DungeonService {
   }
 
   private levelPassed() {
+    if (this._dungeonLevel === AppConstants.MAX_DUNGEON_LEVEL) {
+      this.handleLastLevelPassed();
+    }
     this._dungeonLevel += 1;
     this.goldService.addGold(this._currentEnemy.gold);
     this._currentEnemy.items.forEach(
       (item: EquipmentModel) => this.equipmentService.addItem(item)
     );
     this._currentEnemy = this.enemyService.prepareEnemy(this._dungeonLevel);
+  }
+
+  private handleHeroDeath() {
+  }
+
+  private handleLastLevelPassed() {
   }
 
   private removeEnemyHealth(amount: number): boolean {
@@ -66,10 +77,6 @@ export class DungeonService {
 
   private positiveOrZero(value: number) {
     return value > 0 ? value : 0;
-  }
-
-  private handleHeroDeath() {
-
   }
 
 }
