@@ -28,6 +28,7 @@ export class DungeonEnemyComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.componentActive = false;
+    this.dungeonService.handleHeroQuit();
   }
 
   get heroHealth() {

@@ -41,6 +41,10 @@ export class DungeonService {
     this.currentEnemy.next({...this._currentEnemy});
   }
 
+  handleHeroQuit() {
+    this._currentEnemy.currentHealth = this._currentEnemy.maxHealth;
+  }
+
   private levelPassed() {
     if (this._dungeonLevel === AppConstants.MAX_DUNGEON_LEVEL) {
       this.handleLastLevelPassed();
