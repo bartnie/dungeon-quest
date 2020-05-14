@@ -1,28 +1,26 @@
 <section class="dungeon__info">
-  <section class="dungeon__hero">
-    <section class="dungeon__bar dungeon__bar--hero">
-      <app-status-bar [current]="heroHealth"
-                      [max]="heroMaxHealth"
-                      [type]="statusBarType.HEALTH">
-      </app-status-bar>
-    </section>
-    <span class="dungeon__name dungeon__name--hero">{{heroName}}</span>
+  <section class="dungeon__bar dungeon__bar--hero">
+    <app-status-bar [current]="heroHealth"
+                    [max]="heroMaxHealth"
+                    [type]="statusBarType.HEALTH">
+    </app-status-bar>
+  </section>
+  <section class="dungeon__bar dungeon__bar--enemy">
+    <app-status-bar
+      [type]="statusBarType.ENEMY_HEALTH"
+      [current]="currentEnemy.currentHealth"
+      [max]="currentEnemy.maxHealth">
+    </app-status-bar>
   </section>
 
-  <section class="dungeon__enemy">
-    <section class="dungeon__bar dungeon__bar--enemy">
-      <app-status-bar
-        [type]="statusBarType.ENEMY_HEALTH"
-        [current]="currentEnemy.currentHealth"
-        [max]="currentEnemy.maxHealth">
-      </app-status-bar>
-    </section>
-    <span class="dungeon__name dungeon__name--enemy">{{currentEnemy.name}} the {{currentEnemy.type}}</span>
-    <span class="dungeon__enemy-stats">
+  <span class="dungeon__name dungeon__name--hero">{{heroName}}</span>
+  <span class="dungeon__level-text">Tier {{dungeonLevel}}</span>
+  <span class="dungeon__name dungeon__name--enemy">{{currentEnemy.name}} the {{currentEnemy.type}}</span>
+  <span class="dungeon__enemy-stats">
       (Offence: {{currentEnemy.offence}} | Defence: {{currentEnemy.defence}}
-      | Armor: {{currentEnemy.armor}} | Damage: {{currentEnemy.damage}})
+    | Armor: {{currentEnemy.armor}} | Damage: {{currentEnemy.damage}})
     </span>
-  </section>
+
 </section>
 
 <section class="dungeon__image-slot">
