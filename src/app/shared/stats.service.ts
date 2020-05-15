@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {EquipmentService} from "./equipment.service";
-import {ModifierType} from "./domain/modifier-type.enum";
-import {EquipmentModel} from "./domain/equipment.model";
-import {SlotType} from "./domain/slot-type.enum";
-import {ModifierModel} from "./domain/modifier.model";
+import {ModifierType} from "./domain/modifier/modifier-type.enum";
+import {EquipmentModel} from "./domain/equipment/equipment.model";
+import {SlotType} from "./domain/equipment/slot-type.enum";
+import {ModifierModel} from "./domain/modifier/modifier.model";
 
 @Injectable({
   providedIn: 'root'

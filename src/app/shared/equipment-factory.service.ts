@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AppConstants} from "../app.consts";
-import {EquipmentProbability} from "./domain/equipment-probability.model";
-import {EquipmentModel} from "./domain/equipment.model";
-import {EquipmentType} from "./domain/equipment-type.enum";
-import {EquipmentTemplate} from "./domain/equipment-template.model";
-import {ModifierModel} from "./domain/modifier.model";
-import {ModifierType} from "./domain/modifier-type.enum";
-import {EquipmentRarityType} from "./domain/equipment-rarity-type.enum";
+import {EquipmentProbability} from "./domain/equipment/equipment-probability.model";
+import {EquipmentModel} from "./domain/equipment/equipment.model";
+import {EquipmentType} from "./domain/equipment/equipment-type.enum";
+import {EquipmentTemplate} from "./domain/equipment/equipment-template.model";
+import {ModifierModel} from "./domain/modifier/modifier.model";
+import {ModifierType} from "./domain/modifier/modifier-type.enum";
+import {EquipmentRarityType} from "./domain/equipment/equipment-rarity-type.enum";
 
 @Injectable({
   providedIn: 'root'

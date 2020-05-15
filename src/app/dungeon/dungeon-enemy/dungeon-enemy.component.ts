@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {DungeonService} from "../../shared/dungeon.service";
 import {StatusBarType} from "../../shared/status-bar/status-bar-type.enum";
-import {EnemyModel} from "../../shared/domain/enemy.model";
+import {EnemyModel} from "../../shared/domain/enemy/enemy.model";
 import {takeWhile} from "rxjs/operators";
 import {HeroService} from "../../shared/hero.service";
 

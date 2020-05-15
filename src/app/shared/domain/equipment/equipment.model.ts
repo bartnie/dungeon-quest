@@ -1,5 +1,5 @@
 import {SlotType} from "./slot-type.enum";
-import {ModifierModel} from "./modifier.model";
+import {ModifierModel} from "../modifier/modifier.model";
 import {EquipmentRarityType} from "./equipment-rarity-type.enum";
 
 export class EquipmentModel {

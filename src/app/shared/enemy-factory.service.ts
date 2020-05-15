@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {EnemyModel} from "./domain/enemy.model";
-import {EnemyType} from "./domain/enemy-type.enum";
+import {EnemyModel} from "./domain/enemy/enemy.model";
+import {EnemyType} from "./domain/enemy/enemy-type.enum";
 import {AppConstants} from "../app.consts";
-import {EnemyTypeProbability} from "./domain/enemy-type-probability.model";
-import {EnemyTemplate} from "./domain/enemy-template.model";
+import {EnemyTypeProbability} from "./domain/enemy/enemy-type-probability.model";
+import {EnemyTemplate} from "./domain/enemy/enemy-template.model";
 import {NameService} from "./name.service";
 
 @Injectable({

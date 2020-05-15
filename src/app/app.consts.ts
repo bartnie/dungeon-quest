@@ -1,10 +1,10 @@
-import {EnemyType} from "./shared/domain/enemy-type.enum";
-import {EnemyTypeProbability} from "./shared/domain/enemy-type-probability.model";
-import {EnemyTemplate} from "./shared/domain/enemy-template.model";
-import {EquipmentTemplate} from "./shared/domain/equipment-template.model";
-import {EquipmentType} from "./shared/domain/equipment-type.enum";
-import {EquipmentRarityType} from "./shared/domain/equipment-rarity-type.enum";
-import {SlotType} from "./shared/domain/slot-type.enum";
+import {EnemyType} from "./shared/domain/enemy/enemy-type.enum";
+import {EnemyTypeProbability} from "./shared/domain/enemy/enemy-type-probability.model";
+import {EnemyTemplate} from "./shared/domain/enemy/enemy-template.model";
+import {EquipmentTemplate} from "./shared/domain/equipment/equipment-template.model";
+import {EquipmentType} from "./shared/domain/equipment/equipment-type.enum";
+import {EquipmentRarityType} from "./shared/domain/equipment/equipment-rarity-type.enum";
+import {SlotType} from "./shared/domain/equipment/slot-type.enum";
 
 export class AppConstants {
   public static INITIAL_HEALTH = 20;

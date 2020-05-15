@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DungeonService} from "../../shared/dungeon.service";
-import {EnemyModel} from "../../shared/domain/enemy.model";
+import {EnemyModel} from "../../shared/domain/enemy/enemy.model";
 import {Router} from "@angular/router";
 
 @Component({

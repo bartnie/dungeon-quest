@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {SlotType} from "./domain/slot-type.enum";
-import {EquipmentModel} from "./domain/equipment.model";
+import {SlotType} from "./domain/equipment/slot-type.enum";
+import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {AppConstants} from "../app.consts";
 import {BehaviorSubject, Subject} from "rxjs";
 

@@ -1,6 +1,6 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {EquipmentModel} from "../shared/domain/equipment.model";
-import {ModifierModel} from "../shared/domain/modifier.model";
+import {EquipmentModel} from "../shared/domain/equipment/equipment.model";
+import {ModifierModel} from "../shared/domain/modifier/modifier.model";
 
 @Pipe({
   name: 'equipmentModifier'

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {EquipmentModel} from "../shared/domain/equipment.model";
+import {EquipmentModel} from "../shared/domain/equipment/equipment.model";
 
 @Component({
   selector: 'app-equipment',

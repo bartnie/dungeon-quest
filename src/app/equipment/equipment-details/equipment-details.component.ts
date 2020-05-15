@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {EquipmentModel} from "../../shared/domain/equipment.model";
+import {EquipmentModel} from "../../shared/domain/equipment/equipment.model";
 import {GoldService} from "../../shared/gold.service";
 
 @Component({

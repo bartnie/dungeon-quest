@@ -1,4 +1,4 @@
-import {AppConstants} from "../../app.consts";
+import {AppConstants} from "../../../app.consts";
 
 export class HeroModel {
   public name: string;

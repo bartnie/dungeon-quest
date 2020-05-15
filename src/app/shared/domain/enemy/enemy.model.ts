@@ -1,5 +1,5 @@
 import {EnemyType} from "./enemy-type.enum";
-import {EquipmentModel} from "./equipment.model";
+import {EquipmentModel} from "../equipment/equipment.model";
 
 export class EnemyModel {
   public currentHealth: number;

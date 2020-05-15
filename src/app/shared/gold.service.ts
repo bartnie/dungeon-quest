@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AppConstants} from "../app.consts";
-import {EquipmentModel} from "./domain/equipment.model";
+import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {EquipmentService} from "./equipment.service";
 
 @Injectable({
