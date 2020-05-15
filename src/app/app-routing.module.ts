@@ -7,16 +7,18 @@ import {DungeonComponent} from "./dungeon/dungeon.component";
 import {BattleWinInfoComponent} from "./info-screen/battle-win-info/battle-win-info.component";
 import {BattleLossInfoComponent} from "./info-screen/battle-loss-info/battle-loss-info.component";
 import {EmptyNameInfoComponent} from "./info-screen/empty-name-info/empty-name-info.component";
+import {EmptyNameGuard} from "./shared/empty-name.guard";
 
 const routes: Routes = [
-  {path: 'menu', component: MenuComponent},
-  {path: 'dungeon', component: DungeonComponent},
-  {path: 'tavern', component: TavernComponent},
-  {path: 'training', component: TrainingComponent},
-  {path: 'battle-win', component: BattleWinInfoComponent},
-  {path: 'battle-loss', component: BattleLossInfoComponent},
+  {path: 'menu', component: MenuComponent, canActivate: [EmptyNameGuard]},
+  {path: 'dungeon', component: DungeonComponent, canActivate: [EmptyNameGuard]},
+  {path: 'tavern', component: TavernComponent, canActivate: [EmptyNameGuard]},
+  {path: 'training', component: TrainingComponent, canActivate: [EmptyNameGuard]},
+  {path: 'battle-win', component: BattleWinInfoComponent, canActivate: [EmptyNameGuard]},
+  {path: 'battle-loss', component: BattleLossInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'name', component: EmptyNameInfoComponent},
-  {path: '', redirectTo: 'menu', pathMatch: 'full'}
+  {path: '', redirectTo: 'menu', pathMatch: 'full'},
+  {path: '**', redirectTo: 'menu'}
 ];
 
 @NgModule({

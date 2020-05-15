@@ -3,7 +3,6 @@ import {EnemyTypeProbability} from "./shared/domain/enemy-type-probability.model
 import {EnemyTemplate} from "./shared/domain/enemy-template.model";
 
 export class AppConstants {
-  public static INITIAL_NAME = 'Rycerz Agata';
   public static INITIAL_HEALTH = 20;
   public static INITIAL_STAMINA = 50;
   public static INITIAL_OFFENCE = 0;

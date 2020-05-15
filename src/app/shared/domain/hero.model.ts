@@ -12,7 +12,6 @@ export class HeroModel {
   public damage: number;
 
   constructor() {
-    this.name = AppConstants.INITIAL_NAME;
     this.currentStamina = AppConstants.INITIAL_STAMINA;
     this.maxStamina = AppConstants.INITIAL_STAMINA;
     this.currentHealth = AppConstants.INITIAL_HEALTH;
