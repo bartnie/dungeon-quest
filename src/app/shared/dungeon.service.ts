@@ -33,7 +33,6 @@ export class DungeonService {
       repeat()
     )
       .subscribe((name: string) => {
-        console.log(typeof name);
         this._currentEnemy.name = name;
         this.currentEnemy.next({...this._currentEnemy})
       })
