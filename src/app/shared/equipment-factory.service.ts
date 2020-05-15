@@ -16,7 +16,7 @@ export class EquipmentFactoryService {
   randomizeEquipments(probabilities: EquipmentTypeProbability[]): EquipmentModel[] {
     const randomizedEquipments: EquipmentModel[] = [];
     for (let probability of probabilities) {
-      if (probability.probability <= Math.random()) {
+      if (probability.probability >= Math.random()) {
         randomizedEquipments.push(this.createEquipment(probability.equipmentType));
       }
     }
