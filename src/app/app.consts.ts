@@ -1,6 +1,10 @@
 import {EnemyType} from "./shared/domain/enemy-type.enum";
 import {EnemyTypeProbability} from "./shared/domain/enemy-type-probability.model";
 import {EnemyTemplate} from "./shared/domain/enemy-template.model";
+import {EquipmentTemplate} from "./shared/domain/equipment-template.model";
+import {EquipmentType} from "./shared/domain/equipment-type.enum";
+import {EquipmentRarityType} from "./shared/domain/equipment-rarity-type.enum";
+import {SlotType} from "./shared/domain/slot-type.enum";
 
 export class AppConstants {
   public static INITIAL_HEALTH = 20;
@@ -23,6 +27,7 @@ export class AppConstants {
   public static STAMINA_PER_TRAINING = 50;
 
   public static BAG_CAPACITY = 20;
+  public static INCREASE_RARITY_THRESHOLD = 0.9;
 
   public static MAX_DUNGEON_LEVEL = 9;
 
@@ -40,8 +45,14 @@ export class AppConstants {
   public static ENEMY_PROBABILITY_MAP: Map<number, EnemyTypeProbability[]> = new Map([
     [1, [{probability: 0.8, enemyType: EnemyType.TROGLODYTE}, {probability: 0.2, enemyType: EnemyType.BEHEMOT}]],
     [2, [{probability: 0.6, enemyType: EnemyType.TROGLODYTE}, {probability: 0.4, enemyType: EnemyType.BEHEMOT}]],
-    [3, [{probability: 0.6, enemyType: EnemyType.BEHEMOT}, {probability: 0.3, enemyType: EnemyType.TROGLODYTE}, {probability: 0.1, enemyType: EnemyType.DRAGON}]],
-    [4, [{probability: 0.8, enemyType: EnemyType.BEHEMOT}, {probability: 0.1, enemyType: EnemyType.TROGLODYTE}, {probability: 0.1, enemyType: EnemyType.DRAGON}]],
+    [3, [{probability: 0.6, enemyType: EnemyType.BEHEMOT}, {
+      probability: 0.3,
+      enemyType: EnemyType.TROGLODYTE
+    }, {probability: 0.1, enemyType: EnemyType.DRAGON}]],
+    [4, [{probability: 0.8, enemyType: EnemyType.BEHEMOT}, {
+      probability: 0.1,
+      enemyType: EnemyType.TROGLODYTE
+    }, {probability: 0.1, enemyType: EnemyType.DRAGON}]],
     [5, [{probability: 0.8, enemyType: EnemyType.BEHEMOT}, {probability: 0.2, enemyType: EnemyType.DRAGON}]],
     [6, [{probability: 0.6, enemyType: EnemyType.BEHEMOT}, {probability: 0.4, enemyType: EnemyType.DRAGON}]],
     [7, [{probability: 0.6, enemyType: EnemyType.DRAGON}, {probability: 0.4, enemyType: EnemyType.BEHEMOT}]],
@@ -97,8 +108,125 @@ export class AppConstants {
       maxGold: 1500,
       chanceToDropItem: 0.8,
       imagePath: 'https://thumbs.gfycat.com/ExcellentGoodnaturedDiscus-max-1mb.gif'
-    }],
+    }]
   ]);
+
+  public static EQUIPMENT_TEMPLATES: Map<EquipmentType, EquipmentTemplate> = new Map<EquipmentType, EquipmentTemplate>(
+    [
+      [EquipmentType.GALAXY_HELMET, {
+        slotType: SlotType.HELMET,
+        baseRarity: EquipmentRarityType.COMMON,
+        minHealth: 40,
+        maxHealth: 50,
+        minStamina: 0,
+        maxStamina: 0,
+        minOffence: 0,
+        maxOffence: 0,
+        minDefence: 0,
+        maxDefence: 0,
+        minArmor: 0,
+        maxArmor: 0,
+        minDamage: 0,
+        maxDamage: 0,
+        minValue: 50,
+        maxValue: 60,
+        imagePath: 'https://www.xcoser.com/media/catalog/product/cache/1/thumbnail/1000x1000/9df78eab33525d08d6e5fb8d27136e95/h/e/helmet1_1.gif'
+      }],
+      [EquipmentType.NOBLE_ARMOR, {
+        slotType: SlotType.ARMOR,
+        baseRarity: EquipmentRarityType.RARE,
+        minHealth: 0,
+        maxHealth: 0,
+        minStamina: 0,
+        maxStamina: 0,
+        minOffence: 0,
+        maxOffence: 0,
+        minDefence: 0,
+        maxDefence: 4,
+        minArmor: 4,
+        maxArmor: 6,
+        minDamage: 0,
+        maxDamage: 0,
+        minValue: 150,
+        maxValue: 220,
+        imagePath: 'https://bottega.avalonceltic.com/rep_immagini/prod/935_80_lrg.jpg'
+      }],
+      [EquipmentType.DRAGON_ARMOR, {
+        slotType: SlotType.ARMOR,
+        baseRarity: EquipmentRarityType.EPIC,
+        minHealth: 10,
+        maxHealth: 40,
+        minStamina: 0,
+        maxStamina: 0,
+        minOffence: 0,
+        maxOffence: 0,
+        minDefence: 4,
+        maxDefence: 8,
+        minArmor: 8,
+        maxArmor: 12,
+        minDamage: 0,
+        maxDamage: 0,
+        minValue: 1500,
+        maxValue: 2000,
+        imagePath: 'https://jetimages.jetcdn.net/md5/2d215f79a51cd7d94cb04ea781c949b0?odnBound=1000'
+      }],
+      [EquipmentType.GREAT_SWORD, {
+        slotType: SlotType.WEAPON,
+        baseRarity: EquipmentRarityType.COMMON,
+        minHealth: 0,
+        maxHealth: 0,
+        minStamina: 0,
+        maxStamina: 0,
+        minOffence: 0,
+        maxOffence: 6,
+        minDefence: 0,
+        maxDefence: 0,
+        minArmor: 0,
+        maxArmor: 0,
+        minDamage: 4,
+        maxDamage: 8,
+        minValue: 200,
+        maxValue: 300,
+        imagePath: 'https://www.militaria.pl/upload/wysiwyg/gfx/produkty/noze/ColdSteel/88HNH/Miecz_Cold_Steel_Hand_and_a_Half_Sword_88HNH-112.jpg'
+      }],
+      [EquipmentType.ANCIENT_SHIELD, {
+        slotType: SlotType.SHIELD,
+        baseRarity: EquipmentRarityType.LEGENDARY,
+        minHealth: 30,
+        maxHealth: 50,
+        minStamina: 0,
+        maxStamina: 20,
+        minOffence: 0,
+        maxOffence: 0,
+        minDefence: 15,
+        maxDefence: 25,
+        minArmor: 20,
+        maxArmor: 30,
+        minDamage: 0,
+        maxDamage: 0,
+        minValue: 4000,
+        maxValue: 6000,
+        imagePath: 'https://image.shutterstock.com/image-photo/old-decorative-shield-isolated-over-600w-153782261.jpg'
+      }],
+      [EquipmentType.KNIGHTS_BOOTS, {
+        slotType: SlotType.BOOTS,
+        baseRarity: EquipmentRarityType.RARE,
+        minHealth: 0,
+        maxHealth: 0,
+        minStamina: 30,
+        maxStamina: 40,
+        minOffence: 0,
+        maxOffence: 0,
+        minDefence: 2,
+        maxDefence: 4,
+        minArmor: 0,
+        maxArmor: 0,
+        minDamage: 0,
+        maxDamage: 0,
+        minValue: 60,
+        maxValue: 80,
+        imagePath: 'https://i.pinimg.com/474x/d2/c2/66/d2c266f82004780bf95cb97d860c7a9f.jpg'
+      }]
+    ]
+  );
 }
-
-

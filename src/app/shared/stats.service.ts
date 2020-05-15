@@ -2,18 +2,18 @@ import {Injectable} from '@angular/core';
 import {EquipmentService} from "./equipment.service";
 import {ModifierType} from "./domain/modifier-type.enum";
 import {EquipmentModel} from "./domain/equipment.model";
-import {EquipmentType} from "./domain/equipment-type.enum";
+import {SlotType} from "./domain/slot-type.enum";
 import {ModifierModel} from "./domain/modifier.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatsService {
-  currentEquipment: Map<EquipmentType, EquipmentModel>;
+  currentEquipment: Map<SlotType, EquipmentModel>;
 
   constructor(private equipmentService: EquipmentService) {
     this.equipmentService.currentEquipment.subscribe(
-      (equipment: Map<EquipmentType, EquipmentModel>) => this.currentEquipment = equipment
+      (equipment: Map<SlotType, EquipmentModel>) => this.currentEquipment = equipment
     );
   }
 

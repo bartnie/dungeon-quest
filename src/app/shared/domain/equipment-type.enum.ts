@@ -1,7 +1,8 @@
 export enum EquipmentType {
-  ARMOR = "Armor",
-  BOOTS = "Boots",
-  HELMET = "Helmet",
-  SHIELD = "Shield",
-  WEAPON = "Weapon"
+  GALAXY_HELMET = "Galaxy Helmet",
+  NOBLE_ARMOR = "Noble Armor",
+  DRAGON_ARMOR = "Dragon Armor",
+  GREAT_SWORD = "Great Sword",
+  ANCIENT_SHIELD = "Ancient Shield",
+  KNIGHTS_BOOTS = "Knight's Boots"
 }

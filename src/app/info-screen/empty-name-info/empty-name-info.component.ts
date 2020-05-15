@@ -21,7 +21,6 @@ export class EmptyNameInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.askForLoading = false;
-
     this.nameService.getHeroName().pipe(takeWhile(() => this.componentActive && this.askForLoading))
       .subscribe((name: string) => {
           this.nameForm.form.patchValue({'name': name});

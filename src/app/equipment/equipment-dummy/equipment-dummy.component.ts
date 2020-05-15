@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {EquipmentModel} from "../../shared/domain/equipment.model";
-import {EquipmentType} from "../../shared/domain/equipment-type.enum";
+import {SlotType} from "../../shared/domain/slot-type.enum";
 import {EquipmentService} from "../../shared/equipment.service";
 import {takeWhile} from "rxjs/operators";
 
@@ -11,9 +11,9 @@ import {takeWhile} from "rxjs/operators";
 })
 export class EquipmentDummyComponent implements OnInit, OnDestroy {
   @Output() itemSelected = new EventEmitter<EquipmentModel>();
-  private currentEquipment: Map<EquipmentType, EquipmentModel>;
-  private slotToHighlight: EquipmentType;
-  private equipmentTypes = EquipmentType;
+  private currentEquipment: Map<SlotType, EquipmentModel>;
+  private slotToHighlight: SlotType;
+  private slotTypes = SlotType;
   private componentActive: boolean;
 
   constructor(private equipmentService: EquipmentService) {
@@ -23,11 +23,11 @@ export class EquipmentDummyComponent implements OnInit, OnDestroy {
     this.componentActive = true;
     this.equipmentService.currentEquipment.pipe(takeWhile(() => this.componentActive))
       .subscribe(
-        (equipment: Map<EquipmentType, EquipmentModel>) => this.currentEquipment = equipment
+        (equipment: Map<SlotType, EquipmentModel>) => this.currentEquipment = equipment
       );
     this.equipmentService.equipmentItemDragged.pipe(takeWhile(() => this.componentActive))
       .subscribe(
-        (itemType: EquipmentType) => this.slotToHighlight = itemType
+        (itemType: SlotType) => this.slotToHighlight = itemType
       );
   }
 
@@ -35,7 +35,7 @@ export class EquipmentDummyComponent implements OnInit, OnDestroy {
     this.componentActive = false;
   }
 
-  onItemSelected(type: EquipmentType) {
+  onItemSelected(type: SlotType) {
     this.itemSelected.emit(this.currentEquipment.get(type));
   }
 
@@ -43,16 +43,16 @@ export class EquipmentDummyComponent implements OnInit, OnDestroy {
     event.preventDefault();
   }
 
-  onDrop(event: DragEvent, type: EquipmentType) {
+  onDrop(event: DragEvent, type: SlotType) {
     event.preventDefault();
     const item = JSON.parse(event.dataTransfer.getData("item")) as EquipmentModel;
-    if (item.equipmentType === type) {
+    if (item.slotType === type) {
       this.equipmentService.equip(item);
     }
     this.slotToHighlight = null;
   }
 
-  onDragStart(event: DragEvent, itemType: EquipmentType) {
+  onDragStart(event: DragEvent, itemType: SlotType) {
     event.dataTransfer.setData("itemType", itemType);
   }
 }

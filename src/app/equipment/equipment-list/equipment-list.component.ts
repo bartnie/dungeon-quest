@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {EquipmentModel} from "../../shared/domain/equipment.model";
 import {EquipmentService} from "../../shared/equipment.service";
-import {EquipmentType} from "../../shared/domain/equipment-type.enum";
+import {SlotType} from "../../shared/domain/slot-type.enum";
 import {AppConstants} from "../../app.consts";
 import {takeWhile} from "rxjs/operators";
 
@@ -37,7 +37,7 @@ export class EquipmentListComponent implements OnInit, OnDestroy {
 
   onDragStart(event: DragEvent, item: EquipmentModel) {
     event.dataTransfer.setData("item", JSON.stringify(item));
-    this.equipmentService.equipmentItemDragged.next(item.equipmentType);
+    this.equipmentService.equipmentItemDragged.next(item.slotType);
   }
 
   onDragEnd() {
@@ -54,7 +54,7 @@ export class EquipmentListComponent implements OnInit, OnDestroy {
     event.preventDefault();
     const itemType = event.dataTransfer.getData("itemType");
     if (itemType) {
-      this.equipmentService.takeOff(itemType as EquipmentType);
+      this.equipmentService.takeOff(itemType as SlotType);
     }
   }
 
