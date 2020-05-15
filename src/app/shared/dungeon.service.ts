@@ -6,8 +6,8 @@ import {EquipmentService} from "./equipment.service";
 import {EquipmentModel} from "./domain/equipment.model";
 import {HeroService} from "./hero.service";
 import {AppConstants} from "../app.consts";
-import {BehaviorSubject} from "rxjs";
-import {Router} from "@angular/router";
+import {BehaviorSubject, Subject} from "rxjs";
+import {RoutingService} from "./routing.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +16,14 @@ export class DungeonService {
   private _dungeonLevel: number;
   private _currentEnemy: EnemyModel;
   currentEnemy: BehaviorSubject<EnemyModel>;
+  oldEnemy: BehaviorSubject<EnemyModel>;
 
   constructor(private enemyService: EnemyService, private goldService: GoldService,
-              private equipmentService: EquipmentService, private heroService: HeroService, private router: Router) {
+              private equipmentService: EquipmentService, private heroService: HeroService, private routingService: RoutingService) {
     this._dungeonLevel = 1;
     this._currentEnemy = enemyService.prepareEnemy(this._dungeonLevel);
     this.currentEnemy = new BehaviorSubject<EnemyModel>(this._currentEnemy);
+    this.oldEnemy = new BehaviorSubject<EnemyModel>(null);
   }
 
   get dungeonLevel(): number {
@@ -54,7 +56,9 @@ export class DungeonService {
     this._currentEnemy.items.forEach(
       (item: EquipmentModel) => this.equipmentService.addItem(item)
     );
+    this.oldEnemy.next(this._currentEnemy);
     this._currentEnemy = this.enemyService.prepareEnemy(this._dungeonLevel);
+    this.routingService.showBattleWinPage();
   }
 
   private handleHeroDeath() {

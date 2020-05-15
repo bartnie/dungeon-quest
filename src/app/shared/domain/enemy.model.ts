@@ -1,6 +1,5 @@
 import {EnemyType} from "./enemy-type.enum";
 import {EquipmentModel} from "./equipment.model";
-import {Observable} from "rxjs";
 
 export class EnemyModel {
   public currentHealth: number;

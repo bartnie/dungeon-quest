@@ -1,0 +1,18 @@
+<section class="battle-win">
+  <h2 class="battle-win__header">
+    You won!
+  </h2>
+  <p class="battle-win__details">You defeated
+    <span class="battle-win__name">{{defeatedEnemy.name | async}} the {{defeatedEnemy.type}}</span>
+  </p>
+  <p class="battle-win__loot-info">Loot: {{defeatedEnemy.gold}} gold</p>
+  <div class="battle-win__buttons">
+    <button class="battle-win__button battle-win__button--dungeon"
+            (click)="onGoToDungeon()">Back to dungeon
+    </button>
+    <button class="battle-win__button battle-win__button--tavern"
+            (click)="onGoToTavern()">Go to Tavern
+    </button>
+  </div>
+</section>
+
