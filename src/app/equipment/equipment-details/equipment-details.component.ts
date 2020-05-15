@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {EquipmentModel} from "../../shared/domain/equipment/equipment.model";
 import {GoldService} from "../../shared/gold.service";
+import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarity-type.enum";
 
 @Component({
   selector: 'app-equipment-details',
@@ -9,8 +10,8 @@ import {GoldService} from "../../shared/gold.service";
 })
 export class EquipmentDetailsComponent {
   @Input() item: EquipmentModel;
-
   @Output() itemDeselected = new EventEmitter<void>();
+  private rarityType = EquipmentRarityType;
 
   constructor(private goldService: GoldService) {
   }
