@@ -18,6 +18,39 @@
 
   &__loot-info {
     font-size: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0.5rem;
+
+    &--gold {
+      color: $dark-yellow;
+    }
+
+    &--equipment-common {
+      color: $dark-grey;
+    }
+
+    &--equipment-rare {
+      color: $green;
+    }
+
+    &--equipment-epic {
+      color: $purple;
+    }
+
+    &--equipment-legendary {
+      color: $yellow;
+    }
   }
 
   &__buttons {
