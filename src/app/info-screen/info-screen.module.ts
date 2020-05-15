@@ -4,12 +4,14 @@ import {BattleWinInfoComponent} from "./battle-win-info/battle-win-info.componen
 import {BattleLossInfoComponent} from "./battle-loss-info/battle-loss-info.component";
 import {EmptyNameInfoComponent} from "./empty-name-info/empty-name-info.component";
 import {FormsModule} from "@angular/forms";
+import {GameFinishedInfoComponent} from "./game-finished-info/game-finished-info.component";
 
 @NgModule({
   declarations: [
     BattleWinInfoComponent,
     BattleLossInfoComponent,
-    EmptyNameInfoComponent
+    EmptyNameInfoComponent,
+    GameFinishedInfoComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import {FormsModule} from "@angular/forms";
   exports: [
     BattleWinInfoComponent,
     BattleLossInfoComponent,
-    EmptyNameInfoComponent
+    EmptyNameInfoComponent,
+    GameFinishedInfoComponent
   ]
 })
 export class InfoScreenModule {
