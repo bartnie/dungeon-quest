@@ -33,6 +33,7 @@ export class AppConstants {
   public static HERO_NAME_URL = 'http://names.drycodes.com/1?separator=space&nameOptions=boy_names';
   public static TIMEOUT = 3000;
   public static DEFAULT_HERO_NAME = 'Usual Knight';
+  public static DEFAULT_ENEMY_NAME = 'Usual Monster';
 
 
   public static ENEMY_PROBABILITY_MAP: Map<number, EnemyTypeProbability[]> = new Map([

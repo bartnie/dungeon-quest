@@ -6,8 +6,10 @@ import {EquipmentService} from "./equipment.service";
 import {EquipmentModel} from "./domain/equipment.model";
 import {HeroService} from "./hero.service";
 import {AppConstants} from "../app.consts";
-import {BehaviorSubject, Subject} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {RoutingService} from "./routing.service";
+import {NameService} from "./name.service";
+import {repeat, takeWhile, timeoutWith} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +20,23 @@ export class DungeonService {
   currentEnemy: BehaviorSubject<EnemyModel>;
   oldEnemy: BehaviorSubject<EnemyModel>;
 
-  constructor(private enemyFactoryService: EnemyFactoryService, private goldService: GoldService,
-              private equipmentService: EquipmentService, private heroService: HeroService, private routingService: RoutingService) {
+  constructor(private enemyFactoryService: EnemyFactoryService, private goldService: GoldService, private equipmentService: EquipmentService,
+              private heroService: HeroService, private routingService: RoutingService, private nameService: NameService) {
     this._dungeonLevel = 1;
     this._currentEnemy = enemyFactoryService.prepareEnemy(this._dungeonLevel);
     this.currentEnemy = new BehaviorSubject<EnemyModel>(this._currentEnemy);
     this.oldEnemy = new BehaviorSubject<EnemyModel>(null);
+
+    this.nameService.getEnemyName().pipe(
+      takeWhile(() => this._currentEnemy.name === null),
+      timeoutWith(AppConstants.TIMEOUT, [AppConstants.DEFAULT_ENEMY_NAME]),
+      repeat()
+    )
+      .subscribe((name: string) => {
+        console.log(typeof name);
+        this._currentEnemy.name = name;
+        this.currentEnemy.next({...this._currentEnemy})
+      })
   }
 
   get dungeonLevel(): number {

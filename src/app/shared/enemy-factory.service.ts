@@ -34,7 +34,7 @@ export class EnemyFactoryService {
     const enemyTemplate: EnemyTemplate = AppConstants.ENEMY_TEMPLATES.get(enemyType);
     return new EnemyModel(
       enemyType,
-      this.nameService.getEnemyName().toPromise(),
+      null,
       enemyTemplate.imagePath,
       this.resolveRandom(enemyTemplate.minHealth, enemyTemplate.maxHealth),
       this.resolveRandom(enemyTemplate.minOffence, enemyTemplate.maxOffence),

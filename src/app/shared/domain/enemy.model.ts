@@ -6,7 +6,7 @@ export class EnemyModel {
 
   constructor(
     public type: EnemyType,
-    public name: Promise<string>,
+    public name: string,
     public imagePath: string,
     public maxHealth: number,
     public offence: number,
