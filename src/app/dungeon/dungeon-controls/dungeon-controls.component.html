@@ -1,14 +1,10 @@
 <section class="controls">
-  <button class="controls__button controls__button--default"
-  (click)="onDefaultAttack()">
-    Default attack</button>
-  <button class="controls__button controls__button--rest">
-<!--    Rest-->
+  <button class="controls__button controls__button--normal"
+          (click)="onAttack(attackType.DEFAULT)">
+      Attack
   </button>
-  <button class="controls__button controls__button--offence">
-<!--    Aggressive attack-->
-  </button>
-  <button class="controls__button controls__button--defence">
-<!--    Defensive attack-->
+  <button class="controls__button controls__button--risky"
+          (click)="onAttack(attackType.RISKY)">
+    Risky Attack
   </button>
 </section>

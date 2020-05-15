@@ -10,6 +10,7 @@ import {BehaviorSubject} from "rxjs";
 import {RoutingService} from "./routing.service";
 import {NameService} from "./name.service";
 import {repeat, takeWhile, timeoutWith} from "rxjs/operators";
+import {AttackType} from "./domain/hero/attack-type.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -44,13 +45,13 @@ export class DungeonService {
     return this._dungeonLevel;
   }
 
-  nextTurn() {
+  nextTurn(attackType: AttackType) {
     if (!this.heroService.removeHealth(
-      this.calculateDamage(this._currentEnemy.offence, this._currentEnemy.damage, this.heroService.defence, this.heroService.armor)
+      this.calculateDamage(AttackType.DEFAULT, this._currentEnemy.offence, this._currentEnemy.damage, this.heroService.defence, this.heroService.armor)
     )) {
       this.handleHeroDeath();
     } else if (!this.removeEnemyHealth(
-      this.calculateDamage(this.heroService.offence, this.heroService.damage, this._currentEnemy.defence, this._currentEnemy.armor)
+      this.calculateDamage(attackType, this.heroService.offence, this.heroService.damage, this._currentEnemy.defence, this._currentEnemy.armor)
     )) {
       this.levelPassed();
     }
@@ -101,10 +102,15 @@ export class DungeonService {
     return true;
   }
 
-  private calculateDamage(offence: number, damage: number, defence: number, armor: number): number {
+  private calculateDamage(attackType: AttackType, offence: number, damage: number, defence: number, armor: number): number {
     const offenceBonus = AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(offence - defence);
     const defenceBonus = AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(defence - offence);
-    return this.positiveOrZero(damage * (1 + offenceBonus) - armor * (1 + defenceBonus));
+    const damageWithBonuses = this.positiveOrZero(damage * (1 + offenceBonus) - armor * (1 + defenceBonus));
+    let totalDamage = damageWithBonuses;
+    if(attackType == AttackType.RISKY) {
+      totalDamage = 2 * Math.random() * damageWithBonuses;
+    }
+    return totalDamage;
   }
 
   private positiveOrZero(value: number) {
