@@ -4,6 +4,7 @@ import {EquipmentService} from "../../shared/equipment.service";
 import {SlotType} from "../../shared/domain/equipment/slot-type.enum";
 import {AppConstants} from "../../app.consts";
 import {takeWhile} from "rxjs/operators";
+import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarity-type.enum";
 
 @Component({
   selector: 'app-equipment-list',
@@ -15,6 +16,7 @@ export class EquipmentListComponent implements OnInit, OnDestroy {
   private BAG_CAPACITY = AppConstants.BAG_CAPACITY;
   private equipmentBag: EquipmentModel[];
   private componentActive: boolean;
+  private rarityType = EquipmentRarityType;
 
   constructor(private equipmentService: EquipmentService) {
   }

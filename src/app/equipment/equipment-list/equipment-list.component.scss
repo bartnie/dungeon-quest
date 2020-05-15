@@ -19,16 +19,29 @@
 
   &__item {
     border-radius: 0.4rem;
-    background: $platinum;
+    background: $light-platinum;
 
     &--taken {
-      border: 0.125rem solid $dark-blue;
       background: $white;
 
       &:hover {
         transform: scale(1.05);
       }
     }
+
+    &--common{
+      border: 0.25rem solid $dark-grey;
+    }
+    &--rare{
+      border: 0.25rem solid $green;
+    }
+    &--epic{
+      border: 0.25rem solid $purple;
+    }
+    &--legendary{
+      border: 0.25rem solid $yellow;
+    }
+
   }
 
   &__image {

@@ -3,7 +3,12 @@
     (drop)="onDrop($event)">
   <li class="eq-list__item eq-list__item--taken"
       *ngFor="let item of equipmentBag"
-      (click)="onItemSelected(item)">
+      (click)="onItemSelected(item)"
+      [ngClass]="{
+        'eq-list__item--common' : item.rarity === rarityType.COMMON,
+        'eq-list__item--rare' : item.rarity === rarityType.RARE,
+        'eq-list__item--epic' : item.rarity === rarityType.EPIC,
+        'eq-list__item--legendary' : item.rarity === rarityType.LEGENDARY}">
     <img class="eq-list__image" draggable="true"
          [alt]="item?.name"
          [src]="item?.imagePath"
