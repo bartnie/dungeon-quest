@@ -60,6 +60,7 @@ export class DungeonService {
 
   handleHeroQuit() {
     this._currentEnemy.currentHealth = this._currentEnemy.maxHealth;
+    this.currentEnemy.next({...this._currentEnemy})
   }
 
   private levelPassed() {
