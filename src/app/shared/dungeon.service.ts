@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {EnemyService} from "./enemy.service";
+import {EnemyFactoryService} from "./enemy-factory.service";
 import {EnemyModel} from "./domain/enemy.model";
 import {GoldService} from "./gold.service";
 import {EquipmentService} from "./equipment.service";
@@ -18,10 +18,10 @@ export class DungeonService {
   currentEnemy: BehaviorSubject<EnemyModel>;
   oldEnemy: BehaviorSubject<EnemyModel>;
 
-  constructor(private enemyService: EnemyService, private goldService: GoldService,
+  constructor(private enemyFactoryService: EnemyFactoryService, private goldService: GoldService,
               private equipmentService: EquipmentService, private heroService: HeroService, private routingService: RoutingService) {
     this._dungeonLevel = 1;
-    this._currentEnemy = enemyService.prepareEnemy(this._dungeonLevel);
+    this._currentEnemy = enemyFactoryService.prepareEnemy(this._dungeonLevel);
     this.currentEnemy = new BehaviorSubject<EnemyModel>(this._currentEnemy);
     this.oldEnemy = new BehaviorSubject<EnemyModel>(null);
   }
@@ -57,7 +57,7 @@ export class DungeonService {
       (item: EquipmentModel) => this.equipmentService.addItem(item)
     );
     this.oldEnemy.next(this._currentEnemy);
-    this._currentEnemy = this.enemyService.prepareEnemy(this._dungeonLevel);
+    this._currentEnemy = this.enemyFactoryService.prepareEnemy(this._dungeonLevel);
     this.routingService.showBattleWinPage();
   }
 

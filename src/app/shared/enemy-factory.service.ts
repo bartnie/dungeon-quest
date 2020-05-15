@@ -9,7 +9,7 @@ import {NameService} from "./name.service";
 @Injectable({
   providedIn: 'root'
 })
-export class EnemyService {
+export class EnemyFactoryService {
 
   constructor(private nameService: NameService) {
   }
