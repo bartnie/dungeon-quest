@@ -3,6 +3,7 @@ import {EquipmentModel} from "../equipment/equipment.model";
 
 export class EnemyModel {
   public currentHealth: number;
+  public goldFromDiscardedItems: number;
 
   constructor(
     public type: EnemyType,
@@ -14,8 +15,10 @@ export class EnemyModel {
     public armor: number,
     public damage: number,
     public gold: number,
+
     public items: EquipmentModel[]
   ) {
     this.currentHealth = maxHealth;
+    this.goldFromDiscardedItems = 0;
   }
 }

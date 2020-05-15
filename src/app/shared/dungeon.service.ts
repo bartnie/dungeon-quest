@@ -66,13 +66,22 @@ export class DungeonService {
       this.handleLastLevelPassed();
     }
     this._dungeonLevel += 1;
-    this.goldService.addGold(this._currentEnemy.gold);
-    this._currentEnemy.items.forEach(
-      (item: EquipmentModel) => this.equipmentService.addItem(item)
-    );
+    this.handleLoot();
     this.oldEnemy.next(this._currentEnemy);
     this._currentEnemy = this.enemyFactoryService.prepareEnemy(this._dungeonLevel);
     this.routingService.showBattleWinPage();
+  }
+
+  private handleLoot() {
+    this.goldService.addGold(this._currentEnemy.gold);
+    this._currentEnemy.items.forEach(
+      (item: EquipmentModel) => {
+        if (!this.equipmentService.addItem(item)) {
+          this.goldService.sellItem(item);
+          this._currentEnemy.goldFromDiscardedItems += item.value;
+        }
+      }
+    );
   }
 
   private handleHeroDeath() {

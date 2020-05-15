@@ -48,11 +48,13 @@ export class EquipmentService {
     this.sendChangesEvents();
   }
 
-  addItem(item: EquipmentModel) {
+  addItem(item: EquipmentModel): boolean {
     if (!this.isBagFull()) {
       this._bag.push(item);
       this.sendChangesEvents();
+      return true;
     }
+    return false;
   }
 
   private matchItem(item: EquipmentModel): number {

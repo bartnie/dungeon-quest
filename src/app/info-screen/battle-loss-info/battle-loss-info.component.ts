@@ -17,7 +17,7 @@ export class BattleLossInfoComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.componentActive = true;
     this.dungeonService.oldEnemy.subscribe(
-      (enemy: EnemyModel) => {this.defeatedEnemy = enemy; console.log(enemy)}
+      (enemy: EnemyModel) => this.defeatedEnemy = enemy
     );
   }
 
