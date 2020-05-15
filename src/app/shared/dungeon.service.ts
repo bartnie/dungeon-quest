@@ -76,6 +76,7 @@ export class DungeonService {
 
     if (lastLevelPassed) {
       this.handleLastLevelPassed();
+      return;
     }
     this.routingService.showBattleWinPage();
   }
