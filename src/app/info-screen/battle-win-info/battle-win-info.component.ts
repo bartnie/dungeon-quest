@@ -4,7 +4,6 @@ import {EnemyModel} from "../../shared/domain/enemy.model";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-battle-win-info',
   templateUrl: './battle-win-info.component.html',
   styleUrls: ['./battle-win-info.component.scss']
 })

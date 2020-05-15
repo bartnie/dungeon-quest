@@ -4,7 +4,6 @@ import {EnemyModel} from "../../shared/domain/enemy.model";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-battle-loss-info',
   templateUrl: './battle-loss-info.component.html',
   styleUrls: ['./battle-loss-info.component.scss']
 })

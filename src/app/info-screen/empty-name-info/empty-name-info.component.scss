@@ -1,0 +1,51 @@
+@import "../../../_variables.scss";
+
+.name {
+  margin: 6rem 10rem;
+
+  &__header {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+
+  &__details {
+    font-size: 1.5rem;
+  }
+
+  &__input {
+    height: 3rem;
+    min-width: 15rem;
+    border-radius: 0.5rem;
+    border: 0.125rem solid $black;
+  }
+
+  &__button {
+    min-width: 15rem;
+    height: 3rem;
+    margin: 2rem;
+    border-radius: 0.5rem;
+    font-weight: normal;
+    color: $white;
+    outline: none;
+    box-shadow: 0 0.15rem $platinum;
+
+    &:hover {
+      font-weight: bold;
+      transform: scale(1.04);
+      box-shadow: 0 0;
+    }
+
+    &--suggest {
+      min-width: 7.5rem;
+      background-color: $light-blue;
+      border: 0.125rem solid $dark-blue;
+    }
+
+    &--submit {
+      background-color: $green;
+      border: 0.125rem solid $dark-green;
+    }
+
+
+  }
+}
