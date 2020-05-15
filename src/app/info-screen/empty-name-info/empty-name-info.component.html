@@ -16,7 +16,7 @@
              ngModel
              required
              #nameInput="ngModel"
-             [ngClass]="{'name-form__group-input--error' : nameInput.touched && nameInput.invalid}">
+             (keydown)="onInput()">
       <span class="name-form__group-info name-form__group-info--error"
             *ngIf="nameInput.touched && nameInput.invalid">
         Please provide a name

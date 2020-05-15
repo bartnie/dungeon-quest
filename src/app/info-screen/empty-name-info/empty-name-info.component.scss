@@ -31,14 +31,13 @@
     grid-row-gap: 0.5rem;
     margin: 1.5rem 0;
 
-
     &-input {
       grid-area: input;
       height: 3rem;
       border-radius: 0.5rem;
       border: 0.125rem solid $black;
 
-      &--error {
+      &.ng-invalid.ng-touched {
         border: 0.125rem solid $ginger;
       }
     }
@@ -46,11 +45,14 @@
     &-info {
       grid-area: info;
       font-size: 0.9rem;
-      //font-weight: bold;
+      font-style: italic;
+      color: $dark-platinum;
 
       &--error {
         grid-area: error;
         color: $ginger;
+        font-style: normal;
+        font-weight: bold;
       }
     }
 

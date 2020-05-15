@@ -42,6 +42,10 @@ export class EmptyNameInfoComponent implements OnInit, OnDestroy {
       );
   }
 
+  onInput() {
+    this.askForLoading = false;
+  }
+
   onSubmit() {
     if (this.nameForm.valid) {
       this.heroService.setName(this.nameForm.value['name']);
