@@ -16,4 +16,8 @@ export class RoutingService {
   showBattleLossPage() {
     this.router.navigate(['battle-loss']);
   }
+
+  showGameFinishedPage() {
+    this.router.navigate(['the-end']);
+  }
 }

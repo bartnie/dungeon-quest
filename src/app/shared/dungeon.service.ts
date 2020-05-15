@@ -63,13 +63,20 @@ export class DungeonService {
   }
 
   private levelPassed() {
+    let lastLevelPassed = false;
     if (this._dungeonLevel === AppConstants.MAX_DUNGEON_LEVEL) {
-      this.handleLastLevelPassed();
+      lastLevelPassed = true;
     }
     this._dungeonLevel += 1;
     this.handleLoot();
     this.oldEnemy.next(this._currentEnemy);
-    this._currentEnemy = this.enemyFactoryService.prepareEnemy(this._dungeonLevel);
+
+    const nextLevelDifficulcy = Math.max(AppConstants.MAX_DUNGEON_LEVEL, this._dungeonLevel);
+    this._currentEnemy = this.enemyFactoryService.prepareEnemy(nextLevelDifficulcy);
+
+    if (lastLevelPassed) {
+      this.handleLastLevelPassed();
+    }
     this.routingService.showBattleWinPage();
   }
 
@@ -90,6 +97,7 @@ export class DungeonService {
   }
 
   private handleLastLevelPassed() {
+    this.routingService.showGameFinishedPage();
   }
 
   private removeEnemyHealth(amount: number): boolean {
