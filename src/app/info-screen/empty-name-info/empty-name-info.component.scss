@@ -36,6 +36,7 @@
       height: 3rem;
       border-radius: 0.5rem;
       border: 0.125rem solid $black;
+      padding-left: 1rem;
 
       &.ng-invalid.ng-touched {
         border: 0.125rem solid $ginger;
