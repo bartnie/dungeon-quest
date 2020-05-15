@@ -12,7 +12,7 @@
   border-radius: 0.25rem;
 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   column-gap: 0.75rem;
   row-gap: 0.75rem;
@@ -21,24 +21,23 @@
     border-radius: 0.4rem;
     background: $light-platinum;
 
-    &--taken {
-      background: $white;
-
-      &:hover {
-        transform: scale(1.05);
-      }
+    &--taken:hover {
+      transform: scale(1.05);
     }
 
-    &--common{
+    &--common {
       border: 0.25rem solid $dark-grey;
     }
-    &--rare{
+
+    &--rare {
       border: 0.25rem solid $green;
     }
-    &--epic{
+
+    &--epic {
       border: 0.25rem solid $purple;
     }
-    &--legendary{
+
+    &--legendary {
       border: 0.25rem solid $yellow;
     }
 
