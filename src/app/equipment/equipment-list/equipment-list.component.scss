@@ -19,10 +19,13 @@
 
   &__item {
     border-radius: 0.4rem;
-    background: $light-platinum;
 
     &--taken:hover {
       transform: scale(1.05);
+    }
+
+    &--empty {
+      background: $light-platinum;
     }
 
     &--common {
