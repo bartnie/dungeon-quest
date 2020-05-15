@@ -1,6 +1,15 @@
 @import "../../../_variables.scss";
 
-.name {
+@keyframes name-info__button-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.name-form {
   margin: 6rem 10rem;
 
   &__header {
@@ -8,32 +17,53 @@
     font-weight: bold;
   }
 
-  &__form {
-    //text-align: center;
-  }
-
   &__label {
     font-size: 1.5rem;
-    display: block;
   }
 
-  &__input {
-    height: 3rem;
-    min-width: 15rem;
-    border-radius: 0.5rem;
-    border: 0.125rem solid $black;
-  }
+  &__group {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
+    grid-template-areas:
+      "input suggest . ."
+      "error info info .";
+    grid-column-gap: 1rem;
+    grid-row-gap: 0.5rem;
+    margin: 1.5rem 0;
 
-  &__error {
-    font-size: 0.9rem;
-    //font-weight: bold;
-    color: $ginger;
+
+    &-input {
+      grid-area: input;
+      height: 3rem;
+      border-radius: 0.5rem;
+      border: 0.125rem solid $black;
+
+      &--error {
+        border: 0.125rem solid $ginger;
+      }
+    }
+
+    &-info {
+      grid-area: info;
+      font-size: 0.9rem;
+      //font-weight: bold;
+
+      &--error {
+        grid-area: error;
+        color: $ginger;
+      }
+    }
+
+    &-button {
+      grid-area: suggest;
+    }
+
+
   }
 
   &__button {
     min-width: 15rem;
     height: 3rem;
-    margin: 2rem;
     border-radius: 0.5rem;
     font-weight: normal;
     color: $white;
@@ -57,8 +87,37 @@
       border: 0.125rem solid $dark-green;
       display: block;
       margin: 0;
+
+      &:disabled {
+        background-color: $platinum;
+        border: 0.125rem solid $dark-platinum;
+        color: black;
+
+        &:hover {
+          transform: none;
+          box-shadow: 0 0;
+          font-weight: normal;
+
+        }
+      }
     }
 
+    &-spinner {
+      display: inline-block;
+      max-width: 2rem;
+      max-height: 2rem;
 
+      &::after {
+        content: '';
+
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        border: 0.3rem solid $white;
+        border-color: $white transparent $white transparent;
+        animation: name-info__button-spinner 1.2s linear infinite;
+      }
+    }
   }
 }
