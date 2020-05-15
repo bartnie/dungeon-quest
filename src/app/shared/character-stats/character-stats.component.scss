@@ -2,7 +2,7 @@
 
 .stats {
   list-style: none;
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 1rem 1rem 1rem 0rem;
   margin: 0;
   background-color: $platinum;
   border-radius: 0.25rem;
@@ -21,6 +21,12 @@
         background-color: $ginger;
         padding: 0;
       }
+    }
+
+    &--name{
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
   }
 
