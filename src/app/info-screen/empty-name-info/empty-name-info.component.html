@@ -2,11 +2,19 @@
   <h2 class="name__header">
     Pick a name!
   </h2>
-  <p class="name__details">Select a name for your hero</p>
-  <form>
-    <input class="name__input">
+  <form class="name__form"
+    (ngSubmit)="onSubmit()"
+    #nameForm="ngForm">
+    <label class="name__label" for="name">Select a name for your hero:</label>
+    <input class="name__input"
+           id="name"
+           name="name"
+           type="text"
+           ngModel
+           required>
+    <span class="name__error">Please provide a name</span>
     <button class="name__button name__button--suggest">Suggest</button>
-    <button class="name__button name__button--submit">Confirm</button>
+    <button class="name__button name__button--submit" type="submit">Confirm</button>
   </form>
 </section>
 

@@ -16,6 +16,10 @@ export class HeroService {
     return this.hero.name;
   }
 
+  setName(name: string) {
+    this.hero.name = name;
+  }
+
   get stamina(): number {
     return this.hero.currentStamina;
   }

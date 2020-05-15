@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {BattleWinInfoComponent} from "./battle-win-info/battle-win-info.component";
 import {BattleLossInfoComponent} from "./battle-loss-info/battle-loss-info.component";
 import {EmptyNameInfoComponent} from "./empty-name-info/empty-name-info.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {EmptyNameInfoComponent} from "./empty-name-info/empty-name-info.componen
     EmptyNameInfoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     BattleWinInfoComponent,
