@@ -14,7 +14,7 @@ export class EquipmentListComponent implements OnInit, OnDestroy {
   @Output() itemSelected = new EventEmitter<EquipmentModel>();
   private BAG_CAPACITY = AppConstants.BAG_CAPACITY;
   private equipmentBag: EquipmentModel[];
-  componentActive: boolean;
+  private componentActive: boolean;
 
   constructor(private equipmentService: EquipmentService) {
   }

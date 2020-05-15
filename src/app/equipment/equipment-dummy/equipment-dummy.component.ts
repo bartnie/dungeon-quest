@@ -11,10 +11,10 @@ import {takeWhile} from "rxjs/operators";
 })
 export class EquipmentDummyComponent implements OnInit, OnDestroy {
   @Output() itemSelected = new EventEmitter<EquipmentModel>();
-  currentEquipment: Map<EquipmentType, EquipmentModel>;
-  slotToHighlight: EquipmentType;
-  equipmentTypes = EquipmentType;
-  componentActive: boolean;
+  private currentEquipment: Map<EquipmentType, EquipmentModel>;
+  private slotToHighlight: EquipmentType;
+  private equipmentTypes = EquipmentType;
+  private componentActive: boolean;
 
   constructor(private equipmentService: EquipmentService) {
   }
