@@ -71,8 +71,8 @@ export class DungeonService {
     this.handleLoot();
     this.oldEnemy.next(this._currentEnemy);
 
-    const nextLevelDifficulcy = Math.max(AppConstants.MAX_DUNGEON_LEVEL, this._dungeonLevel);
-    this._currentEnemy = this.enemyFactoryService.prepareEnemy(nextLevelDifficulcy);
+    const nextLevelDifficulty = Math.min(AppConstants.MAX_DUNGEON_LEVEL, this._dungeonLevel);
+    this._currentEnemy = this.enemyFactoryService.prepareEnemy(nextLevelDifficulty);
 
     if (lastLevelPassed) {
       this.handleLastLevelPassed();
