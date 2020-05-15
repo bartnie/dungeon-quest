@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AppConstants} from "../app.consts";
-import {EquipmentProbability} from "./domain/equipment/equipment-probability.model";
+import {EquipmentTypeProbability} from "./domain/equipment/equipment-probability.model";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {EquipmentType} from "./domain/equipment/equipment-type.enum";
 import {EquipmentTemplate} from "./domain/equipment/equipment-template.model";
@@ -13,7 +13,7 @@ import {EquipmentRarityType} from "./domain/equipment/equipment-rarity-type.enum
 })
 export class EquipmentFactoryService {
 
-  randomizeEquipments(probabilities: EquipmentProbability[]): EquipmentModel[] {
+  randomizeEquipments(probabilities: EquipmentTypeProbability[]): EquipmentModel[] {
     const randomizedEquipments: EquipmentModel[] = [];
     for (let probability of probabilities) {
       if (probability.probability <= Math.random()) {
