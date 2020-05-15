@@ -30,6 +30,7 @@ export class AppConstants {
 
   public static PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
   public static ENEMY_NAME_URL = 'https://randommer.io/api/Name?nameType=firstname&quantity=1';
+  public static HERO_NAME_URL = 'http://names.drycodes.com/1?separator=space&nameOptions=boy_names';
 
   public static ENEMY_PROBABILITY_MAP: Map<number, EnemyTypeProbability[]> = new Map([
     [1, [{probability: 0.8, enemyType: EnemyType.TROGLODYTE}, {probability: 0.2, enemyType: EnemyType.BEHEMOT}]],
@@ -41,7 +42,7 @@ export class AppConstants {
     [7, [{probability: 0.6, enemyType: EnemyType.DRAGON}, {probability: 0.4, enemyType: EnemyType.BEHEMOT}]],
     [8, [{probability: 0.8, enemyType: EnemyType.DRAGON}, {probability: 0.2, enemyType: EnemyType.BEHEMOT}]],
     [9, [{probability: 1, enemyType: EnemyType.DRAGON}]],
-  ])
+  ]);
 
   public static ENEMY_TEMPLATES: Map<EnemyType, EnemyTemplate> = new Map([
     [EnemyType.TROGLODYTE, {
@@ -92,7 +93,7 @@ export class AppConstants {
       chanceToDropItem: 0.8,
       imagePath: 'https://thumbs.gfycat.com/ExcellentGoodnaturedDiscus-max-1mb.gif'
     }],
-  ])
+  ]);
 }
 
 
