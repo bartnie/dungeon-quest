@@ -33,8 +33,10 @@ export class DungeonService {
       repeat()
     )
       .subscribe((name: string) => {
-        this._currentEnemy.name = name;
-        this.currentEnemy.next({...this._currentEnemy})
+        if (this._currentEnemy.name === null) {
+          this._currentEnemy.name = this.nameService.prepareName(name);
+          this.currentEnemy.next({...this._currentEnemy})
+        }
       })
   }
 

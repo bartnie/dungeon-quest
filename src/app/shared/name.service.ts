@@ -30,6 +30,13 @@ export class NameService {
     return this.sendRequest(AppConstants.PROXY_URL + AppConstants.HERO_NAME_URL, this.heroNameHeaders);
   }
 
+  prepareName(name: string | string[]) {
+    if (typeof name !== "string") {
+      name = name[0];
+    }
+    return name.split(" ")[0];
+  }
+
   private sendRequest(url: string, headers: HttpHeaders): Observable<string> {
     return this.http.get<string>(url, {headers: headers}).pipe(
       first()
