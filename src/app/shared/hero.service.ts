@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {StatsService} from "./stats.service";
 import {HeroModel} from "./domain/hero/hero.model";
+import {AppConstants} from "../app.consts";
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,9 @@ export class HeroService {
       return false;
     }
     this.hero.currentHealth -= amount;
-    this.hero.currentHealth = Math.round(this.hero.currentHealth * 1000) / 1000;
+    this.hero.currentHealth = Math.round(
+      this.hero.currentHealth * (1 / AppConstants.HEALTH_DIGIT_PRECISION))
+      / (1 / AppConstants.HEALTH_DIGIT_PRECISION);
     return true;
   }
 

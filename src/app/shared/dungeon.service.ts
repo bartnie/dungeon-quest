@@ -98,7 +98,9 @@ export class DungeonService {
       return false;
     }
     this._currentEnemy.currentHealth -= amount;
-    this._currentEnemy.currentHealth = Math.round(this._currentEnemy.currentHealth * 1000) / 1000;
+    this._currentEnemy.currentHealth = Math.round(
+      this._currentEnemy.currentHealth * (1 / AppConstants.HEALTH_DIGIT_PRECISION))
+      / (1 / AppConstants.HEALTH_DIGIT_PRECISION);
     return true;
   }
 
@@ -107,7 +109,7 @@ export class DungeonService {
     const defenceBonus = AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(defence - offence);
     const damageWithBonuses = this.positiveOrZero(damage * (1 + offenceBonus) - armor * (1 + defenceBonus));
     let totalDamage = damageWithBonuses;
-    if(attackType == AttackType.RISKY) {
+    if (attackType == AttackType.RISKY) {
       totalDamage = 2 * Math.random() * damageWithBonuses;
     }
     return totalDamage;
