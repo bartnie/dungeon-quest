@@ -2,7 +2,11 @@
   <div class="dummy__part dummy__part--helmet">
     <div class="dummy__slot dummy__slot--helmet"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.HELMET === slotToHighlight}"
+         [ngClass]="{'dummy__slot--highlighted': slotTypes.HELMET === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotTypes.HELMET)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotTypes.HELMET)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotTypes.HELMET)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotTypes.HELMET)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
          (drop)="onDrop($event, slotTypes.HELMET)"
          (dragstart)="onDragStart($event, slotTypes.HELMET)"
@@ -15,9 +19,13 @@
   </div>
 
   <div class="dummy__part dummy__part--armor">
-    <div class="dummy__slot dummy__slot--armor "
+    <div class="dummy__slot dummy__slot--armor"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.ARMOR === slotToHighlight}"
+         [ngClass]="{'dummy__slot--highlighted': slotTypes.ARMOR === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotTypes.ARMOR)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotTypes.ARMOR)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotTypes.ARMOR)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotTypes.ARMOR)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
          (drop)="onDrop($event, slotTypes.ARMOR)"
          (dragstart)="onDragStart($event, slotTypes.ARMOR)"
@@ -32,7 +40,11 @@
   <div class="dummy__part dummy__part--weapon-and-shield">
     <div class="dummy__slot dummy__slot--weapon"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.WEAPON === slotToHighlight}"
+         [ngClass]="{'dummy__slot--highlighted': slotTypes.WEAPON === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotTypes.WEAPON)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotTypes.WEAPON)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotTypes.WEAPON)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotTypes.WEAPON)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
          (drop)="onDrop($event, slotTypes.WEAPON)"
          (dragstart)="onDragStart($event, slotTypes.WEAPON)"
@@ -44,7 +56,11 @@
     </div>
     <div class="dummy__slot dummy__slot--shield"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.SHIELD === slotToHighlight}"
+         [ngClass]="{'dummy__slot--highlighted': slotTypes.SHIELD === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotTypes.SHIELD)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotTypes.SHIELD)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotTypes.SHIELD)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotTypes.SHIELD)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
          (drop)="onDrop($event, slotTypes.SHIELD)"
          (dragstart)="onDragStart($event, slotTypes.SHIELD)"
@@ -59,7 +75,11 @@
   <div class="dummy__part dummy__part--boots">
     <div class="dummy__slot dummy__slot--boots"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.BOOTS === slotToHighlight}"
+         [ngClass]="{'dummy__slot--highlighted': slotTypes.BOOTS === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotTypes.BOOTS)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotTypes.BOOTS)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotTypes.BOOTS)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotTypes.BOOTS)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
          (drop)="onDrop($event, slotTypes.BOOTS)"
          (dragstart)="onDragStart($event, slotTypes.BOOTS)"

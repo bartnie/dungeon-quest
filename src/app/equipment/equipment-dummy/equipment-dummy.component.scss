@@ -9,7 +9,7 @@
 
   border: 0.125rem solid $yellow;
   border-radius: 0.25rem;
-  box-shadow:inset 0 0 0 2000px rgba(253, 231, 43, 0.12);
+  box-shadow: inset 0 0 0 2000px rgba(253, 231, 43, 0.12);
 
   padding: 3rem 0;
 
@@ -49,6 +49,22 @@
 
     &:hover {
       transform: scale(1.05);
+    }
+
+    &--common {
+      border: 0.2rem solid $dark-grey;
+    }
+
+    &--rare {
+      border: 0.2rem solid $green;
+    }
+
+    &--epic {
+      border: 0.2rem solid $purple;
+    }
+
+    &--legendary {
+      border: 0.2rem solid $yellow;
     }
 
     &--highlighted {

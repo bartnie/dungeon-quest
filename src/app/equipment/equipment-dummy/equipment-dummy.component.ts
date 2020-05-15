@@ -3,6 +3,7 @@ import {EquipmentModel} from "../../shared/domain/equipment/equipment.model";
 import {SlotType} from "../../shared/domain/equipment/slot-type.enum";
 import {EquipmentService} from "../../shared/equipment.service";
 import {takeWhile} from "rxjs/operators";
+import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarity-type.enum";
 
 @Component({
   selector: 'app-equipment-dummy',
@@ -14,6 +15,7 @@ export class EquipmentDummyComponent implements OnInit, OnDestroy {
   private currentEquipment: Map<SlotType, EquipmentModel>;
   private slotToHighlight: SlotType;
   private slotTypes = SlotType;
+  private rarityType = EquipmentRarityType;
   private componentActive: boolean;
 
   constructor(private equipmentService: EquipmentService) {
