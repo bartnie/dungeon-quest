@@ -1,0 +1,48 @@
+@import "../../../_variables.scss";
+
+.battle-loss {
+  margin: 6rem 10rem;
+
+  &__header {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+
+  &__details {
+    font-size: 1.5rem;
+  }
+
+
+  &__buttons {
+    margin: 8rem 0;
+    text-align: center;
+    padding-right: 10rem;
+  }
+
+  &__button {
+    min-width: 15rem;
+    height: 3rem;
+    margin: 2rem;
+    border-radius: 0.5rem;
+    font-weight: normal;
+    color: $white;
+    outline: none;
+    box-shadow: 0 0.15rem $platinum;
+
+    &:hover {
+      font-weight: bold;
+      transform: scale(1.04);
+      box-shadow: 0 0;
+    }
+
+    &--dungeon {
+      background-color: $ginger;
+      border: 0.125rem solid $dark-ginger;
+    }
+
+    &--tavern {
+      background-color: $green;
+      border: 0.125rem solid $dark-green;
+    }
+  }
+}

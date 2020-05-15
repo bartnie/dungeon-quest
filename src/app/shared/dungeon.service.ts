@@ -62,6 +62,7 @@ export class DungeonService {
   }
 
   private handleHeroDeath() {
+    this.routingService.showBattleLossPage();
   }
 
   private handleLastLevelPassed() {

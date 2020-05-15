@@ -5,6 +5,7 @@ import {TavernComponent} from "./tavern/tavern.component";
 import {MenuComponent} from "./menu/menu.component";
 import {DungeonComponent} from "./dungeon/dungeon.component";
 import {BattleWinInfoComponent} from "./info-screen/battle-win-info/battle-win-info.component";
+import {BattleLossInfoComponent} from "./info-screen/battle-loss-info/battle-loss-info.component";
 
 const routes: Routes = [
   {path: 'menu', component: MenuComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'tavern', component: TavernComponent},
   {path: 'training', component: TrainingComponent},
   {path: 'battle-win', component: BattleWinInfoComponent},
+  {path: 'battle-loss', component: BattleLossInfoComponent},
   {path: '', redirectTo: 'menu', pathMatch: 'full'}
 ];
 

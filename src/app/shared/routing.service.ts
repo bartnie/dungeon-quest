@@ -14,6 +14,6 @@ export class RoutingService {
   }
 
   showBattleLossPage() {
-    this.router.navigate(['battle-win']);
+    this.router.navigate(['battle-loss']);
   }
 }
