@@ -38,17 +38,36 @@ export class EquipmentFactoryService {
 
     const value = this.resolve(equipmentTemplate.minValue, equipmentTemplate.maxValue, itemStrength);
 
+    const rarity: EquipmentRarityType = this.resolveRarity(equipmentTemplate.baseRarity, itemStrength);
+
     return new EquipmentModel(
       equipmentTemplate.slotType,
       equipmentType.toString(),
       modifiers,
       value,
       equipmentTemplate.imagePath,
-      equipmentTemplate.baseRarity
+      rarity
     );
   }
 
   private resolve(from: number, to: number, random: number): number {
     return Math.round(random * (to - from)) + from;
   }
+
+  private resolveRarity(baseRarity: EquipmentRarityType, itemStrength: number): EquipmentRarityType {
+    if (itemStrength <= AppConstants.INCREASE_RARITY_THRESHOLD) {
+      return baseRarity;
+    }
+    let newRarity: EquipmentRarityType = baseRarity;
+    let parsedEnumMember: number;
+    for (let enumMember in EquipmentRarityType) {
+      parsedEnumMember = parseInt(enumMember, 10);
+      if (parsedEnumMember === baseRarity.valueOf() + 1) {
+        newRarity = parsedEnumMember as EquipmentRarityType;
+      }
+    }
+    return newRarity;
+  }
+
 }
+
