@@ -29,7 +29,7 @@ export class AppConstants {
   public static BAG_CAPACITY = 20;
   public static INCREASE_RARITY_THRESHOLD = 0.9;
 
-  public static MAX_DUNGEON_LEVEL = 9;
+  public static MAX_DUNGEON_LEVEL = 12;
 
   public static OFFENCE_DEFENCE_BONUS_COEFFICIENT = 0.1;
   public static HEALTH_DIGIT_PRECISION = 0.1;
@@ -44,21 +44,18 @@ export class AppConstants {
 
 
   public static ENEMY_PROBABILITY_MAP: Map<number, EnemyTypeProbability[]> = new Map([
-    [1, [{probability: 0.8, enemyType: EnemyType.TROGLODYTE}, {probability: 0.2, enemyType: EnemyType.BEHEMOT}]],
-    [2, [{probability: 0.6, enemyType: EnemyType.TROGLODYTE}, {probability: 0.4, enemyType: EnemyType.BEHEMOT}]],
-    [3, [{probability: 0.6, enemyType: EnemyType.BEHEMOT}, {
-      probability: 0.3,
-      enemyType: EnemyType.TROGLODYTE
-    }, {probability: 0.1, enemyType: EnemyType.DRAGON}]],
-    [4, [{probability: 0.8, enemyType: EnemyType.BEHEMOT}, {
-      probability: 0.1,
-      enemyType: EnemyType.TROGLODYTE
-    }, {probability: 0.1, enemyType: EnemyType.DRAGON}]],
-    [5, [{probability: 0.8, enemyType: EnemyType.BEHEMOT}, {probability: 0.2, enemyType: EnemyType.DRAGON}]],
-    [6, [{probability: 0.6, enemyType: EnemyType.BEHEMOT}, {probability: 0.4, enemyType: EnemyType.DRAGON}]],
-    [7, [{probability: 0.6, enemyType: EnemyType.DRAGON}, {probability: 0.4, enemyType: EnemyType.BEHEMOT}]],
-    [8, [{probability: 0.8, enemyType: EnemyType.DRAGON}, {probability: 0.2, enemyType: EnemyType.BEHEMOT}]],
-    [9, [{probability: 1, enemyType: EnemyType.DRAGON}]],
+    [1, [new EnemyTypeProbability( 0.8,  EnemyType.TROGLODYTE), new EnemyTypeProbability(0.2, EnemyType.BEHEMOT)]],
+    [2, [new EnemyTypeProbability(0.8,  EnemyType.TROGLODYTE), new EnemyTypeProbability( 0.2,  EnemyType.BEHEMOT)]],
+    [3, [new EnemyTypeProbability(0.8,  EnemyType.TROGLODYTE), new EnemyTypeProbability( 0.2,  EnemyType.BEHEMOT)]],
+    [4, [new EnemyTypeProbability(0.6,  EnemyType.TROGLODYTE), new EnemyTypeProbability( 0.4,  EnemyType.BEHEMOT)]],
+    [5, [new EnemyTypeProbability(0.6,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.3,  EnemyType.TROGLODYTE), new EnemyTypeProbability(0.1, EnemyType.DRAGON)]],
+    [6, [new EnemyTypeProbability(0.8,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.1,  EnemyType.TROGLODYTE), new EnemyTypeProbability(0.1, EnemyType.DRAGON)]],
+    [7, [new EnemyTypeProbability(0.8,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.2,  EnemyType.DRAGON)]],
+    [8, [new EnemyTypeProbability(0.6,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.4,  EnemyType.DRAGON)]],
+    [9, [new EnemyTypeProbability(0.6,  EnemyType.DRAGON), new EnemyTypeProbability( 0.4,  EnemyType.BEHEMOT)]],
+    [10, [new EnemyTypeProbability(0.8,  EnemyType.DRAGON), new EnemyTypeProbability( 0.2,  EnemyType.BEHEMOT)]],
+    [11, [new EnemyTypeProbability(1,  EnemyType.DRAGON)]],
+    [12, [new EnemyTypeProbability(1,  EnemyType.BOSS)]]
   ]);
 
   public static ENEMY_TEMPLATES: Map<EnemyType, EnemyTemplate> = new Map([
@@ -122,6 +119,25 @@ export class AppConstants {
         {probability: 0.1, equipmentType: EquipmentType.DRAGON_ARMOR}],
       maxEquipmentDropped: 3,
       imagePath: 'https://thumbs.gfycat.com/ExcellentGoodnaturedDiscus-max-1mb.gif'
+    }],
+    [EnemyType.BOSS, {
+      minHealth: 500,
+      maxHealth: 750,
+      minOffence: 50,
+      maxOffence: 80,
+      minDefence: 40,
+      maxDefence: 55,
+      minArmor: 30,
+      maxArmor: 40,
+      minDamage: 30,
+      maxDamage: 45,
+      minGold: 2000,
+      maxGold: 5000,
+      equipmentProbabilities: [
+        {probability: 1, equipmentType: EquipmentType.ANCIENT_SHIELD},
+        {probability: 1, equipmentType: EquipmentType.DRAGON_ARMOR}],
+      maxEquipmentDropped: 5,
+      imagePath: 'https://i.imgur.com/AG2kUgo.gif'
     }]
   ]);
 
