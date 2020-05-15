@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {DungeonService} from "../../shared/dungeon.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -7,7 +6,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./battle-loss-info.component.scss']
 })
 export class BattleLossInfoComponent {
-  constructor(private dungeonService: DungeonService, private router: Router) {
+  constructor(private router: Router) {
   }
 
 
