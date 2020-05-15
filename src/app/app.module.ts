@@ -5,11 +5,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SharedModule} from "./shared/shared.module";
 import {HeaderComponent} from './header/header.component';
-import {EquipmentModule} from "./equipment/equipment.module";
 import {DungeonModule} from "./dungeon/dungeon.module";
 import {TavernModule} from "./tavern/tavern.module";
 import {TrainingModule} from "./training/training.module";
 import {MenuModule} from "./menu/menu.module";
+import {InfoScreenModule} from "./info-screen/info-screen.module";
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import {MenuModule} from "./menu/menu.module";
     TavernModule,
     TrainingModule,
     DungeonModule,
+    InfoScreenModule
   ],
   providers: [],
   bootstrap: [AppComponent]
