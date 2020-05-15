@@ -27,14 +27,14 @@ export class EquipmentFactoryService {
     const equipmentTemplate: EquipmentTemplate = AppConstants.EQUIPMENT_TEMPLATES.get(equipmentType);
     const itemStrength = Math.random();
 
-    const modifiers: ModifierModel[] = [];
+    let modifiers: ModifierModel[] = [];
     modifiers.push(new ModifierModel(ModifierType.HEALTH, this.resolve(equipmentTemplate.minHealth, equipmentTemplate.maxHealth, itemStrength)));
     modifiers.push(new ModifierModel(ModifierType.STAMINA, this.resolve(equipmentTemplate.minStamina, equipmentTemplate.maxStamina, itemStrength)));
     modifiers.push(new ModifierModel(ModifierType.OFFENCE, this.resolve(equipmentTemplate.minOffence, equipmentTemplate.maxOffence, itemStrength)));
     modifiers.push(new ModifierModel(ModifierType.DEFENCE, this.resolve(equipmentTemplate.minDefence, equipmentTemplate.maxDefence, itemStrength)));
     modifiers.push(new ModifierModel(ModifierType.ARMOR, this.resolve(equipmentTemplate.minArmor, equipmentTemplate.maxArmor, itemStrength)));
     modifiers.push(new ModifierModel(ModifierType.DAMAGE, this.resolve(equipmentTemplate.minDamage, equipmentTemplate.maxDamage, itemStrength)));
-    modifiers.filter((modifier: ModifierModel) => modifier.modifier > 0);
+    modifiers = modifiers.filter((modifier: ModifierModel) => modifier.modifier > 0);
 
     const value = this.resolve(equipmentTemplate.minValue, equipmentTemplate.maxValue, itemStrength);
 
