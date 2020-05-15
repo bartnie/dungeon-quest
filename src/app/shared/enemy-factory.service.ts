@@ -4,14 +4,15 @@ import {EnemyType} from "./domain/enemy/enemy-type.enum";
 import {AppConstants} from "../app.consts";
 import {EnemyTypeProbability} from "./domain/enemy/enemy-type-probability.model";
 import {EnemyTemplate} from "./domain/enemy/enemy-template.model";
-import {NameService} from "./name.service";
+import {EquipmentFactoryService} from "./equipment-factory.service";
+import {EquipmentModel} from "./domain/equipment/equipment.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnemyFactoryService {
 
-  constructor(private nameService: NameService) {
+  constructor(private equipmentFactoryService: EquipmentFactoryService) {
   }
 
   prepareEnemy(level: number): EnemyModel {
@@ -32,6 +33,9 @@ export class EnemyFactoryService {
 
   private prepareEnemyWithType(enemyType: EnemyType): EnemyModel {
     const enemyTemplate: EnemyTemplate = AppConstants.ENEMY_TEMPLATES.get(enemyType);
+    let itemsDropped: EquipmentModel[] = this.equipmentFactoryService.randomizeEquipments(enemyTemplate.equipmentProbabilities);
+    itemsDropped = itemsDropped.slice(0, enemyTemplate.maxEquipmentDropped);
+
     return new EnemyModel(
       enemyType,
       null,
@@ -42,7 +46,7 @@ export class EnemyFactoryService {
       this.resolveRandom(enemyTemplate.minArmor, enemyTemplate.maxArmor),
       this.resolveRandom(enemyTemplate.minDamage, enemyTemplate.maxDamage),
       this.resolveRandom(enemyTemplate.minGold, enemyTemplate.maxGold),
-      []
+      itemsDropped
     );
   }
 

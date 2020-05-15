@@ -74,7 +74,11 @@ export class AppConstants {
       maxDamage: 3,
       minGold: 10,
       maxGold: 20,
-      chanceToDropItem: 0.1,
+      equipmentProbabilities: [
+        {probability: 0.6, equipmentType: EquipmentType.KNIGHTS_BOOTS},
+        {probability: 0.4, equipmentType: EquipmentType.GALAXY_HELMET},
+        {probability: 0.3, equipmentType: EquipmentType.GREAT_SWORD}],
+      maxEquipmentDropped: 1,
       imagePath: 'https://vignette.wikia.nocookie.net/mightandmagic/images/8/89/H3CrTroglodyte.gif/revision/latest?cb=20091110232434&path-prefix=en'
     }],
     [EnemyType.BEHEMOT, {
@@ -90,7 +94,11 @@ export class AppConstants {
       maxDamage: 5,
       minGold: 50,
       maxGold: 150,
-      chanceToDropItem: 0.4,
+      equipmentProbabilities: [
+        {probability: 0.7, equipmentType: EquipmentType.GREAT_SWORD},
+        {probability: 0.5, equipmentType: EquipmentType.NOBLE_ARMOR},
+        {probability: 0.4, equipmentType: EquipmentType.ANCIENT_SHIELD}],
+      maxEquipmentDropped: 2,
       imagePath: 'https://www.wykop.pl/cdn/c3201142/comment_zvjbKR43H2YtrRJ1ArDAMI2QAuRRycfk.gif'
     }],
     [EnemyType.DRAGON, {
@@ -106,7 +114,12 @@ export class AppConstants {
       maxDamage: 25,
       minGold: 200,
       maxGold: 1500,
-      chanceToDropItem: 0.8,
+      equipmentProbabilities: [
+        {probability: 0.8, equipmentType: EquipmentType.GREAT_SWORD},
+        {probability: 0.6, equipmentType: EquipmentType.NOBLE_ARMOR},
+        {probability: 0.3, equipmentType: EquipmentType.ANCIENT_SHIELD},
+        {probability: 0.1, equipmentType: EquipmentType.DRAGON_ARMOR}],
+      maxEquipmentDropped: 3,
       imagePath: 'https://thumbs.gfycat.com/ExcellentGoodnaturedDiscus-max-1mb.gif'
     }]
   ]);
