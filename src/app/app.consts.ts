@@ -12,24 +12,22 @@ export class AppConstants {
   public static INITIAL_OFFENCE = 0;
   public static INITIAL_DEFENCE = 0;
   public static INITIAL_ARMOR = 0;
-  public static INITIAL_DAMAGE = 0;
-  public static INITIAL_GOLD = 0;
+  public static INITIAL_DAMAGE = 2;
+  public static INITIAL_GOLD = 200;
 
   public static STAMINA_PER_WORK = 15;
   public static GOLD_PER_WORK = 15;
 
   public static STAMINA_PER_SLEEP = 25;
-  public static HEALTH_PER_SLEEP = 5;
+  public static HEALTH_PER_SLEEP = 15;
   public static GOLD_PER_SLEEP = 20;
 
   public static OFFENCE_PER_TRAINING = 1;
   public static DEFENCE_PER_TRAINING = 1;
-  public static STAMINA_PER_TRAINING = 50;
+  public static STAMINA_PER_TRAINING = 15;
 
   public static BAG_CAPACITY = 20;
-  public static INCREASE_RARITY_THRESHOLD = 0.9;
-
-  public static MAX_DUNGEON_LEVEL = 12;
+  public static INCREASE_RARITY_THRESHOLD = 0.75;
 
   public static OFFENCE_DEFENCE_BONUS_COEFFICIENT = 0.1;
   public static HEALTH_DIGIT_PRECISION = 0.1;
@@ -42,20 +40,24 @@ export class AppConstants {
   public static DEFAULT_HERO_NAME = 'Usual Knight';
   public static DEFAULT_ENEMY_NAME = 'Usual Monster';
 
+  public static MAX_DUNGEON_LEVEL = 13;
 
   public static ENEMY_PROBABILITY_MAP: Map<number, EnemyTypeProbability[]> = new Map([
-    [1, [new EnemyTypeProbability( 0.8,  EnemyType.TROGLODYTE), new EnemyTypeProbability(0.2, EnemyType.BEHEMOT)]],
-    [2, [new EnemyTypeProbability(0.8,  EnemyType.TROGLODYTE), new EnemyTypeProbability( 0.2,  EnemyType.BEHEMOT)]],
-    [3, [new EnemyTypeProbability(0.8,  EnemyType.TROGLODYTE), new EnemyTypeProbability( 0.2,  EnemyType.BEHEMOT)]],
-    [4, [new EnemyTypeProbability(0.6,  EnemyType.TROGLODYTE), new EnemyTypeProbability( 0.4,  EnemyType.BEHEMOT)]],
-    [5, [new EnemyTypeProbability(0.6,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.3,  EnemyType.TROGLODYTE), new EnemyTypeProbability(0.1, EnemyType.DRAGON)]],
-    [6, [new EnemyTypeProbability(0.8,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.1,  EnemyType.TROGLODYTE), new EnemyTypeProbability(0.1, EnemyType.DRAGON)]],
-    [7, [new EnemyTypeProbability(0.8,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.2,  EnemyType.DRAGON)]],
-    [8, [new EnemyTypeProbability(0.6,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.4,  EnemyType.DRAGON)]],
-    [9, [new EnemyTypeProbability(0.6,  EnemyType.DRAGON), new EnemyTypeProbability( 0.4,  EnemyType.BEHEMOT)]],
-    [10, [new EnemyTypeProbability(0.8,  EnemyType.DRAGON), new EnemyTypeProbability( 0.2,  EnemyType.BEHEMOT)]],
-    [11, [new EnemyTypeProbability(1,  EnemyType.DRAGON)]],
-    [12, [new EnemyTypeProbability(1,  EnemyType.BOSS)]]
+    [1, [new EnemyTypeProbability( 1,  EnemyType.TROGLODYTE)]],
+    [2, [new EnemyTypeProbability(1,  EnemyType.TROGLODYTE)]],
+    [3, [new EnemyTypeProbability(1,  EnemyType.TROGLODYTE)]],
+    [4, [new EnemyTypeProbability(0.8,  EnemyType.TROGLODYTE), new EnemyTypeProbability( 0.2,  EnemyType.BEHEMOT)]],
+    [5, [new EnemyTypeProbability(0.6,  EnemyType.TROGLODYTE), new EnemyTypeProbability( 0.4,  EnemyType.BEHEMOT)]],
+    [6, [new EnemyTypeProbability(0.6,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.3,  EnemyType.TROGLODYTE), new EnemyTypeProbability(0.1, EnemyType.DRAGON)]],
+    [7, [new EnemyTypeProbability(0.8,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.1,  EnemyType.TROGLODYTE), new EnemyTypeProbability(0.1, EnemyType.DRAGON)]],
+    [8, [new EnemyTypeProbability(0.8,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.2,  EnemyType.DRAGON)]],
+    [9, [new EnemyTypeProbability(0.6,  EnemyType.BEHEMOT), new EnemyTypeProbability( 0.4,  EnemyType.DRAGON)]],
+    [10, [new EnemyTypeProbability(0.6,  EnemyType.DRAGON), new EnemyTypeProbability( 0.4,  EnemyType.BEHEMOT)]],
+    [11, [new EnemyTypeProbability(0.8,  EnemyType.DRAGON), new EnemyTypeProbability( 0.2,  EnemyType.BEHEMOT)]],
+    [12, [new EnemyTypeProbability(1,  EnemyType.DRAGON)]],
+    [12, [new EnemyTypeProbability(1,  EnemyType.DRAGON)]],
+    [12, [new EnemyTypeProbability(1,  EnemyType.DRAGON)]],
+    [13, [new EnemyTypeProbability(1,  EnemyType.BOSS)]]
   ]);
 
   public static ENEMY_TEMPLATES: Map<EnemyType, EnemyTemplate> = new Map([
@@ -73,10 +75,10 @@ export class AppConstants {
       minGold: 10,
       maxGold: 20,
       equipmentProbabilities: [
-        {probability: 0.6, equipmentType: EquipmentType.KNIGHTS_BOOTS},
+        {probability: 0.6, equipmentType: EquipmentType.GREAT_SWORD},
         {probability: 0.4, equipmentType: EquipmentType.GALAXY_HELMET},
-        {probability: 0.3, equipmentType: EquipmentType.GREAT_SWORD}],
-      maxEquipmentDropped: 1,
+        {probability: 0.3, equipmentType: EquipmentType.KNIGHTS_BOOTS}],
+      maxEquipmentDropped: 2,
       imagePath: 'https://vignette.wikia.nocookie.net/mightandmagic/images/8/89/H3CrTroglodyte.gif/revision/latest?cb=20091110232434&path-prefix=en'
     }],
     [EnemyType.BEHEMOT, {
@@ -95,6 +97,7 @@ export class AppConstants {
       equipmentProbabilities: [
         {probability: 0.7, equipmentType: EquipmentType.GREAT_SWORD},
         {probability: 0.5, equipmentType: EquipmentType.NOBLE_ARMOR},
+        {probability: 0.4, equipmentType: EquipmentType.FIRE_SWORD},
         {probability: 0.4, equipmentType: EquipmentType.ANCIENT_SHIELD}],
       maxEquipmentDropped: 2,
       imagePath: 'https://www.wykop.pl/cdn/c3201142/comment_zvjbKR43H2YtrRJ1ArDAMI2QAuRRycfk.gif'
@@ -113,10 +116,9 @@ export class AppConstants {
       minGold: 200,
       maxGold: 1500,
       equipmentProbabilities: [
-        {probability: 0.8, equipmentType: EquipmentType.GREAT_SWORD},
-        {probability: 0.6, equipmentType: EquipmentType.NOBLE_ARMOR},
-        {probability: 0.3, equipmentType: EquipmentType.ANCIENT_SHIELD},
-        {probability: 0.1, equipmentType: EquipmentType.DRAGON_ARMOR}],
+        {probability: 0.7, equipmentType: EquipmentType.FIRE_SWORD},
+        {probability: 0.5, equipmentType: EquipmentType.ANCIENT_SHIELD},
+        {probability: 0.4, equipmentType: EquipmentType.DRAGON_ARMOR}],
       maxEquipmentDropped: 3,
       imagePath: 'https://thumbs.gfycat.com/ExcellentGoodnaturedDiscus-max-1mb.gif'
     }],
@@ -218,6 +220,25 @@ export class AppConstants {
         minValue: 200,
         maxValue: 300,
         imagePath: 'https://www.militaria.pl/upload/wysiwyg/gfx/produkty/noze/ColdSteel/88HNH/Miecz_Cold_Steel_Hand_and_a_Half_Sword_88HNH-112.jpg'
+      }],
+      [EquipmentType.FIRE_SWORD, {
+        slotType: SlotType.WEAPON,
+        baseRarity: EquipmentRarityType.EPIC,
+        minHealth: 0,
+        maxHealth: 0,
+        minStamina: 0,
+        maxStamina: 20,
+        minOffence: 10,
+        maxOffence: 35,
+        minDefence: 0,
+        maxDefence: 0,
+        minArmor: 0,
+        maxArmor: 0,
+        minDamage: 20,
+        maxDamage: 28,
+        minValue: 2000,
+        maxValue: 2500,
+        imagePath: 'https://www.pngkey.com/png/full/62-624715_dissidia-chaossword-final-fantasy-fire-sword.png'
       }],
       [EquipmentType.ANCIENT_SHIELD, {
         slotType: SlotType.SHIELD,
