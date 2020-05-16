@@ -20,12 +20,6 @@ export class EmptyNameInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.askForLoading = false;
-    this.nameService.getHeroName().pipe(takeWhile(() => this.componentActive && this.askForLoading))
-      .subscribe((name: string) => {
-          this.nameForm.form.patchValue({'name': name});
-          this.askForLoading = false;
-        }
-      );
   }
 
   ngOnDestroy() {
@@ -42,6 +36,11 @@ export class EmptyNameInfoComponent implements OnInit, OnDestroy {
     ).subscribe((name: string) => {
         this.nameForm.form.patchValue({'name': name});
         this.askForLoading = false;
+      },
+      (error) => {
+        this.nameForm.form.patchValue({'name': AppConstants.DEFAULT_HERO_NAME});
+        this.askForLoading = false;
+        console.log(error);
       }
     );
   }
