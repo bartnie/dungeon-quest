@@ -2,8 +2,11 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {DungeonService} from "../../shared/dungeon.service";
 import {StatusBarType} from "../../shared/status-bar/status-bar-type.enum";
 import {EnemyModel} from "../../shared/domain/enemy/enemy.model";
-import {takeWhile} from "rxjs/operators";
+import {takeWhile, timeoutWith} from "rxjs/operators";
 import {HeroService} from "../../shared/hero.service";
+import {AppConstants} from "../../app.consts";
+import {Observable, Subscriber} from "rxjs";
+import {NameService} from "../../shared/name.service";
 
 @Component({
   selector: 'app-dungeon-enemy',
@@ -15,20 +18,41 @@ export class DungeonEnemyComponent implements OnInit, OnDestroy {
   currentEnemy: EnemyModel;
   private componentActive: boolean;
 
-  constructor(private dungeonService: DungeonService, private heroService: HeroService) {
+  constructor(private dungeonService: DungeonService, private heroService: HeroService, private nameService: NameService) {
   }
 
   ngOnInit() {
     this.componentActive = true;
     this.dungeonService.currentEnemy.pipe(takeWhile(() => this.componentActive))
       .subscribe(
-        (enemy: EnemyModel) => this.currentEnemy = enemy
+        (enemy: EnemyModel) => {
+          this.currentEnemy = enemy;
+          if (this.currentEnemy.name === null) {
+            this.setEnemyName();
+          }
+        }
       );
   }
 
   ngOnDestroy() {
     this.componentActive = false;
     this.dungeonService.handleHeroQuit();
+  }
+
+  private setEnemyName() {
+    this.nameService.getEnemyName().pipe(
+      takeWhile(() => this.currentEnemy.name === null && this.componentActive),
+      timeoutWith(AppConstants.TIMEOUT, new Observable(
+        (subscriber: Subscriber<string>) => subscriber.next(AppConstants.DEFAULT_ENEMY_NAME)
+      ))
+    ).subscribe((name: string) => {
+        this.dungeonService.updateEnemyName(name);
+      },
+      (error) => {
+        this.dungeonService.updateEnemyName(AppConstants.DEFAULT_ENEMY_NAME);
+        console.log(error);
+      }
+    );
   }
 
   get heroHealth() {
