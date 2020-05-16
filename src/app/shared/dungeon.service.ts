@@ -102,8 +102,8 @@ export class DungeonService {
     }
     this._currentEnemy.currentHealth -= amount;
     this._currentEnemy.currentHealth = Math.round(
-      this._currentEnemy.currentHealth * (1 / AppConstants.HEALTH_DIGIT_PRECISION))
-      / (1 / AppConstants.HEALTH_DIGIT_PRECISION);
+      this._currentEnemy.currentHealth * (1 / AppConstants.VALUES_DIGIT_PRECISION))
+      / (1 / AppConstants.VALUES_DIGIT_PRECISION);
     return true;
   }
 
@@ -116,7 +116,9 @@ export class DungeonService {
     const damage = damageMultiplier * attackerDamage * (1 + offenceBonus);
     const armor = defenderArmor * (1 + defenceBonus);
 
-    let totalDamage = this.positiveOrZero(damage - armor);
+    let totalDamage = Math.round(
+      this.positiveOrZero(damage - armor) * (1 / AppConstants.VALUES_DIGIT_PRECISION))
+      / (1 / AppConstants.VALUES_DIGIT_PRECISION);
 
     this.handleBattleInfo(infoType, totalDamage, defenceBonus, armor, offenceBonus, attackType, damageMultiplier, damage);
     return totalDamage;
@@ -128,7 +130,8 @@ export class DungeonService {
 
   private getDamageMultiplier(attackType: AttackType) {
     if (attackType === AttackType.RISKY) {
-      return Math.round(Math.random() * (1 / AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION)) * AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION;
+      return Math.round(Math.random() * (1 / AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION))
+        / (1 / AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION);
     }
     return 1;
   }

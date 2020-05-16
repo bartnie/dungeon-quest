@@ -30,7 +30,7 @@ export class AppConstants {
   public static INCREASE_RARITY_THRESHOLD = 0.75;
 
   public static OFFENCE_DEFENCE_BONUS_COEFFICIENT = 0.1;
-  public static HEALTH_DIGIT_PRECISION = 0.1;
+  public static VALUES_DIGIT_PRECISION = 0.1;
   public static DAMAGE_MULTIPLIER_DIGIT_PRECISION = 0.01;
 
   public static PROXY_URL = 'https://cors-anywhere.herokuapp.com/';

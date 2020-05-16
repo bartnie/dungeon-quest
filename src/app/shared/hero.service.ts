@@ -48,8 +48,8 @@ export class HeroService {
     }
     this.hero.currentHealth -= amount;
     this.hero.currentHealth = Math.round(
-      this.hero.currentHealth * (1 / AppConstants.HEALTH_DIGIT_PRECISION))
-      / (1 / AppConstants.HEALTH_DIGIT_PRECISION);
+      this.hero.currentHealth * (1 / AppConstants.VALUES_DIGIT_PRECISION))
+      / (1 / AppConstants.VALUES_DIGIT_PRECISION);
     return true;
   }
 
