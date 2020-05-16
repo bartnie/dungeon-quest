@@ -47,7 +47,7 @@ export class DungeonService {
 
   nextTurn(attackType: AttackType) {
     if (!this.heroService.removeHealth(
-      this.calculateDamage(AttackType.DEFAULT, this._currentEnemy.offence, this._currentEnemy.damage, this.heroService.defence, this.heroService.armor)
+      this.calculateDamage(attackType, this._currentEnemy.offence, this._currentEnemy.damage, this.heroService.defence, this.heroService.armor)
     )) {
       this.handleHeroDeath();
     } else if (!this.removeEnemyHealth(
@@ -119,9 +119,17 @@ export class DungeonService {
     const defenceBonus = AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(defence - offence);
     const damageWithBonuses = this.positiveOrZero(damage * (1 + offenceBonus) - armor * (1 + defenceBonus));
     let totalDamage = damageWithBonuses;
-    if (attackType == AttackType.RISKY) {
-      totalDamage = 2 * Math.random() * damageWithBonuses;
+    if (attackType === AttackType.RISKY) {
+      const random = Math.random();
+      console.log(`Risky attack with modifier: ${random}`);
+      totalDamage = 2 * random * damageWithBonuses;
     }
+    console.log(`Total damage = ${totalDamage} because
+    offenceBonus: ${offenceBonus}
+    defenceBonus: ${defenceBonus}
+    damage: ${damage}
+    armor: ${armor}
+    and attack type: ${attackType}`);
     return totalDamage;
   }
 
