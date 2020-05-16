@@ -19,6 +19,7 @@
 
   &__item {
     border-radius: 0.4rem;
+    background: $white;
 
     &--taken:hover {
       transform: scale(1.05);
