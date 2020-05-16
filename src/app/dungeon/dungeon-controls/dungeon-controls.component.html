@@ -1,10 +1,20 @@
 <section class="controls">
-  <button class="controls__button controls__button--normal"
-          (click)="onAttack(attackType.DEFAULT)">
+  <div class="controls__messages controls__messages--hero"
+       *ngIf="battleInfo.has(infoType.ENEMY_DAMAGE)">
+    Took {{battleInfo.get(infoType.ENEMY_DAMAGE).damage}} damage
+  </div>
+  <div class="controls__button-group">
+    <button class="controls__button controls__button--normal"
+            (click)="onAttack(attackType.DEFAULT)">
       Attack
-  </button>
-  <button class="controls__button controls__button--risky"
-          (click)="onAttack(attackType.RISKY)">
-    Risky Attack
-  </button>
+    </button>
+    <button class="controls__button controls__button--risky"
+            (click)="onAttack(attackType.RISKY)">
+      Risky Attack
+    </button>
+  </div>
+  <div class="controls__messages controls__messages--enemy"
+       *ngIf="battleInfo.has(infoType.HERO_DAMAGE)">
+    Took {{battleInfo.get(infoType.HERO_DAMAGE).damage}} damage
+  </div>
 </section>

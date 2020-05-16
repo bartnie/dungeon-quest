@@ -2,7 +2,12 @@
 
 .controls {
 
-  text-align: center;
+  display: flex;
+  justify-content: space-around ;
+
+  &__messages {
+    margin-top: 1rem;
+  }
 
   &__button {
     height: 5rem;

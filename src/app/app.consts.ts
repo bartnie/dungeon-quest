@@ -31,6 +31,7 @@ export class AppConstants {
 
   public static OFFENCE_DEFENCE_BONUS_COEFFICIENT = 0.1;
   public static HEALTH_DIGIT_PRECISION = 0.1;
+  public static DAMAGE_MULTIPLIER_DIGIT_PRECISION = 0.01;
 
   public static PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
   public static ENEMY_NAME_URL = 'https://randommer.io/api/Name?nameType=firstname&quantity=1';

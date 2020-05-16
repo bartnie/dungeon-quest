@@ -9,6 +9,8 @@ import {AppConstants} from "../app.consts";
 import {BehaviorSubject} from "rxjs";
 import {RoutingService} from "./routing.service";
 import {AttackType} from "./domain/hero/attack-type.enum";
+import {BattleInfoService} from "./battle-info.service";
+import {BattleInfoType} from "./domain/battle-info/battle-info-type.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,7 @@ export class DungeonService {
   oldEnemy: BehaviorSubject<EnemyModel>;
 
   constructor(private enemyFactoryService: EnemyFactoryService, private goldService: GoldService, private equipmentService: EquipmentService,
-              private heroService: HeroService, private routingService: RoutingService) {
+              private heroService: HeroService, private routingService: RoutingService, private battleInfoService: BattleInfoService) {
     this._dungeonLevel = 1;
     this._currentEnemy = enemyFactoryService.prepareEnemy(this._dungeonLevel);
     this.currentEnemy = new BehaviorSubject<EnemyModel>(this._currentEnemy);
@@ -38,11 +40,11 @@ export class DungeonService {
 
   nextTurn(attackType: AttackType) {
     if (!this.heroService.removeHealth(
-      this.calculateDamage(attackType, this._currentEnemy.offence, this._currentEnemy.damage, this.heroService.defence, this.heroService.armor)
+      this.calculateDamage(BattleInfoType.ENEMY_DAMAGE, attackType, this._currentEnemy.offence, this._currentEnemy.damage, this.heroService.defence, this.heroService.armor)
     )) {
       this.handleHeroDeath();
     } else if (!this.removeEnemyHealth(
-      this.calculateDamage(attackType, this.heroService.offence, this.heroService.damage, this._currentEnemy.defence, this._currentEnemy.armor)
+      this.calculateDamage(BattleInfoType.HERO_DAMAGE, attackType, this.heroService.offence, this.heroService.damage, this._currentEnemy.defence, this._currentEnemy.armor)
     )) {
       this.levelPassed();
     }
@@ -105,26 +107,38 @@ export class DungeonService {
     return true;
   }
 
-  private calculateDamage(attackType: AttackType, offence: number, damage: number, defence: number, armor: number): number {
-    const offenceBonus = AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(offence - defence);
-    const defenceBonus = AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(defence - offence);
-    const damageWithBonuses = this.positiveOrZero(damage * (1 + offenceBonus) - armor * (1 + defenceBonus));
-    let totalDamage = damageWithBonuses;
-    if (attackType === AttackType.RISKY) {
-      const random = Math.random();
-      console.log(`Risky attack with modifier: ${random}`);
-      totalDamage = 2 * random * damageWithBonuses;
-    }
-    console.log(`Total damage = ${totalDamage} because
-    offenceBonus: ${offenceBonus}
-    defenceBonus: ${defenceBonus}
-    damage: ${damage}
-    armor: ${armor}
-    and attack type: ${attackType}`);
+  private calculateDamage(infoType: BattleInfoType, attackType: AttackType, attackerOffence: number, attackerDamage: number,
+                          defenderDefence: number, defenderArmor: number): number {
+    const offenceBonus = this.getBonusValue(attackerOffence, defenderDefence);
+    const defenceBonus = this.getBonusValue(defenderDefence, attackerOffence);
+    const damageMultiplier = this.getDamageMultiplier(attackType);
+
+    const damage = damageMultiplier * attackerDamage * (1 + offenceBonus);
+    const armor = defenderArmor * (1 + defenceBonus);
+
+    let totalDamage = this.positiveOrZero(damage - armor);
+
+    this.handleBattleInfo(infoType, totalDamage, defenceBonus, armor, offenceBonus, attackType, damageMultiplier, damage);
     return totalDamage;
   }
 
-  private positiveOrZero(value: number) {
+  private getBonusValue(bonusRelatedValue: number, contraryValue: number) {
+    return AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(bonusRelatedValue - contraryValue);
+  }
+
+  private getDamageMultiplier(attackType: AttackType) {
+    if (attackType === AttackType.RISKY) {
+      return Math.round(Math.random() * (1 / AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION)) * AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION;
+    }
+    return 1;
+  }
+
+  private handleBattleInfo(infoType: BattleInfoType, totalDamage: number, defenceBonus: number, armor: number,
+                           offenceBonus: number, attackType: AttackType, damageMultiplier: number, damage: number) {
+    this.battleInfoService.addBattleMessage(infoType, totalDamage, defenceBonus, armor, offenceBonus, attackType, damageMultiplier, damage);
+  }
+
+  private positiveOrZero(value: number): number {
     return value > 0 ? value : 0;
   }
 
