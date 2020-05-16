@@ -9,9 +9,9 @@ import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarit
   styleUrls: ['./battle-win-info.component.scss']
 })
 export class BattleWinInfoComponent implements OnInit, OnDestroy {
-  private defeatedEnemy: EnemyModel;
+  defeatedEnemy: EnemyModel;
+  rarityType = EquipmentRarityType;
   private componentActive: boolean;
-  private rarityType = EquipmentRarityType;
 
   constructor(private dungeonService: DungeonService, private router: Router) {
   }

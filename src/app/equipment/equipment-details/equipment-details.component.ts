@@ -11,7 +11,7 @@ import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarit
 export class EquipmentDetailsComponent {
   @Input() item: EquipmentModel;
   @Output() itemDeselected = new EventEmitter<void>();
-  private rarityType = EquipmentRarityType;
+  rarityType = EquipmentRarityType;
 
   constructor(private goldService: GoldService) {
   }

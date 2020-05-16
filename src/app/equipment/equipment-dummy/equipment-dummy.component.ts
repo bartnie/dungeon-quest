@@ -12,10 +12,10 @@ import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarit
 })
 export class EquipmentDummyComponent implements OnInit, OnDestroy {
   @Output() itemSelected = new EventEmitter<EquipmentModel>();
-  private currentEquipment: Map<SlotType, EquipmentModel>;
-  private slotToHighlight: SlotType;
-  private slotTypes = SlotType;
-  private rarityType = EquipmentRarityType;
+  currentEquipment: Map<SlotType, EquipmentModel>;
+  slotToHighlight: SlotType;
+  slotType = SlotType;
+  rarityType = EquipmentRarityType;
   private componentActive: boolean;
 
   constructor(private equipmentService: EquipmentService) {

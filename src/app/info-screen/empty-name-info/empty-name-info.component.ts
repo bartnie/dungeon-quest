@@ -13,8 +13,7 @@ import {AppConstants} from "../../app.consts";
 })
 export class EmptyNameInfoComponent implements OnInit, OnDestroy {
   @ViewChild("nameForm", {static: false}) nameForm: NgForm;
-  private componentActive: boolean;
-  private askForLoading: boolean;
+  askForLoading: boolean;
 
   constructor(private heroService: HeroService, private nameService: NameService, private router: Router) {
   }

@@ -20,4 +20,12 @@ export class TrainingComponent {
   public onTrainDefence(): void {
     this.trainingService.trainDefence();
   }
+
+  get maxStamina(): number {
+    return this.heroService.maxStamina;
+  }
+
+  get stamina(): number {
+    return this.heroService.stamina;
+  }
 }

@@ -2,92 +2,92 @@
   <div class="dummy__part dummy__part--helmet">
     <div class="dummy__slot dummy__slot--helmet"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.HELMET === slotToHighlight,
-        'dummy__slot--common' : currentEquipment.get(slotTypes.HELMET)?.rarity === rarityType.COMMON,
-        'dummy__slot--rare' : currentEquipment.get(slotTypes.HELMET)?.rarity === rarityType.RARE,
-        'dummy__slot--epic' : currentEquipment.get(slotTypes.HELMET)?.rarity === rarityType.EPIC,
-        'dummy__slot--legendary' : currentEquipment.get(slotTypes.HELMET)?.rarity === rarityType.LEGENDARY}"
+         [ngClass]="{'dummy__slot--highlighted': slotType.HELMET === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotType.HELMET)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotType.HELMET)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotType.HELMET)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotType.HELMET)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
-         (drop)="onDrop($event, slotTypes.HELMET)"
-         (dragstart)="onDragStart($event, slotTypes.HELMET)"
-         (click)="onItemSelected(slotTypes.HELMET)">
+         (drop)="onDrop($event, slotType.HELMET)"
+         (dragstart)="onDragStart($event, slotType.HELMET)"
+         (click)="onItemSelected(slotType.HELMET)">
       <img alt="" class="dummy__image"
-           *ngIf="currentEquipment.has(slotTypes.HELMET)"
-           [alt]="currentEquipment.get(slotTypes.HELMET)?.name"
-           [src]="currentEquipment.get(slotTypes.HELMET).imagePath">
+           *ngIf="currentEquipment.has(slotType.HELMET)"
+           [alt]="currentEquipment.get(slotType.HELMET)?.name"
+           [src]="currentEquipment.get(slotType.HELMET).imagePath">
     </div>
   </div>
 
   <div class="dummy__part dummy__part--armor">
     <div class="dummy__slot dummy__slot--armor"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.ARMOR === slotToHighlight,
-        'dummy__slot--common' : currentEquipment.get(slotTypes.ARMOR)?.rarity === rarityType.COMMON,
-        'dummy__slot--rare' : currentEquipment.get(slotTypes.ARMOR)?.rarity === rarityType.RARE,
-        'dummy__slot--epic' : currentEquipment.get(slotTypes.ARMOR)?.rarity === rarityType.EPIC,
-        'dummy__slot--legendary' : currentEquipment.get(slotTypes.ARMOR)?.rarity === rarityType.LEGENDARY}"
+         [ngClass]="{'dummy__slot--highlighted': slotType.ARMOR === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotType.ARMOR)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotType.ARMOR)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotType.ARMOR)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotType.ARMOR)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
-         (drop)="onDrop($event, slotTypes.ARMOR)"
-         (dragstart)="onDragStart($event, slotTypes.ARMOR)"
-         (click)="onItemSelected(slotTypes.ARMOR)">
+         (drop)="onDrop($event, slotType.ARMOR)"
+         (dragstart)="onDragStart($event, slotType.ARMOR)"
+         (click)="onItemSelected(slotType.ARMOR)">
       <img class="dummy__image"
-           *ngIf="currentEquipment.has(slotTypes.ARMOR)"
-           [alt]="currentEquipment.get(slotTypes.ARMOR)?.name"
-           [src]="currentEquipment.get(slotTypes.ARMOR).imagePath">
+           *ngIf="currentEquipment.has(slotType.ARMOR)"
+           [alt]="currentEquipment.get(slotType.ARMOR)?.name"
+           [src]="currentEquipment.get(slotType.ARMOR).imagePath">
     </div>
   </div>
 
   <div class="dummy__part dummy__part--weapon-and-shield">
     <div class="dummy__slot dummy__slot--weapon"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.WEAPON === slotToHighlight,
-        'dummy__slot--common' : currentEquipment.get(slotTypes.WEAPON)?.rarity === rarityType.COMMON,
-        'dummy__slot--rare' : currentEquipment.get(slotTypes.WEAPON)?.rarity === rarityType.RARE,
-        'dummy__slot--epic' : currentEquipment.get(slotTypes.WEAPON)?.rarity === rarityType.EPIC,
-        'dummy__slot--legendary' : currentEquipment.get(slotTypes.WEAPON)?.rarity === rarityType.LEGENDARY}"
+         [ngClass]="{'dummy__slot--highlighted': slotType.WEAPON === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotType.WEAPON)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotType.WEAPON)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotType.WEAPON)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotType.WEAPON)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
-         (drop)="onDrop($event, slotTypes.WEAPON)"
-         (dragstart)="onDragStart($event, slotTypes.WEAPON)"
-         (click)="onItemSelected(slotTypes.WEAPON)">
+         (drop)="onDrop($event, slotType.WEAPON)"
+         (dragstart)="onDragStart($event, slotType.WEAPON)"
+         (click)="onItemSelected(slotType.WEAPON)">
       <img class="dummy__image"
-           *ngIf="currentEquipment.has(slotTypes.WEAPON)"
-           [alt]="currentEquipment.get(slotTypes.WEAPON)?.name"
-           [src]="currentEquipment.get(slotTypes.WEAPON).imagePath">
+           *ngIf="currentEquipment.has(slotType.WEAPON)"
+           [alt]="currentEquipment.get(slotType.WEAPON)?.name"
+           [src]="currentEquipment.get(slotType.WEAPON).imagePath">
     </div>
     <div class="dummy__slot dummy__slot--shield"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.SHIELD === slotToHighlight,
-        'dummy__slot--common' : currentEquipment.get(slotTypes.SHIELD)?.rarity === rarityType.COMMON,
-        'dummy__slot--rare' : currentEquipment.get(slotTypes.SHIELD)?.rarity === rarityType.RARE,
-        'dummy__slot--epic' : currentEquipment.get(slotTypes.SHIELD)?.rarity === rarityType.EPIC,
-        'dummy__slot--legendary' : currentEquipment.get(slotTypes.SHIELD)?.rarity === rarityType.LEGENDARY}"
+         [ngClass]="{'dummy__slot--highlighted': slotType.SHIELD === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotType.SHIELD)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotType.SHIELD)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotType.SHIELD)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotType.SHIELD)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
-         (drop)="onDrop($event, slotTypes.SHIELD)"
-         (dragstart)="onDragStart($event, slotTypes.SHIELD)"
-         (click)="onItemSelected(slotTypes.SHIELD)">
+         (drop)="onDrop($event, slotType.SHIELD)"
+         (dragstart)="onDragStart($event, slotType.SHIELD)"
+         (click)="onItemSelected(slotType.SHIELD)">
       <img class="dummy__image"
-           *ngIf="currentEquipment.has(slotTypes.SHIELD)"
-           [alt]="currentEquipment.get(slotTypes.SHIELD)?.name"
-           [src]="currentEquipment.get(slotTypes.SHIELD).imagePath">
+           *ngIf="currentEquipment.has(slotType.SHIELD)"
+           [alt]="currentEquipment.get(slotType.SHIELD)?.name"
+           [src]="currentEquipment.get(slotType.SHIELD).imagePath">
     </div>
   </div>
 
   <div class="dummy__part dummy__part--boots">
     <div class="dummy__slot dummy__slot--boots"
          draggable="true"
-         [ngClass]="{'dummy__slot--highlighted': slotTypes.BOOTS === slotToHighlight,
-        'dummy__slot--common' : currentEquipment.get(slotTypes.BOOTS)?.rarity === rarityType.COMMON,
-        'dummy__slot--rare' : currentEquipment.get(slotTypes.BOOTS)?.rarity === rarityType.RARE,
-        'dummy__slot--epic' : currentEquipment.get(slotTypes.BOOTS)?.rarity === rarityType.EPIC,
-        'dummy__slot--legendary' : currentEquipment.get(slotTypes.BOOTS)?.rarity === rarityType.LEGENDARY}"
+         [ngClass]="{'dummy__slot--highlighted': slotType.BOOTS === slotToHighlight,
+        'dummy__slot--common' : currentEquipment.get(slotType.BOOTS)?.rarity === rarityType.COMMON,
+        'dummy__slot--rare' : currentEquipment.get(slotType.BOOTS)?.rarity === rarityType.RARE,
+        'dummy__slot--epic' : currentEquipment.get(slotType.BOOTS)?.rarity === rarityType.EPIC,
+        'dummy__slot--legendary' : currentEquipment.get(slotType.BOOTS)?.rarity === rarityType.LEGENDARY}"
          (dragover)="onDragover($event)"
-         (drop)="onDrop($event, slotTypes.BOOTS)"
-         (dragstart)="onDragStart($event, slotTypes.BOOTS)"
-         (click)="onItemSelected(slotTypes.BOOTS)">
+         (drop)="onDrop($event, slotType.BOOTS)"
+         (dragstart)="onDragStart($event, slotType.BOOTS)"
+         (click)="onItemSelected(slotType.BOOTS)">
       <img class="dummy__image"
-           *ngIf="currentEquipment.has(slotTypes.BOOTS)"
-           [alt]="currentEquipment.get(slotTypes.BOOTS)?.name"
-           [src]="currentEquipment.get(slotTypes.BOOTS).imagePath">
+           *ngIf="currentEquipment.has(slotType.BOOTS)"
+           [alt]="currentEquipment.get(slotType.BOOTS)?.name"
+           [src]="currentEquipment.get(slotType.BOOTS).imagePath">
     </div>
   </div>
 </section>

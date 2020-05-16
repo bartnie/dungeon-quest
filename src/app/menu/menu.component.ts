@@ -11,4 +11,20 @@ export class MenuComponent {
 
   constructor(private heroService: HeroService) {
   }
+
+  get maxHealth(): number {
+    return this.heroService.maxHealth;
+  }
+
+  get health(): number {
+    return this.heroService.health;
+  }
+
+  get maxStamina(): number {
+    return this.heroService.maxStamina;
+  }
+
+  get stamina(): number {
+    return this.heroService.stamina;
+  }
 }

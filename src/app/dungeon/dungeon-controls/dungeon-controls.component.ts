@@ -8,7 +8,7 @@ import {AttackType} from "../../shared/domain/hero/attack-type.enum";
   styleUrls: ['./dungeon-controls.component.scss']
 })
 export class DungeonControlsComponent {
-  private attackType = AttackType;
+  attackType = AttackType;
 
 
   constructor(private dungeonService: DungeonService) {

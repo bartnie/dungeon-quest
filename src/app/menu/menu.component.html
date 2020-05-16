@@ -1,14 +1,14 @@
 <section class="stamina">
   <p class="stamina__label">Stamina:</p>
-  <app-status-bar [current]="heroService.stamina"
-    [max]="heroService.maxStamina"
+  <app-status-bar [current]="stamina"
+    [max]="maxStamina"
     [type]="statusBarTypes.STAMINA">
   </app-status-bar>
 </section>
 <section class="health">
   <p class="health__label">Health:</p>
-  <app-status-bar [current]="heroService.health"
-    [max]="heroService.maxHealth"
+  <app-status-bar [current]="health"
+    [max]="maxHealth"
     [type]="statusBarTypes.HEALTH">
   </app-status-bar>
 </section>

@@ -11,8 +11,8 @@ import {HeroService} from "../../shared/hero.service";
   styleUrls: ['./dungeon-enemy.component.scss']
 })
 export class DungeonEnemyComponent implements OnInit, OnDestroy {
-  private statusBarType = StatusBarType;
-  private currentEnemy: EnemyModel;
+  statusBarType = StatusBarType;
+  currentEnemy: EnemyModel;
   private componentActive: boolean;
 
   constructor(private dungeonService: DungeonService, private heroService: HeroService) {

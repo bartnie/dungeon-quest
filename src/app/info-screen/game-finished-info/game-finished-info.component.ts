@@ -7,7 +7,7 @@ import {HeroService} from "../../shared/hero.service";
   styleUrls: ['./game-finished-info.component.scss']
 })
 export class GameFinishedInfoComponent implements OnInit{
-  private heroName: string;
+  heroName: string;
 
   constructor(private router: Router, private heroService: HeroService) {
   }

@@ -13,10 +13,10 @@ import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarit
 })
 export class EquipmentListComponent implements OnInit, OnDestroy {
   @Output() itemSelected = new EventEmitter<EquipmentModel>();
-  private BAG_CAPACITY = AppConstants.BAG_CAPACITY;
-  private equipmentBag: EquipmentModel[];
+  BAG_CAPACITY = AppConstants.BAG_CAPACITY;
+  equipmentBag: EquipmentModel[];
+  rarityType = EquipmentRarityType;
   private componentActive: boolean;
-  private rarityType = EquipmentRarityType;
 
   constructor(private equipmentService: EquipmentService) {
   }
