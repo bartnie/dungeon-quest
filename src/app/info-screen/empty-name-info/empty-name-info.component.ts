@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {NameService} from "../../shared/name.service";
 import {takeWhile, timeoutWith} from "rxjs/operators";
 import {Observable, Subscriber} from "rxjs";
-import {AppConstants} from "../../app.consts";
+import {AppConstants} from "../../constants/app.consts";
 
 @Component({
   templateUrl: './empty-name-info.component.html',

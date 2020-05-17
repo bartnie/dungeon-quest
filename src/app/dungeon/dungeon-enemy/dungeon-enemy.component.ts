@@ -4,7 +4,7 @@ import {StatusBarType} from "../../shared/status-bar/status-bar-type.enum";
 import {EnemyModel} from "../../shared/domain/enemy/enemy.model";
 import {takeWhile, timeoutWith} from "rxjs/operators";
 import {HeroService} from "../../shared/hero.service";
-import {AppConstants} from "../../app.consts";
+import {AppConstants} from "../../constants/app.consts";
 import {Observable, Subscriber} from "rxjs";
 import {NameService} from "../../shared/name.service";
 

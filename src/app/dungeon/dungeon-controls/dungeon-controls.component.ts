@@ -5,7 +5,7 @@ import {BattleInfoService} from "../../shared/battle-info.service";
 import {BattleInfoType} from "../../shared/domain/battle-info/battle-info-type.enum";
 import {BattleInfoModel} from "../../shared/domain/battle-info/battle-info.model";
 import {animate, state, style, transition, trigger} from "@angular/animations";
-import {AppConstants} from "../../app.consts";
+import {AppConstants} from "../../constants/app.consts";
 
 
 @Component({

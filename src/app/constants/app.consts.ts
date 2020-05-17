@@ -1,25 +1,12 @@
-import {EnemyType} from "./shared/domain/enemy/enemy-type.enum";
-import {EnemyTypeProbability} from "./shared/domain/enemy/enemy-type-probability.model";
-import {EnemyTemplate} from "./shared/domain/enemy/enemy-template.model";
-import {EquipmentTemplate} from "./shared/domain/equipment/equipment-template.model";
-import {EquipmentType} from "./shared/domain/equipment/equipment-type.enum";
-import {EquipmentRarityType} from "./shared/domain/equipment/equipment-rarity-type.enum";
-import {SlotType} from "./shared/domain/equipment/slot-type.enum";
+import {EnemyType} from "../shared/domain/enemy/enemy-type.enum";
+import {EnemyTypeProbability} from "../shared/domain/enemy/enemy-type-probability.model";
+import {EnemyTemplate} from "../shared/domain/enemy/enemy-template.model";
+import {EquipmentTemplate} from "../shared/domain/equipment/equipment-template.model";
+import {EquipmentType} from "../shared/domain/equipment/equipment-type.enum";
+import {EquipmentRarityType} from "../shared/domain/equipment/equipment-rarity-type.enum";
+import {SlotType} from "../shared/domain/equipment/slot-type.enum";
 
 export class AppConstants {
-  public static INITIAL_HEALTH = 20;
-  public static INITIAL_STAMINA = 50;
-  public static INITIAL_OFFENCE = 0;
-  public static INITIAL_DEFENCE = 0;
-  public static INITIAL_ARMOR = 0;
-  public static INITIAL_DAMAGE = 2;
-  public static INITIAL_GOLD = 200;
-
-  public static INITIAL_ITEMS: Map<SlotType, EquipmentType> = new Map<SlotType, EquipmentType>([
-    [SlotType.HELMET, EquipmentType.GALAXY_HELMET],
-    [SlotType.WEAPON, EquipmentType.GREAT_SWORD]
-  ]);
-
   public static STAMINA_PER_WORK = 15;
   public static GOLD_PER_WORK = 15;
 

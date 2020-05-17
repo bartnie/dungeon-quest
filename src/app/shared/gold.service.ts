@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {AppConstants} from "../app.consts";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {EquipmentService} from "./equipment.service";
+import {InitialSettings} from "../constants/initial.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class GoldService {
   private _currentGold: number;
 
   constructor(private equipmentService: EquipmentService) {
-    this._currentGold = AppConstants.INITIAL_GOLD;
+    this._currentGold = InitialSettings.INITIAL_GOLD;
   }
 
   get currentGold(): number {

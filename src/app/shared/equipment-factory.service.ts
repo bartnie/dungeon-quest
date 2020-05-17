@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AppConstants} from "../app.consts";
+import {AppConstants} from "../constants/app.consts";
 import {EquipmentTypeProbability} from "./domain/equipment/equipment-probability.model";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {EquipmentType} from "./domain/equipment/equipment-type.enum";

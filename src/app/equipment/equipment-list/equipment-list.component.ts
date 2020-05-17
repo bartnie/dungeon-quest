@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {EquipmentModel} from "../../shared/domain/equipment/equipment.model";
 import {EquipmentService} from "../../shared/equipment.service";
 import {SlotType} from "../../shared/domain/equipment/slot-type.enum";
-import {AppConstants} from "../../app.consts";
+import {AppConstants} from "../../constants/app.consts";
 import {takeWhile} from "rxjs/operators";
 import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarity-type.enum";
 

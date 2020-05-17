@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AppConstants} from "../app.consts";
+import {AppConstants} from "../constants/app.consts";
 import {AppSecretConstants} from "../app.secret-consts";
 import {first} from "rxjs/operators";
 import {Observable} from "rxjs";

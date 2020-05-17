@@ -1,4 +1,4 @@
-import {AppConstants} from "../../../app.consts";
+import {InitialSettings} from "../../../constants/initial.settings";
 
 export class HeroModel {
   public name: string;
@@ -12,13 +12,13 @@ export class HeroModel {
   public damage: number;
 
   constructor() {
-    this.currentStamina = AppConstants.INITIAL_STAMINA;
-    this.maxStamina = AppConstants.INITIAL_STAMINA;
-    this.currentHealth = AppConstants.INITIAL_HEALTH;
-    this.maxHealth = AppConstants.INITIAL_HEALTH;
-    this.offence = AppConstants.INITIAL_OFFENCE;
-    this.defence = AppConstants.INITIAL_DEFENCE;
-    this.armor = AppConstants.INITIAL_ARMOR;
-    this.damage = AppConstants.INITIAL_DAMAGE;
+    this.currentStamina = InitialSettings.INITIAL_STAMINA;
+    this.maxStamina = InitialSettings.INITIAL_STAMINA;
+    this.currentHealth = InitialSettings.INITIAL_HEALTH;
+    this.maxHealth = InitialSettings.INITIAL_HEALTH;
+    this.offence = InitialSettings.INITIAL_OFFENCE;
+    this.defence = InitialSettings.INITIAL_DEFENCE;
+    this.armor = InitialSettings.INITIAL_ARMOR;
+    this.damage = InitialSettings.INITIAL_DAMAGE;
   }
 }

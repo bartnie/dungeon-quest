@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {SlotType} from "./domain/equipment/slot-type.enum";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
-import {AppConstants} from "../app.consts";
+import {InitialSettings} from "../constants/initial.settings";
 import {BehaviorSubject, Subject} from "rxjs";
 import {EquipmentFactoryService} from "./equipment-factory.service";
+import {AppConstants} from "../constants/app.consts";
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,9 @@ export class EquipmentService {
   constructor(private equipmentFactoryService: EquipmentFactoryService) {
     this._bag = [];
     this._currentEquipment = new Map<SlotType, EquipmentModel>();
-    for (let slot of AppConstants.INITIAL_ITEMS.keys()) {
+    for (let slot of InitialSettings.INITIAL_ITEMS.keys()) {
       this._currentEquipment.set(slot,
-        this.equipmentFactoryService.createEquipment(AppConstants.INITIAL_ITEMS.get(slot)));
+        this.equipmentFactoryService.createEquipment(InitialSettings.INITIAL_ITEMS.get(slot)));
     }
 
     this.currentEquipment = new BehaviorSubject<Map<SlotType, EquipmentModel>>(this._currentEquipment);

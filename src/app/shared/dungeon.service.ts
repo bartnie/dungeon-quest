@@ -5,7 +5,7 @@ import {GoldService} from "./gold.service";
 import {EquipmentService} from "./equipment.service";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {HeroService} from "./hero.service";
-import {AppConstants} from "../app.consts";
+import {AppConstants} from "../constants/app.consts";
 import {BehaviorSubject} from "rxjs";
 import {RoutingService} from "./routing.service";
 import {AttackType} from "./domain/hero/attack-type.enum";
