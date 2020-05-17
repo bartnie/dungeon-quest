@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {NameService} from "../../shared/name.service";
 import {takeWhile, timeoutWith} from "rxjs/operators";
 import {Observable, Subscriber} from "rxjs";
-import {AppConstants} from "../../constants/app.consts";
+import {NameSettings} from "../../constants/name.settings";
 
 @Component({
   templateUrl: './empty-name-info.component.html',
@@ -30,15 +30,15 @@ export class EmptyNameInfoComponent implements OnInit, OnDestroy {
     this.askForLoading = !this.askForLoading;
     this.nameService.getHeroName().pipe(
       takeWhile(() => this.askForLoading),
-      timeoutWith(AppConstants.TIMEOUT, new Observable(
-        (subscriber: Subscriber<string>) => subscriber.next(AppConstants.DEFAULT_HERO_NAME)
+      timeoutWith(NameSettings.TIMEOUT, new Observable(
+        (subscriber: Subscriber<string>) => subscriber.next(NameSettings.DEFAULT_HERO_NAME)
       ))
     ).subscribe((name: string) => {
         this.nameForm.form.patchValue({'name': name});
         this.askForLoading = false;
       },
       (error) => {
-        this.nameForm.form.patchValue({'name': AppConstants.DEFAULT_HERO_NAME});
+        this.nameForm.form.patchValue({'name': NameSettings.DEFAULT_HERO_NAME});
         this.askForLoading = false;
         console.log(error);
       }

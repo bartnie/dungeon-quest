@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AppConstants} from "../constants/app.consts";
 import {AppSecretConstants} from "../app.secret-consts";
 import {first} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {NameSettings} from "../constants/name.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +23,11 @@ export class NameService {
   }
 
   getEnemyName(): Observable<string> {
-    return this.sendRequest(AppConstants.PROXY_URL + AppConstants.ENEMY_NAME_URL, this.enemyNameHeaders);
+    return this.sendRequest(NameSettings.PROXY_URL + NameSettings.ENEMY_NAME_URL, this.enemyNameHeaders);
   }
 
   getHeroName(): Observable<string> {
-    return this.sendRequest(AppConstants.PROXY_URL + AppConstants.HERO_NAME_URL, this.heroNameHeaders);
+    return this.sendRequest(NameSettings.PROXY_URL + NameSettings.HERO_NAME_URL, this.heroNameHeaders);
   }
 
   prepareName(name: string | string[]) {
