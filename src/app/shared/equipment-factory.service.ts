@@ -23,7 +23,7 @@ export class EquipmentFactoryService {
     return randomizedEquipments;
   }
 
-  private createEquipment(equipmentType: EquipmentType): EquipmentModel {
+  createEquipment(equipmentType: EquipmentType): EquipmentModel {
     const equipmentTemplate: EquipmentTemplate = AppConstants.EQUIPMENT_TEMPLATES.get(equipmentType);
     const itemStrength = Math.random();
 

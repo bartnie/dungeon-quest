@@ -3,6 +3,7 @@ import {SlotType} from "./domain/equipment/slot-type.enum";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {AppConstants} from "../app.consts";
 import {BehaviorSubject, Subject} from "rxjs";
+import {EquipmentFactoryService} from "./equipment-factory.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,14 @@ export class EquipmentService {
   bag: BehaviorSubject<EquipmentModel[]>;
   equipmentItemDragged = new Subject<SlotType>();
 
-  constructor() {
+  constructor(private equipmentFactoryService: EquipmentFactoryService) {
     this._bag = [];
     this._currentEquipment = new Map<SlotType, EquipmentModel>();
+    for (let slot of AppConstants.INITIAL_ITEMS.keys()) {
+      this._currentEquipment.set(slot,
+        this.equipmentFactoryService.createEquipment(AppConstants.INITIAL_ITEMS.get(slot)));
+    }
+
     this.currentEquipment = new BehaviorSubject<Map<SlotType, EquipmentModel>>(this._currentEquipment);
     this.bag = new BehaviorSubject<EquipmentModel[]>(this._bag);
   }

@@ -15,6 +15,11 @@ export class AppConstants {
   public static INITIAL_DAMAGE = 2;
   public static INITIAL_GOLD = 200;
 
+  public static INITIAL_ITEMS: Map<SlotType, EquipmentType> = new Map<SlotType, EquipmentType>([
+    [SlotType.HELMET, EquipmentType.GALAXY_HELMET],
+    [SlotType.WEAPON, EquipmentType.GREAT_SWORD]
+  ]);
+
   public static STAMINA_PER_WORK = 15;
   public static GOLD_PER_WORK = 15;
 
