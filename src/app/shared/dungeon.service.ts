@@ -125,12 +125,13 @@ export class DungeonService {
   }
 
   private getBonusValue(bonusRelatedValue: number, contraryValue: number) {
-    return AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(bonusRelatedValue - contraryValue);
+    return Math.round(AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(bonusRelatedValue - contraryValue) * (1 / AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT))
+      / (1 / AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT);;
   }
 
   private getDamageMultiplier(attackType: AttackType) {
     if (attackType === AttackType.RISKY) {
-      return Math.round(Math.random() * (1 / AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION))
+      return Math.round(2 * Math.random() * (1 / AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION))
         / (1 / AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION);
     }
     return 1;
