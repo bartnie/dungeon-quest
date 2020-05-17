@@ -6,8 +6,8 @@
       <span *ngIf="i < maxEntries && i === 0">
         Round {{enemyDamageInfo.length - i}}: Hero took {{info.totalDamage}} damage
         <ul class="controls__info-entry-details">
-          <li class="controls__info-entry-details--offence"> enemy offence bonus: {{info.offenceBonus}}</li>
-          <li class="controls__info-entry-details--defence"> hero defence bonus: {{info.defenceBonus}}</li>
+          <li class="controls__info-entry-details--offence" *ngIf="info.offenceBonus !== 0"> enemy offence bonus: {{info.offenceBonus}}</li>
+          <li class="controls__info-entry-details--defence" *ngIf="info.defenceBonus !== 0"> hero defence bonus: {{info.defenceBonus}}</li>
           <li class="controls__info-entry-details--risk" *ngIf="info.attackType === attackType.RISKY"> enemy modifier from Risky Attack: {{info.damageMultiplier}}</li>
         </ul>
       </span>
@@ -35,9 +35,9 @@
       <span *ngIf="i < maxEntries && i === 0">
         Round {{heroDamageInfo.length - i}}: Hero dealt {{info.totalDamage}} damage
         <ul class="controls__info-entry-details">
-          <li class="controls__info-entry-details--offence"> hero offence bonus: {{info.offenceBonus}}</li>
-          <li class="controls__info-entry-details--defence"> enemy defence bonus: {{info.defenceBonus}}</li>
-          <li class="controls__info-entry-details--risk" *ngIf="info.attackType === attackType.RISKY"> your modifier from Risky Attack: {{info.damageMultiplier}}</li>
+          <li class="controls__info-entry-details--offence" *ngIf="info.offenceBonus !== 0"> hero offence bonus: {{info.offenceBonus}}</li>
+          <li class="controls__info-entry-details--defence" *ngIf="info.defenceBonus !== 0"> enemy defence bonus: {{info.defenceBonus}}</li>
+          <li class="controls__info-entry-details--risk" *ngIf="info.attackType === attackType.RISKY"> hero modifier from Risky Attack: {{info.damageMultiplier}}</li>
         </ul>
       </span>
       <span *ngIf="i < maxEntries && i !== 0">
