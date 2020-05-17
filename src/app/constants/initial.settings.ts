@@ -7,11 +7,12 @@ export class InitialSettings {
   public static INITIAL_OFFENCE = 0;
   public static INITIAL_DEFENCE = 0;
   public static INITIAL_ARMOR = 0;
-  public static INITIAL_DAMAGE = 2;
+  public static INITIAL_DAMAGE = 0;
   public static INITIAL_GOLD = 200;
 
   public static INITIAL_ITEMS: Map<SlotType, EquipmentType> = new Map<SlotType, EquipmentType>([
-    [SlotType.HELMET, EquipmentType.GALAXY_HELMET],
-    [SlotType.WEAPON, EquipmentType.GREAT_SWORD]
+    [SlotType.ARMOR, EquipmentType.LEATHER_ARMOR],
+    [SlotType.WEAPON, EquipmentType.WOODEN_STICK],
+    [SlotType.SHIELD, EquipmentType.RUSTED_SHIELD]
   ]);
 }
