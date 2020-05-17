@@ -40,6 +40,8 @@ export class AppConstants {
   public static DEFAULT_HERO_NAME = 'Usual Knight';
   public static DEFAULT_ENEMY_NAME = 'Usual Monster';
 
+  public static MAX_BATTLE_LOGS_ENTRIES = 5;
+
   public static MAX_DUNGEON_LEVEL = 13;
 
   public static ENEMY_PROBABILITY_MAP: Map<number, EnemyTypeProbability[]> = new Map([

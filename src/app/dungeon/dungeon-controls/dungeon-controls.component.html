@@ -1,12 +1,22 @@
 <section class="controls">
-  <div class="controls__info controls__info--hero">
-    <span class="controls__info-entry"
-          *ngFor="let info of enemyDamageInfo.reverse(); let i = index"
-          [@fadeInOut]>
-      <span *ngIf="i===0">Latest round: </span>
-      Took {{info.totalDamage}} damage
-    </span>
-  </div>
+  <ul class="controls__info">
+    <li class="controls__info-entry"
+        *ngFor="let info of enemyDamageInfo.reverse(); let i = index"
+        [@fadeInOut]>
+      <span *ngIf="i < maxEntries && i === 0">
+        Round {{enemyDamageInfo.length - i}}: Hero took {{info.totalDamage}} damage
+        <ul class="controls__info-entry-details">
+          <li class="controls__info-entry-details--offence"> enemy offence bonus: {{info.offenceBonus}}</li>
+          <li class="controls__info-entry-details--defence"> hero defence bonus: {{info.defenceBonus}}</li>
+          <li class="controls__info-entry-details--risk" *ngIf="info.attackType === attackType.RISKY"> enemy modifier from Risky Attack: {{info.damageMultiplier}}</li>
+        </ul>
+      </span>
+      <span *ngIf="i < maxEntries && i !== 0">
+        Round {{enemyDamageInfo.length - i}}: Hero took {{info.totalDamage}} damage
+      </span>
+    </li>
+  </ul>
+
   <div class="controls__button-group">
     <button class="controls__button controls__button--normal"
             (click)="onAttack(attackType.DEFAULT)">
@@ -17,19 +27,22 @@
       Risky Attack
     </button>
   </div>
-  <div class="controls__info controls__info--enemy">
-    <span class="controls__info-entry"
-          *ngFor="let info of heroDamageInfo">
-      Took {{info.totalDamage}} damage
-    </span>
-  </div>
+
+  <ul class="controls__info">
+    <li class="controls__info-entry"
+        *ngFor="let info of heroDamageInfo.reverse(); let i = index"
+        [@fadeInOut]>
+      <span *ngIf="i < maxEntries && i === 0">
+        Round {{heroDamageInfo.length - i}}: Hero dealt {{info.totalDamage}} damage
+        <ul class="controls__info-entry-details">
+          <li class="controls__info-entry-details--offence"> hero offence bonus: {{info.offenceBonus}}</li>
+          <li class="controls__info-entry-details--defence"> enemy defence bonus: {{info.defenceBonus}}</li>
+          <li class="controls__info-entry-details--risk" *ngIf="info.attackType === attackType.RISKY"> your modifier from Risky Attack: {{info.damageMultiplier}}</li>
+        </ul>
+      </span>
+      <span *ngIf="i < maxEntries && i !== 0">
+        Round {{enemyDamageInfo.length - i}}: Hero dealt {{info.totalDamage}} damage
+      </span>
+    </li>
+  </ul>
 </section>
-
-
-<!--console.log(`Risky attack with modifier: ${random}`);-->
-<!--console.log(`Total damage = ${totalDamage} because-->
-<!--offenceBonus: ${offenceBonus}-->
-<!--defenceBonus: ${defenceBonus}-->
-<!--damage: ${damage}-->
-<!--armor: ${armor}-->
-<!--and attack type: ${attackType}`);-->

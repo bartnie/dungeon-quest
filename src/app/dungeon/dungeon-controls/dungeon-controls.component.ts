@@ -5,6 +5,7 @@ import {BattleInfoService} from "../../shared/battle-info.service";
 import {BattleInfoType} from "../../shared/domain/battle-info/battle-info-type.enum";
 import {BattleInfoModel} from "../../shared/domain/battle-info/battle-info.model";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {AppConstants} from "../../app.consts";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class DungeonControlsComponent implements OnInit, OnDestroy {
   attackType = AttackType;
   heroDamageInfo: BattleInfoModel[];
   enemyDamageInfo: BattleInfoModel[];
+  maxEntries: number;
 
 
   constructor(private dungeonService: DungeonService, private battleInfoService: BattleInfoService) {
@@ -36,6 +38,7 @@ export class DungeonControlsComponent implements OnInit, OnDestroy {
         this.enemyDamageInfo = battleInfo.filter((info: BattleInfoModel) => info.infoType === BattleInfoType.ENEMY_DAMAGE);
       }
     );
+    this.maxEntries = AppConstants.MAX_BATTLE_LOGS_ENTRIES;
   }
 
   ngOnDestroy() {

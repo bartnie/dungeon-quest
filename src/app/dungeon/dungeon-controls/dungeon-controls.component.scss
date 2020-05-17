@@ -15,10 +15,33 @@
   justify-content: space-around ;
 
   &__info {
-    margin-top: 1rem;
 
     &-entry{
       display: block;
+      margin-bottom: 0.25rem;
+      font-weight: bold;
+      color: $dark-grey;
+
+      &:first-child {
+        margin-bottom: 0.5rem;
+        color: $dark-ginger;
+        font-weight: bold;
+      }
+
+      &-details {
+        padding-left: 1rem;
+        list-style: none;
+
+        &--offence{
+          color: $ginger;
+        }
+        &--defence{
+          color: $dark-platinum;
+        }
+        &--risk{
+          color: $dark-yellow;
+        }
+      }
     }
   }
 
