@@ -1,12 +1,25 @@
 @import "../../../_variables.scss";
 
+@keyframes info-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .controls {
 
   display: flex;
   justify-content: space-around ;
 
-  &__messages {
+  &__info {
     margin-top: 1rem;
+
+    &-entry{
+      display: block;
+    }
   }
 
   &__button {

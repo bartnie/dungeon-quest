@@ -1,7 +1,11 @@
 <section class="controls">
-  <div class="controls__messages controls__messages--hero"
-       *ngIf="battleInfo.has(infoType.ENEMY_DAMAGE)">
-    Took {{battleInfo.get(infoType.ENEMY_DAMAGE).damage}} damage
+  <div class="controls__info controls__info--hero">
+    <span class="controls__info-entry"
+          *ngFor="let info of enemyDamageInfo.reverse(); let i = index"
+          [@fadeInOut]>
+      <span *ngIf="i===0">Latest round: </span>
+      Took {{info.totalDamage}} damage
+    </span>
   </div>
   <div class="controls__button-group">
     <button class="controls__button controls__button--normal"
@@ -13,8 +17,19 @@
       Risky Attack
     </button>
   </div>
-  <div class="controls__messages controls__messages--enemy"
-       *ngIf="battleInfo.has(infoType.HERO_DAMAGE)">
-    Took {{battleInfo.get(infoType.HERO_DAMAGE).damage}} damage
+  <div class="controls__info controls__info--enemy">
+    <span class="controls__info-entry"
+          *ngFor="let info of heroDamageInfo">
+      Took {{info.totalDamage}} damage
+    </span>
   </div>
 </section>
+
+
+<!--console.log(`Risky attack with modifier: ${random}`);-->
+<!--console.log(`Total damage = ${totalDamage} because-->
+<!--offenceBonus: ${offenceBonus}-->
+<!--defenceBonus: ${defenceBonus}-->
+<!--damage: ${damage}-->
+<!--armor: ${armor}-->
+<!--and attack type: ${attackType}`);-->

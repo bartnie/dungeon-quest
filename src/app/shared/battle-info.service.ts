@@ -8,24 +8,23 @@ import {AttackType} from "./domain/hero/attack-type.enum";
   providedIn: 'root'
 })
 export class BattleInfoService {
-  private _battleInfo: Map<BattleInfoType, BattleInfoModel>;
-  battleInfo: Subject<Map<BattleInfoType, BattleInfoModel>>;
+  private _battleInfo: BattleInfoModel[];
+  battleInfo: Subject<BattleInfoModel[]>;
 
   constructor() {
-    this._battleInfo = new Map<BattleInfoType, BattleInfoModel>();
-    this.battleInfo = new Subject<Map<BattleInfoType, BattleInfoModel>>();
+    this._battleInfo = [];
+    this.battleInfo = new Subject<BattleInfoModel[]>();
   }
 
   addBattleMessage(infoType: BattleInfoType, totalDamage: number, defenceBonus: number, armor: number,
                    offenceBonus: number, attackType: AttackType, damageMultiplier: number, damage: number) {
-    const battleInfo = new BattleInfoModel(totalDamage, defenceBonus, armor, offenceBonus, attackType, damageMultiplier, damage);
-    this._battleInfo.set(infoType, battleInfo);
-    this.battleInfo.next(new Map(this._battleInfo));
+    this._battleInfo.push(new BattleInfoModel(infoType, totalDamage, defenceBonus, armor, offenceBonus, attackType, damageMultiplier, damage));
+    this.battleInfo.next([...this._battleInfo]);
   }
 
   clearBattleMessages() {
-    this._battleInfo.clear();
-    this.battleInfo.next(new Map(this._battleInfo));
+    this._battleInfo = [];
+    this.battleInfo.next([...this._battleInfo]);
   }
 }
 
