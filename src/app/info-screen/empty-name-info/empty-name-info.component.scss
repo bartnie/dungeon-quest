@@ -72,6 +72,7 @@
     color: $white;
     outline: none;
     box-shadow: 0 0.15rem $platinum;
+    cursor: pointer;
 
     &:hover {
       font-weight: bold;
@@ -95,6 +96,7 @@
         background-color: $platinum;
         border: 0.125rem solid $dark-platinum;
         color: black;
+        cursor: auto;
 
         &:hover {
           transform: none;

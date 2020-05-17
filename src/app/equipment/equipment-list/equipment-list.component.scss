@@ -21,8 +21,12 @@
     border-radius: 0.4rem;
     background: $white;
 
-    &--taken:hover {
-      transform: scale(1.05);
+    &--taken {
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
     &--empty {

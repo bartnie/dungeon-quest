@@ -53,18 +53,22 @@
 
     &--common {
       border: 0.2rem solid $dark-grey;
+      cursor: pointer;
     }
 
     &--rare {
       border: 0.2rem solid $green;
+      cursor: pointer;
     }
 
     &--epic {
       border: 0.2rem solid $purple;
+      cursor: pointer;
     }
 
     &--legendary {
       border: 0.2rem solid $yellow;
+      cursor: pointer;
     }
 
     &--highlighted {
@@ -96,6 +100,7 @@
 
   &__image {
     height: 100%;
+    max-width: 100%;
     border-radius: 0.5rem;
     display: block;
     margin: auto;
