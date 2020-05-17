@@ -14,10 +14,6 @@ export class AppConstants {
   public static HEALTH_PER_SLEEP = 15;
   public static GOLD_PER_SLEEP = 20;
 
-  public static OFFENCE_PER_TRAINING = 1;
-  public static DEFENCE_PER_TRAINING = 1;
-  public static STAMINA_PER_TRAINING = 15;
-
   public static BAG_CAPACITY = 20;
   public static INCREASE_RARITY_THRESHOLD = 0.75;
 
