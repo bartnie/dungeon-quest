@@ -4,7 +4,7 @@ import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {InitialSettings} from "../constants/initial.settings";
 import {BehaviorSubject, Subject} from "rxjs";
 import {EquipmentFactoryService} from "./equipment-factory.service";
-import {AppConstants} from "../constants/app.consts";
+import {EquipmentSettings} from "../constants/equipment.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -89,6 +89,6 @@ export class EquipmentService {
   }
 
   isBagFull(): boolean {
-    return this._bag.length >= AppConstants.BAG_CAPACITY;
+    return this._bag.length >= EquipmentSettings.BAG_CAPACITY;
   }
 }

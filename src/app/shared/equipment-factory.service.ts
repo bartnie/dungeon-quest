@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {AppConstants} from "../constants/app.consts";
 import {EquipmentTypeProbability} from "./domain/equipment/equipment-probability.model";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {EquipmentType} from "./domain/equipment/equipment-type.enum";
@@ -7,6 +6,7 @@ import {EquipmentTemplate} from "./domain/equipment/equipment-template.model";
 import {ModifierModel} from "./domain/modifier/modifier.model";
 import {ModifierType} from "./domain/modifier/modifier-type.enum";
 import {EquipmentRarityType} from "./domain/equipment/equipment-rarity-type.enum";
+import {EquipmentSettings} from "../constants/equipment.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class EquipmentFactoryService {
   }
 
   createEquipment(equipmentType: EquipmentType): EquipmentModel {
-    const equipmentTemplate: EquipmentTemplate = AppConstants.EQUIPMENT_TEMPLATES.get(equipmentType);
+    const equipmentTemplate: EquipmentTemplate = EquipmentSettings.EQUIPMENT_TEMPLATES.get(equipmentType);
     const itemStrength = Math.random();
 
     let modifiers: ModifierModel[] = [];
@@ -55,7 +55,7 @@ export class EquipmentFactoryService {
   }
 
   private resolveRarity(baseRarity: EquipmentRarityType, itemStrength: number): EquipmentRarityType {
-    if (itemStrength <= AppConstants.INCREASE_RARITY_THRESHOLD) {
+    if (itemStrength <= EquipmentSettings.INCREASE_RARITY_THRESHOLD) {
       return baseRarity;
     }
     let newRarity: EquipmentRarityType = baseRarity;

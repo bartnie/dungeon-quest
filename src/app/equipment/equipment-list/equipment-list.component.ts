@@ -2,9 +2,9 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {EquipmentModel} from "../../shared/domain/equipment/equipment.model";
 import {EquipmentService} from "../../shared/equipment.service";
 import {SlotType} from "../../shared/domain/equipment/slot-type.enum";
-import {AppConstants} from "../../constants/app.consts";
 import {takeWhile} from "rxjs/operators";
 import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarity-type.enum";
+import {EquipmentSettings} from "../../constants/equipment.settings";
 
 @Component({
   selector: 'app-equipment-list',
@@ -13,7 +13,7 @@ import {EquipmentRarityType} from "../../shared/domain/equipment/equipment-rarit
 })
 export class EquipmentListComponent implements OnInit, OnDestroy {
   @Output() itemSelected = new EventEmitter<EquipmentModel>();
-  BAG_CAPACITY = AppConstants.BAG_CAPACITY;
+  BAG_CAPACITY = EquipmentSettings.BAG_CAPACITY;
   equipmentBag: EquipmentModel[];
   rarityType = EquipmentRarityType;
   private componentActive: boolean;
