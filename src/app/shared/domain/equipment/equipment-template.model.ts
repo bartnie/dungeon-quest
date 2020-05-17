@@ -1,30 +1,18 @@
 import {SlotType} from "./slot-type.enum";
 import {EquipmentRarityType} from "./equipment-rarity-type.enum";
+import {Range} from "../util/range.model";
 
 export interface EquipmentTemplate {
   slotType: SlotType,
   baseRarity: EquipmentRarityType,
 
-  minHealth: number;
-  maxHealth: number;
-
-  minStamina: number;
-  maxStamina: number;
-
-  minOffence: number;
-  maxOffence: number;
-
-  minDefence: number;
-  maxDefence: number;
-
-  minArmor: number;
-  maxArmor: number;
-
-  minDamage: number;
-  maxDamage: number;
-
-  minValue: number;
-  maxValue: number;
+  health: Range;
+  stamina: Range;
+  offence: Range;
+  defence: Range;
+  armor: Range;
+  damage: Range;
+  value: Range;
 
   imagePath: string;
 }
