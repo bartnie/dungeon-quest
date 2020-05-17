@@ -1,22 +1,13 @@
 import {EquipmentTypeProbability} from "../equipment/equipment-probability.model";
+import {Range} from "../util/range.model";
 
 export interface EnemyTemplate {
-  minHealth: number;
-  maxHealth: number;
-
-  minOffence: number;
-  maxOffence: number;
-  minDefence: number;
-  maxDefence: number;
-
-  minArmor: number;
-  maxArmor: number;
-
-  minDamage: number;
-  maxDamage: number;
-
-  minGold: number;
-  maxGold: number;
+  health: Range;
+  offence: Range;
+  defence: Range;
+  armor: Range;
+  damage: Range;
+  gold: Range;
 
   equipmentProbabilities: EquipmentTypeProbability[];
   maxEquipmentDropped: number;

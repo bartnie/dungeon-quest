@@ -7,6 +7,7 @@ import {EquipmentFactoryService} from "./equipment-factory.service";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {EnemySettings} from "../constants/enemy.settings";
 import {DungeonSettings} from "../constants/dungeon.settings";
+import {Range} from "./domain/util/range.model";
 
 @Injectable({
   providedIn: 'root'
@@ -41,17 +42,17 @@ export class EnemyFactoryService {
       enemyType,
       null,
       enemyTemplate.imagePath,
-      this.resolveRandom(enemyTemplate.minHealth, enemyTemplate.maxHealth),
-      this.resolveRandom(enemyTemplate.minOffence, enemyTemplate.maxOffence),
-      this.resolveRandom(enemyTemplate.minDefence, enemyTemplate.maxDefence),
-      this.resolveRandom(enemyTemplate.minArmor, enemyTemplate.maxArmor),
-      this.resolveRandom(enemyTemplate.minDamage, enemyTemplate.maxDamage),
-      this.resolveRandom(enemyTemplate.minGold, enemyTemplate.maxGold),
+      this.resolveRandom(enemyTemplate.health),
+      this.resolveRandom(enemyTemplate.offence),
+      this.resolveRandom(enemyTemplate.defence),
+      this.resolveRandom(enemyTemplate.armor),
+      this.resolveRandom(enemyTemplate.damage),
+      this.resolveRandom(enemyTemplate.gold),
       itemsDropped
     );
   }
 
-  private resolveRandom(from: number, to: number) {
-    return Math.round(Math.random() * (Math.abs(to - from))) + Math.min(from, to);
+  private resolveRandom(range: Range) {
+    return Math.round(Math.random() * (Math.abs(range.max - range.min))) + Math.min(range.min, range.max);
   }
 }
