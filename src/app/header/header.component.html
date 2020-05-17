@@ -1,8 +1,13 @@
 <nav class="header">
-  <a routerLink="/menu" class="header__badge">
+  <span class="header__badge">
     Dungeon Quest
-  </a>
+  </span>
   <ul class="header__list">
+    <li class="header__item">
+      <a class="header__item-link"
+         routerLink="/equipment"
+         [routerLinkActive]="['header__item-link--active']">EQUIPMENT</a>
+    </li>
     <li class="header__item">
       <a class="header__item-link"
          routerLink="/dungeon"

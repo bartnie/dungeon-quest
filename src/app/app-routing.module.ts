@@ -11,7 +11,7 @@ import {EmptyNameGuard} from "./shared/empty-name.guard";
 import {GameFinishedInfoComponent} from "./info-screen/game-finished-info/game-finished-info.component";
 
 const routes: Routes = [
-  {path: 'menu', component: MenuComponent, canActivate: [EmptyNameGuard]},
+  {path: 'equipment', component: MenuComponent, canActivate: [EmptyNameGuard]},
   {path: 'dungeon', component: DungeonComponent, canActivate: [EmptyNameGuard]},
   {path: 'tavern', component: TavernComponent, canActivate: [EmptyNameGuard]},
   {path: 'training', component: TrainingComponent, canActivate: [EmptyNameGuard]},
@@ -19,8 +19,8 @@ const routes: Routes = [
   {path: 'battle-loss', component: BattleLossInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'the-end', component: GameFinishedInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'name', component: EmptyNameInfoComponent},
-  {path: '', redirectTo: 'menu', pathMatch: 'full'},
-  {path: '**', redirectTo: 'menu'}
+  {path: '', redirectTo: 'equipment', pathMatch: 'full'},
+  {path: '**', redirectTo: 'equipment'}
 ];
 
 @NgModule({
