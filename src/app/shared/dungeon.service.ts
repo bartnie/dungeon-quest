@@ -11,6 +11,7 @@ import {RoutingService} from "./routing.service";
 import {AttackType} from "./domain/hero/attack-type.enum";
 import {BattleInfoService} from "./battle-info.service";
 import {BattleInfoType} from "./domain/battle-info/battle-info-type.enum";
+import {DungeonSettings} from "../constants/dungeon.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -58,14 +59,14 @@ export class DungeonService {
 
   private levelPassed() {
     let lastLevelPassed = false;
-    if (this._dungeonLevel === AppConstants.MAX_DUNGEON_LEVEL) {
+    if (this._dungeonLevel === DungeonSettings.MAX_DUNGEON_LEVEL) {
       lastLevelPassed = true;
     }
     this._dungeonLevel += 1;
     this.handleLoot();
     this.oldEnemy.next(this._currentEnemy);
 
-    const nextLevelDifficulty = Math.min(AppConstants.MAX_DUNGEON_LEVEL, this._dungeonLevel);
+    const nextLevelDifficulty = Math.min(DungeonSettings.MAX_DUNGEON_LEVEL, this._dungeonLevel);
     this._currentEnemy = this.enemyFactoryService.prepareEnemy(nextLevelDifficulty);
 
     if (lastLevelPassed) {

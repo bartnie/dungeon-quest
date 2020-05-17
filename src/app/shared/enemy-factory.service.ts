@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {EnemyModel} from "./domain/enemy/enemy.model";
 import {EnemyType} from "./domain/enemy/enemy-type.enum";
-import {AppConstants} from "../constants/app.consts";
 import {EnemyTypeProbability} from "./domain/enemy/enemy-type-probability.model";
 import {EnemyTemplate} from "./domain/enemy/enemy-template.model";
 import {EquipmentFactoryService} from "./equipment-factory.service";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {EnemySettings} from "../constants/enemy.settings";
+import {DungeonSettings} from "../constants/dungeon.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class EnemyFactoryService {
   }
 
   prepareEnemy(level: number): EnemyModel {
-    const enemyType = this.randomizeEnemyType(AppConstants.ENEMY_PROBABILITY_MAP.get(level));
+    const enemyType = this.randomizeEnemyType(DungeonSettings.ENEMY_PROBABILITY_MAP.get(level));
     return this.prepareEnemyWithType(enemyType);
   }
 
