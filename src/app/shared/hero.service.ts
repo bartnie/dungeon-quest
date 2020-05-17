@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {StatsService} from "./stats.service";
 import {HeroModel} from "./domain/hero/hero.model";
-import {AppConstants} from "../constants/app.consts";
+import {DigitPrecisionSettings} from "../constants/digit-precision.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +48,8 @@ export class HeroService {
     }
     this.hero.currentHealth -= amount;
     this.hero.currentHealth = Math.round(
-      this.hero.currentHealth * (1 / AppConstants.VALUES_DIGIT_PRECISION))
-      / (1 / AppConstants.VALUES_DIGIT_PRECISION);
+      this.hero.currentHealth * (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION))
+      / (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION);
     return true;
   }
 

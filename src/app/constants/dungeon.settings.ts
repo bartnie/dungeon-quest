@@ -2,8 +2,6 @@ import {EnemyTypeProbability} from "../shared/domain/enemy/enemy-type-probabilit
 import {EnemyType} from "../shared/domain/enemy/enemy-type.enum";
 
 export class DungeonSettings {
-  public static MAX_BATTLE_LOGS_ENTRIES = 5;
-
   public static MAX_DUNGEON_LEVEL = 13;
 
   public static ENEMY_PROBABILITY_MAP: Map<number, EnemyTypeProbability[]> = new Map([

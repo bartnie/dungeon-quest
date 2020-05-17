@@ -5,7 +5,6 @@ import {GoldService} from "./gold.service";
 import {EquipmentService} from "./equipment.service";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {HeroService} from "./hero.service";
-import {AppConstants} from "../constants/app.consts";
 import {BehaviorSubject} from "rxjs";
 import {RoutingService} from "./routing.service";
 import {AttackType} from "./domain/hero/attack-type.enum";
@@ -13,6 +12,7 @@ import {BattleInfoService} from "./battle-info.service";
 import {BattleInfoType} from "./domain/battle-info/battle-info-type.enum";
 import {DungeonSettings} from "../constants/dungeon.settings";
 import {BattleSettings} from "../constants/battle.settings";
+import {DigitPrecisionSettings} from "../constants/digit-precision.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -104,8 +104,8 @@ export class DungeonService {
     }
     this._currentEnemy.currentHealth -= amount;
     this._currentEnemy.currentHealth = Math.round(
-      this._currentEnemy.currentHealth * (1 / AppConstants.VALUES_DIGIT_PRECISION))
-      / (1 / AppConstants.VALUES_DIGIT_PRECISION);
+      this._currentEnemy.currentHealth * (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION))
+      / (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION);
     return true;
   }
 
@@ -119,8 +119,8 @@ export class DungeonService {
     const armor = defenderArmor * (1 + defenceBonus);
 
     let totalDamage = Math.round(
-      this.positiveOrZero(damage - armor) * (1 / AppConstants.VALUES_DIGIT_PRECISION))
-      / (1 / AppConstants.VALUES_DIGIT_PRECISION);
+      this.positiveOrZero(damage - armor) * (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION))
+      / (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION);
 
     this.handleBattleInfo(infoType, totalDamage, defenceBonus, armor, offenceBonus, attackType, damageMultiplier, damage);
     return totalDamage;
@@ -128,13 +128,14 @@ export class DungeonService {
 
   private getBonusValue(bonusRelatedValue: number, contraryValue: number) {
     return Math.round(BattleSettings.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(bonusRelatedValue - contraryValue) * (1 / BattleSettings.OFFENCE_DEFENCE_BONUS_COEFFICIENT))
-      / (1 / BattleSettings.OFFENCE_DEFENCE_BONUS_COEFFICIENT);;
+      / (1 / BattleSettings.OFFENCE_DEFENCE_BONUS_COEFFICIENT);
+    ;
   }
 
   private getDamageMultiplier(attackType: AttackType) {
     if (attackType === AttackType.RISKY) {
-      return Math.round(2 * Math.random() * (1 / AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION))
-        / (1 / AppConstants.DAMAGE_MULTIPLIER_DIGIT_PRECISION);
+      return Math.round(2 * Math.random() * (1 / DigitPrecisionSettings.DAMAGE_MULTIPLIER_DIGIT_PRECISION))
+        / (1 / DigitPrecisionSettings.DAMAGE_MULTIPLIER_DIGIT_PRECISION);
     }
     return 1;
   }
