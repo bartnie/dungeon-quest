@@ -31,7 +31,7 @@ export class EquipmentSettings {
         stamina: new Range(0, 0),
         offence: new Range(0, 0),
         defence: new Range(1, 3),
-        armor: new Range(0, 1),
+        armor: new Range(0, 0),
         damage: new Range(0, 0),
         value: new Range(10, 20),
         imagePath: 'https://i.mmo.cm/is/image/mmoimg/mw-product-zoom/leather-armour-with-shoulders-mercenary--mw-302021-1.jpg'
@@ -107,7 +107,7 @@ export class EquipmentSettings {
         stamina: new Range(0, 0),
         offence: new Range(0, 0),
         defence: new Range(0, 2),
-        armor: new Range(2, 4),
+        armor: new Range(1, 1),
         damage: new Range(0, 0),
         value: new Range(20, 30),
         imagePath: 'https://tibiopedia.pl/images/static/items/heavily_rusted_shield.gif'

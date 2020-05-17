@@ -10,7 +10,7 @@ export class EnemySettings {
       offence: new Range(2, 4),
       defence: new Range(1, 4),
       armor: new Range(0, 2),
-      damage: new Range(1, 3),
+      damage: new Range(2, 3),
       gold: new Range(10, 20),
       equipmentProbabilities: [
         {probability: 0.6, equipmentType: EquipmentType.GREAT_SWORD},
