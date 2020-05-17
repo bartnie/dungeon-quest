@@ -7,6 +7,7 @@ import {ModifierModel} from "./domain/modifier/modifier.model";
 import {ModifierType} from "./domain/modifier/modifier-type.enum";
 import {EquipmentRarityType} from "./domain/equipment/equipment-rarity-type.enum";
 import {EquipmentSettings} from "../constants/equipment.settings";
+import {Range} from "./domain/util/range.model";
 
 @Injectable({
   providedIn: 'root'
@@ -28,15 +29,15 @@ export class EquipmentFactoryService {
     const itemStrength = Math.random();
 
     let modifiers: ModifierModel[] = [];
-    modifiers.push(new ModifierModel(ModifierType.HEALTH, this.resolve(equipmentTemplate.minHealth, equipmentTemplate.maxHealth, itemStrength)));
-    modifiers.push(new ModifierModel(ModifierType.STAMINA, this.resolve(equipmentTemplate.minStamina, equipmentTemplate.maxStamina, itemStrength)));
-    modifiers.push(new ModifierModel(ModifierType.OFFENCE, this.resolve(equipmentTemplate.minOffence, equipmentTemplate.maxOffence, itemStrength)));
-    modifiers.push(new ModifierModel(ModifierType.DEFENCE, this.resolve(equipmentTemplate.minDefence, equipmentTemplate.maxDefence, itemStrength)));
-    modifiers.push(new ModifierModel(ModifierType.ARMOR, this.resolve(equipmentTemplate.minArmor, equipmentTemplate.maxArmor, itemStrength)));
-    modifiers.push(new ModifierModel(ModifierType.DAMAGE, this.resolve(equipmentTemplate.minDamage, equipmentTemplate.maxDamage, itemStrength)));
+    modifiers.push(new ModifierModel(ModifierType.HEALTH, this.resolve(equipmentTemplate.health, itemStrength)));
+    modifiers.push(new ModifierModel(ModifierType.STAMINA, this.resolve(equipmentTemplate.stamina, itemStrength)));
+    modifiers.push(new ModifierModel(ModifierType.OFFENCE, this.resolve(equipmentTemplate.offence, itemStrength)));
+    modifiers.push(new ModifierModel(ModifierType.DEFENCE, this.resolve(equipmentTemplate.defence, itemStrength)));
+    modifiers.push(new ModifierModel(ModifierType.ARMOR, this.resolve(equipmentTemplate.armor, itemStrength)));
+    modifiers.push(new ModifierModel(ModifierType.DAMAGE, this.resolve(equipmentTemplate.damage, itemStrength)));
     modifiers = modifiers.filter((modifier: ModifierModel) => modifier.modifier > 0);
 
-    const value = this.resolve(equipmentTemplate.minValue, equipmentTemplate.maxValue, itemStrength);
+    const value = this.resolve(equipmentTemplate.value, itemStrength);
 
     const rarity: EquipmentRarityType = this.resolveRarity(equipmentTemplate.baseRarity, itemStrength);
 
@@ -50,8 +51,8 @@ export class EquipmentFactoryService {
     );
   }
 
-  private resolve(from: number, to: number, random: number): number {
-    return Math.round(random * (to - from)) + from;
+  private resolve(range: Range, random: number): number {
+    return Math.round(random * (range.max - range.min)) + range.min;
   }
 
   private resolveRarity(baseRarity: EquipmentRarityType, itemStrength: number): EquipmentRarityType {
