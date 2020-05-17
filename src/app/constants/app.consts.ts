@@ -8,7 +8,6 @@ import {SlotType} from "../shared/domain/equipment/slot-type.enum";
 
 export class AppConstants {
 
-  public static OFFENCE_DEFENCE_BONUS_COEFFICIENT = 0.1;
   public static VALUES_DIGIT_PRECISION = 0.1;
   public static DAMAGE_MULTIPLIER_DIGIT_PRECISION = 0.01;
 }

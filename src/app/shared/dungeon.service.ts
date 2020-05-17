@@ -12,6 +12,7 @@ import {AttackType} from "./domain/hero/attack-type.enum";
 import {BattleInfoService} from "./battle-info.service";
 import {BattleInfoType} from "./domain/battle-info/battle-info-type.enum";
 import {DungeonSettings} from "../constants/dungeon.settings";
+import {BattleSettings} from "../constants/battle.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -126,8 +127,8 @@ export class DungeonService {
   }
 
   private getBonusValue(bonusRelatedValue: number, contraryValue: number) {
-    return Math.round(AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(bonusRelatedValue - contraryValue) * (1 / AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT))
-      / (1 / AppConstants.OFFENCE_DEFENCE_BONUS_COEFFICIENT);;
+    return Math.round(BattleSettings.OFFENCE_DEFENCE_BONUS_COEFFICIENT * this.positiveOrZero(bonusRelatedValue - contraryValue) * (1 / BattleSettings.OFFENCE_DEFENCE_BONUS_COEFFICIENT))
+      / (1 / BattleSettings.OFFENCE_DEFENCE_BONUS_COEFFICIENT);;
   }
 
   private getDamageMultiplier(attackType: AttackType) {
