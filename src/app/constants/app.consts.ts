@@ -7,12 +7,6 @@ import {EquipmentRarityType} from "../shared/domain/equipment/equipment-rarity-t
 import {SlotType} from "../shared/domain/equipment/slot-type.enum";
 
 export class AppConstants {
-  public static STAMINA_PER_WORK = 15;
-  public static GOLD_PER_WORK = 15;
-
-  public static STAMINA_PER_SLEEP = 25;
-  public static HEALTH_PER_SLEEP = 15;
-  public static GOLD_PER_SLEEP = 20;
 
   public static BAG_CAPACITY = 20;
   public static INCREASE_RARITY_THRESHOLD = 0.75;
