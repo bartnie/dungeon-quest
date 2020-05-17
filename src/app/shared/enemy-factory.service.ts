@@ -6,6 +6,7 @@ import {EnemyTypeProbability} from "./domain/enemy/enemy-type-probability.model"
 import {EnemyTemplate} from "./domain/enemy/enemy-template.model";
 import {EquipmentFactoryService} from "./equipment-factory.service";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
+import {EnemySettings} from "../constants/enemy.settings";
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class EnemyFactoryService {
   }
 
   private prepareEnemyWithType(enemyType: EnemyType): EnemyModel {
-    const enemyTemplate: EnemyTemplate = AppConstants.ENEMY_TEMPLATES.get(enemyType);
+    const enemyTemplate: EnemyTemplate = EnemySettings.ENEMY_TEMPLATES.get(enemyType);
     let itemsDropped: EquipmentModel[] = this.equipmentFactoryService.randomizeEquipments(enemyTemplate.equipmentProbabilities);
     itemsDropped = itemsDropped.slice(0, enemyTemplate.maxEquipmentDropped);
 
