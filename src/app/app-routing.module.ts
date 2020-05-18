@@ -9,12 +9,14 @@ import {BattleLossInfoComponent} from "./info-screen/battle-loss-info/battle-los
 import {EmptyNameInfoComponent} from "./info-screen/empty-name-info/empty-name-info.component";
 import {EmptyNameGuard} from "./shared/empty-name.guard";
 import {GameFinishedInfoComponent} from "./info-screen/game-finished-info/game-finished-info.component";
+import {MapComponent} from "./map/map.component";
 
 const routes: Routes = [
   {path: 'equipment', component: MenuComponent, canActivate: [EmptyNameGuard]},
   {path: 'dungeon', component: DungeonComponent, canActivate: [EmptyNameGuard]},
   {path: 'tavern', component: TavernComponent, canActivate: [EmptyNameGuard]},
   {path: 'training', component: TrainingComponent, canActivate: [EmptyNameGuard]},
+  {path: 'map', component: MapComponent, canActivate: [EmptyNameGuard]},
   {path: 'battle-win', component: BattleWinInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'battle-loss', component: BattleLossInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'the-end', component: GameFinishedInfoComponent, canActivate: [EmptyNameGuard]},

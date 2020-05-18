@@ -10,6 +10,7 @@ import {TavernModule} from "./tavern/tavern.module";
 import {TrainingModule} from "./training/training.module";
 import {MenuModule} from "./menu/menu.module";
 import {InfoScreenModule} from "./info-screen/info-screen.module";
+import {MapModule} from "./map/map.module";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {InfoScreenModule} from "./info-screen/info-screen.module";
     TavernModule,
     TrainingModule,
     DungeonModule,
-    InfoScreenModule
+    InfoScreenModule,
+    MapModule
   ],
   providers: [],
   bootstrap: [AppComponent]
