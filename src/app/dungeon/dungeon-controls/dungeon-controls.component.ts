@@ -34,8 +34,8 @@ export class DungeonControlsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.battleInfoService.battleInfo.subscribe(
       (battleInfo: BattleInfoModel[]) => {
-        this.heroDamageInfo = battleInfo.filter((info: BattleInfoModel) => info.infoType === BattleInfoType.HERO_DAMAGE);
-        this.enemyDamageInfo = battleInfo.filter((info: BattleInfoModel) => info.infoType === BattleInfoType.ENEMY_DAMAGE);
+        this.heroDamageInfo = battleInfo.filter((info: BattleInfoModel) => info.infoType === BattleInfoType.HERO_DAMAGE).reverse();
+        this.enemyDamageInfo = battleInfo.filter((info: BattleInfoModel) => info.infoType === BattleInfoType.ENEMY_DAMAGE).reverse();
       }
     );
     this.maxEntries = BattleSettings.MAX_BATTLE_LOGS_ENTRIES;

@@ -1,7 +1,7 @@
 <section class="controls">
   <ul class="controls__info">
     <li class="controls__info-entry"
-        *ngFor="let info of enemyDamageInfo.reverse(); let i = index"
+        *ngFor="let info of enemyDamageInfo; let i = index"
         [@fadeInOut]>
       <span *ngIf="i < maxEntries && i === 0">
         Round {{enemyDamageInfo.length - i}}: Hero took {{info.totalDamage}} damage
