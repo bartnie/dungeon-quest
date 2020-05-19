@@ -1,6 +1,6 @@
 <ul class="map">
   <li class="map__tile"
-      *ngFor="let tile of map?.tiles"
+      *ngFor="let tile of map.tiles"
       [style.pointer-events]="tile.clickable ? 'auto' : 'none'"
       [ngClass]="{'map__tile--clickable': tile.clickable}"
       [routerLink]="[tile.link]"

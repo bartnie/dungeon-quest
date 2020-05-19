@@ -19,9 +19,7 @@ export class MapViewComponent implements OnInit, OnDestroy {
     this.componentActive = true;
     this.mapService.currentMap.pipe(takeWhile(() => this.componentActive))
       .subscribe(
-        (map: MapModel) => {
-          console.log(this.map);
-          this.map = map;}
+        (map: MapModel) => this.map = map
       );
   }
 
