@@ -1,0 +1,14 @@
+<ul class="map">
+  <li class="map__tile"
+      *ngFor="let tile of map?.tiles"
+      [style.pointer-events]="tile.clickable ? 'auto' : 'none'"
+      [ngClass]="{'map__tile--clickable': tile.clickable}"
+      [routerLink]="[tile.link]"
+      [style.background]="'url(' + tile.backgroundImagePath + ')'"
+      [style.background-size]="'100% 100%'">
+
+    <img class="map__tile-image"
+         [src]="tile.imagePath"
+         [alt]="tile.clickable ? 'Not functional map tile' : ('Map tile with link to ' + tile.link)">
+  </li>
+</ul>

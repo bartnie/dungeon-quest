@@ -5,5 +5,4 @@ import {Component} from "@angular/core";
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent {
-
 }
