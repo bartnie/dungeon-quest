@@ -1,27 +1,31 @@
 @import "../../../_variables.scss";
 
 .map {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   border: 1px solid $dark-platinum;
-
-  display: grid;
-  grid-template-columns: 18rem 18rem 18rem 18rem;
-  grid-template-rows: 13rem 13rem 13rem;
+  
+  &__row {
+    display: flex;
+    flex-wrap: nowrap;
+  }
 
   &__tile {
-    margin: 0;
-    padding: 0;
-    border: 1px solid $dark-platinum;
+    width: 13rem;
+    height: 13rem;
+    border: 0.0625rem solid $dark-platinum;
+    display: inline-block;
+    pointer-events: none;
+
+    //only way to overwrite size for the customizable background, set in html
+    background-size: cover !important;
 
     &--clickable {
       cursor: pointer;
+      pointer-events: auto;
       & .map__tile-image:hover {
         filter: saturate(1.3);
       }
     }
-    
+
     &-image {
       width: 100%;
       height: 100%;

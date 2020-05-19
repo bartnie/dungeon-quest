@@ -1,7 +1,7 @@
-import {MapTileModel} from "./map-tile.model";
 import {MapCoordinatesModel} from "./map-coordinates.model";
+import {MapRowModel} from "./map-row.model";
 
 export class MapModel {
-  constructor(public coordinates: MapCoordinatesModel, public tiles: MapTileModel[]) {
+  constructor(public coordinates: MapCoordinatesModel, public rows: MapRowModel[]) {
   }
 }
