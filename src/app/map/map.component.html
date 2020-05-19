@@ -1,11 +1,29 @@
 <section class="map">
-  <app-map-navigation
-    [changeCoordinateX]="-1"
-    [changeCoordinateY]="0">
-  </app-map-navigation>
-  <app-map-view></app-map-view>
-  <app-map-navigation
-    [changeCoordinateX]="1"
-    [changeCoordinateY]="0">
-  </app-map-navigation>
+  <div class="map__navigation map__navigation--up">
+    <app-map-navigation
+      [direction]="direction.UP">
+    </app-map-navigation>
+  </div>
+  <div class="map__navigation map__navigation--left">
+    <app-map-navigation
+      [direction]="direction.LEFT">
+    </app-map-navigation>
+  </div>
+
+  <div class="map_view">
+    <app-map-view></app-map-view>
+  </div>
+
+  <div class="map__navigation map__navigation--right">
+    <app-map-navigation
+      [direction]="direction.RIGHT">
+    </app-map-navigation>
+  </div>
+  <div class="map__navigation map__navigation--down">
+    <span class="map__navigation-image--down">
+    <app-map-navigation
+      [direction]="direction.DOWN">
+    </app-map-navigation>
+      </span>
+  </div>
 </section>

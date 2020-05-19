@@ -19,23 +19,20 @@ export class MapService {
     this.currentMap = new BehaviorSubject<MapModel>(this._currentMap);
   }
 
-  checkPossible(relativeX: number, relativeY): boolean {
-    const coordinatesToCheck = new MapCoordinatesModel(this._currentCoordinates.coordinateX + relativeX,
-      this._currentCoordinates.coordinateY + relativeY);
-
-    console.log(`${this._currentCoordinates.coordinateX}, ${this._currentCoordinates.coordinateY} + ${relativeX} , ${relativeY} => ${MapSettings.MAP_TEMPLATES.some((map: MapModel) => coordinatesToCheck.equals(map.coordinates))}`);
+  checkPossible(relativeCoordinates: MapCoordinatesModel): boolean {
+    const coordinatesToCheck = new MapCoordinatesModel(this._currentCoordinates.coordinateX + relativeCoordinates.coordinateX,
+      this._currentCoordinates.coordinateY + relativeCoordinates.coordinateY);
     return MapSettings.MAP_TEMPLATES.some((map: MapModel) => coordinatesToCheck.equals(map.coordinates));
   }
 
-  changeMap(relativeX: number, relativeY): boolean {
-    const newCoordinates = new MapCoordinatesModel(this._currentCoordinates.coordinateX + relativeX,
-      this._currentCoordinates.coordinateY + relativeY);
-    const newMap = MapSettings.MAP_TEMPLATES.find((map: MapModel) => this._currentCoordinates.equals(map.coordinates))
+  changeMap(relativeCoordinates: MapCoordinatesModel): boolean {
+    const newCoordinates = new MapCoordinatesModel(this._currentCoordinates.coordinateX + relativeCoordinates.coordinateX,
+      this._currentCoordinates.coordinateY + relativeCoordinates.coordinateY);
+    const newMap = MapSettings.MAP_TEMPLATES.find((map: MapModel) => newCoordinates.equals(map.coordinates))
     if (newMap === undefined) return false;
 
     this._currentCoordinates = newCoordinates;
     this._currentMap = newMap;
-    console.log('map changed')
     this.currentMap.next(this._currentMap);
   }
 }

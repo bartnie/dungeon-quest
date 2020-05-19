@@ -1,6 +1,8 @@
 import {Component, Input, OnDestroy, OnInit} from "@angular/core";
 import {MapService} from "../../shared/map.service";
 import {takeWhile} from "rxjs/operators";
+import {Direction} from "../../shared/domain/map/direction.enum";
+import {MapCoordinatesModel} from "../../shared/domain/map/map-coordinates.model";
 
 @Component({
   selector: 'app-map-navigation',
@@ -8,9 +10,10 @@ import {takeWhile} from "rxjs/operators";
   styleUrls: ['./map-navigation.component.scss']
 })
 export class MapNavigationComponent implements OnInit, OnDestroy {
-  @Input() changeCoordinateX: number;
-  @Input() changeCoordinateY: number;
-  canChangeMap: boolean;
+  @Input() direction: Direction;
+  canChangeMap: boolean = true;
+  directionTypes = Direction;
+  private relativeCoordinates: MapCoordinatesModel;
   private componentActive: boolean;
 
   constructor(private mapService: MapService) {
@@ -18,11 +21,11 @@ export class MapNavigationComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.componentActive = true;
+    this.createRelativeCoordinates();
+
     this.mapService.currentMap.pipe(takeWhile(() => this.componentActive))
       .subscribe(
-        () => {
-          console.log(this.mapService.checkPossible(this.changeCoordinateX, this.changeCoordinateY));
-          this.canChangeMap = this.mapService.checkPossible(this.changeCoordinateX, this.changeCoordinateY);}
+        () => this.canChangeMap = this.mapService.checkPossible(this.relativeCoordinates)
       );
   }
 
@@ -30,7 +33,24 @@ export class MapNavigationComponent implements OnInit, OnDestroy {
     this.componentActive = false;
   }
 
+  private createRelativeCoordinates() {
+    switch (this.direction) {
+      case Direction.UP:
+        this.relativeCoordinates = new MapCoordinatesModel(0, 1);
+        break;
+      case Direction.DOWN:
+        this.relativeCoordinates = new MapCoordinatesModel(0, -1);
+        break;
+      case Direction.RIGHT:
+        this.relativeCoordinates = new MapCoordinatesModel(1, 0);
+        break;
+      case Direction.LEFT:
+        this.relativeCoordinates = new MapCoordinatesModel(-1, 0);
+        break;
+    }
+  }
+
   changeMap() {
-    this.mapService.changeMap(this.changeCoordinateX, this.changeCoordinateY);
+    this.mapService.changeMap(this.relativeCoordinates);
   }
 }

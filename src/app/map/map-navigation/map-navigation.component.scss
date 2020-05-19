@@ -1,7 +1,18 @@
 @import "../../../_variables.scss";
 
-.arrow {
+.navigation {
+  width: 3rem;
+  height: 3rem;
+
   &__image {
-    max-width: 3rem;
+    &--up {
+      transform: rotate(-90deg);
+    }
+    &--down {
+      transform: rotate(90deg);
+    }
+    &--left {
+      transform: rotate(180deg);
+    }
   }
 }
