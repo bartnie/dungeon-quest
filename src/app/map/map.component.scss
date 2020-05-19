@@ -2,5 +2,18 @@
 
 .map {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+
+  &__navigation {
+    &--up {
+      flex-basis: 100%;
+      text-align: center;
+    }
+    &--down {
+      flex-basis: 100%;
+      text-align: center;
+    }
+  }
 }
