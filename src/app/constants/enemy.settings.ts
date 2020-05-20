@@ -17,7 +17,7 @@ export class EnemySettings {
         {probability: 0.4, equipmentType: EquipmentType.GALAXY_HELMET},
         {probability: 0.3, equipmentType: EquipmentType.KNIGHTS_BOOTS}],
       maxEquipmentDropped: 2,
-      imagePath: 'https://vignette.wikia.nocookie.net/mightandmagic/images/8/89/H3CrTroglodyte.gif/revision/latest?cb=20091110232434&path-prefix=en'
+      imagePath: 'assets/images/enemies/troglodyte.gif'
     }],
     [EnemyType.BEHEMOT, {
       health: new Range(30, 40),
@@ -32,7 +32,7 @@ export class EnemySettings {
         {probability: 0.4, equipmentType: EquipmentType.FIRE_SWORD},
         {probability: 0.4, equipmentType: EquipmentType.ANCIENT_SHIELD}],
       maxEquipmentDropped: 2,
-      imagePath: 'https://www.wykop.pl/cdn/c3201142/comment_zvjbKR43H2YtrRJ1ArDAMI2QAuRRycfk.gif'
+      imagePath: 'assets/images/enemies/behemoth.gif'
     }],
     [EnemyType.DRAGON, {
       health: new Range(100, 150),
@@ -46,7 +46,7 @@ export class EnemySettings {
         {probability: 0.5, equipmentType: EquipmentType.ANCIENT_SHIELD},
         {probability: 0.4, equipmentType: EquipmentType.DRAGON_ARMOR}],
       maxEquipmentDropped: 3,
-      imagePath: 'https://thumbs.gfycat.com/ExcellentGoodnaturedDiscus-max-1mb.gif'
+      imagePath: 'assets/images/enemies/black-dragon.gif'
     }],
     [EnemyType.BOSS, {
       health: new Range(500, 750),
@@ -59,7 +59,7 @@ export class EnemySettings {
         {probability: 1, equipmentType: EquipmentType.ANCIENT_SHIELD},
         {probability: 1, equipmentType: EquipmentType.DRAGON_ARMOR}],
       maxEquipmentDropped: 5,
-      imagePath: 'https://i.imgur.com/AG2kUgo.gif'
+      imagePath: 'assets/images/enemies/boss.gif'
     }]
   ]);
 }

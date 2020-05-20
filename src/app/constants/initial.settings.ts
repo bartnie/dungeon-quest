@@ -13,6 +13,6 @@ export class InitialSettings {
   public static INITIAL_ITEMS: Map<SlotType, EquipmentType> = new Map<SlotType, EquipmentType>([
     [SlotType.ARMOR, EquipmentType.LEATHER_ARMOR],
     [SlotType.WEAPON, EquipmentType.WOODEN_STICK],
-    [SlotType.SHIELD, EquipmentType.RUSTED_SHIELD]
+    [SlotType.SHIELD, EquipmentType.RUSTY_SHIELD]
   ]);
 }

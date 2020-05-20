@@ -3,9 +3,9 @@
 .dummy {
   width: 20rem;
   height: 30rem;
-  background-image: url("http://clipart-library.com/images/pcqKX5RRi.jpg");
-  background-position: center;
-  background-size: cover;
+
+  //only way to overwrite size for the background, set in html
+  background-size: cover !important;
 
   border: 0.125rem solid $yellow;
   border-radius: 0.25rem;

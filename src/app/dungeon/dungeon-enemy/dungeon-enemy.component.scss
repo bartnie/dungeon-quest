@@ -8,8 +8,9 @@
     height: 25rem;
 
     margin: auto;
-    background: url("https://i.pinimg.com/736x/e9/6f/e3/e96fe32702570c40595bf476fdf764c9.jpg");
-    background-size: 100% 100%;
+
+    //only way to overwrite size for the background, set in html
+    background-size: 100% 100% !important;
   }
 
   &__image {

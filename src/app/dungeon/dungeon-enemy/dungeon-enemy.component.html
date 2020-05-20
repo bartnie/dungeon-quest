@@ -23,7 +23,9 @@
 
 </section>
 
-<section class="dungeon__image-slot">
+<section class="dungeon__image-slot"
+[ngStyle]="{'background': 'url(assets/images/places/dungeon.jpg)'}">
+
   <img class="dungeon__image"
        [alt]="currentEnemy.type"
        [src]="currentEnemy.imagePath">

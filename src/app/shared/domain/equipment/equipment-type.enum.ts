@@ -9,7 +9,7 @@ export enum EquipmentType {
   GREAT_SWORD = "Great Sword",
   FIRE_SWORD = "Fire Sword",
 
-  RUSTED_SHIELD = "Rusted Shield",
+  RUSTY_SHIELD = "Rusted Shield",
   ANCIENT_SHIELD = "Ancient Shield",
 
   KNIGHTS_BOOTS = "Knight's Boots"
