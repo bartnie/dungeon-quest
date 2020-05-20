@@ -22,7 +22,7 @@
       cursor: pointer;
       pointer-events: auto;
       & .map__tile-image:hover {
-        filter: saturate(1.4);
+        filter: saturate(1.6) drop-shadow(0.4rem 0.4rem 0.6rem  $dark-yellow) invert(10%);
       }
     }
 

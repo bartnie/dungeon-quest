@@ -22,13 +22,13 @@ export class MapSettings {
 
 
   private static MAP_N1_0: MapRowModel[] = [
-    new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE]),
-    new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE]),
+    new MapRowModel([MapTilesSettings.WIDE_ROAD_TILE, MapTilesSettings.WIDE_ROAD_TILE, MapTilesSettings.WIDE_ROAD_TILE, MapTilesSettings.WIDE_ROAD_TILE, MapTilesSettings.WIDE_ROAD_TILE]),
+    new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.DUNGEON_IN_FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE]),
     new MapRowModel([MapTilesSettings.RIVER_DOWN_TILE, MapTilesSettings.RIVER_DOWN_TILE, MapTilesSettings.RIVER_DOWN_TILE, MapTilesSettings.RIVER_DOWN_TILE, MapTilesSettings.RIVER_DOWN_TILE])
   ];
   private static MAP_0_0: MapRowModel[] = [
-    new MapRowModel([MapTilesSettings.WIDE_ROAD_TILE, MapTilesSettings.WIDE_ROAD_TILE, MapTilesSettings.WIDE_ROAD_TILE, MapTilesSettings.WIDE_ROADS_SECTION_DOWN_TILE, MapTilesSettings.WIDE_ROAD_TILE]),
-    new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.TAVERN_IN_FOREST_TILE, MapTilesSettings.WIDE_ROAD_TURN_LEFT_UP_TILE, MapTilesSettings.FOREST_TILE]),
+    new MapRowModel([MapTilesSettings.WIDE_ROADS_SECTION_DOWN_TILE, MapTilesSettings.WIDE_ROAD_TILE, MapTilesSettings.WIDE_ROAD_TILE, MapTilesSettings.WIDE_ROADS_SECTION_DOWN_TILE, MapTilesSettings.WIDE_ROAD_TILE]),
+    new MapRowModel([MapTilesSettings.BLACKSMITH_IN_FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.TAVERN_IN_FOREST_TILE, MapTilesSettings.WIDE_ROADS_SECTION_UP_TILE, MapTilesSettings.TRAINING_FIELDS_IN_FOREST_TILE]),
     new MapRowModel([MapTilesSettings.RIVER_DOWN_TILE, MapTilesSettings.RIVER_DOWN_TILE, MapTilesSettings.RIVER_DOWN_TILE, MapTilesSettings.RIVER_DOWN_TILE, MapTilesSettings.RIVER_DOWN_TILE])
   ];
   private static MAP_1_0: MapRowModel[] = [
@@ -40,18 +40,18 @@ export class MapSettings {
 
   private static MAP_N1_N1: MapRowModel[] = [
     new MapRowModel([MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE]),
-    new MapRowModel([MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE]),
-    new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE])
+    new MapRowModel([MapTilesSettings.WIDE_DESERT_RIVER_RIGHT_TILE, MapTilesSettings.WIDE_DESERT_RIVER_LEFT_TILE, MapTilesSettings.DESERT_RIVER_TILE, MapTilesSettings.DESERT_RIVER_TILE, MapTilesSettings.DESERT_RIVER_TILE]),
+    new MapRowModel([MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE])
   ];
   private static MAP_0_N1: MapRowModel[] = [
     new MapRowModel([MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE]),
-    new MapRowModel([MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE]),
-    new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE])
+    new MapRowModel([MapTilesSettings.DESERT_RIVER_TILE, MapTilesSettings.WIDE_DESERT_RIVER_RIGHT_TILE, MapTilesSettings.WIDE_DESERT_RIVER_TILE, MapTilesSettings.WIDE_DESERT_RIVER_TILE, MapTilesSettings.WIDE_DESERT_RIVER_TILE]),
+    new MapRowModel([MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE])
   ];
   private static MAP_1_N1: MapRowModel[] = [
     new MapRowModel([MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE, MapTilesSettings.RIVER_TILE]),
-    new MapRowModel([MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE, MapTilesSettings.RIVER_UP_TILE]),
-    new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE])
+    new MapRowModel([MapTilesSettings.WIDE_DESERT_RIVER_TILE, MapTilesSettings.WIDE_DESERT_RIVER_TILE, MapTilesSettings.WIDE_DESERT_RIVER_LEFT_TILE, MapTilesSettings.DESERT_RIVER_TILE, MapTilesSettings.DESERT_RIVER_TILE]),
+    new MapRowModel([MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE, MapTilesSettings.DESERT_TILE])
   ];
 
 
@@ -62,12 +62,12 @@ export class MapSettings {
 
     new MapModel(new MapCoordinatesModel(-1, 0), MapSettings.MAP_N1_0),
     new MapModel(new MapCoordinatesModel(0, 0), MapSettings.MAP_0_0),
-    new MapModel(new MapCoordinatesModel(1, 0), MapSettings.MAP_1_0),
+    new MapModel(new MapCoordinatesModel(1, 0), MapSettings.MAP_1_0)
 
 
-    new MapModel(new MapCoordinatesModel(-1, 1), MapSettings.MAP_N1_1),
-    new MapModel(new MapCoordinatesModel(0, 1), MapSettings.MAP_0_1),
-    new MapModel(new MapCoordinatesModel(1, 1), MapSettings.MAP_1_1),
+    // new MapModel(new MapCoordinatesModel(-1, 1), MapSettings.MAP_N1_1),
+    // new MapModel(new MapCoordinatesModel(0, 1), MapSettings.MAP_0_1),
+    // new MapModel(new MapCoordinatesModel(1, 1), MapSettings.MAP_1_1),
 
 
   ];
