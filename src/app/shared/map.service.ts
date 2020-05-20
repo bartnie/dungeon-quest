@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {MapCoordinatesModel} from "./domain/map/map-coordinates.model";
-import {MapSettings} from "../constants/map.settings";
+import {MapSettings} from "../constants/map/map.settings";
 import {MapModel} from "./domain/map/map.model";
 import {BehaviorSubject} from "rxjs";
 

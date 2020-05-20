@@ -19,8 +19,12 @@ export class MapTilesSettings {
     'assets/images/map-tiles/roads/wide-road-turn-left-up.jpeg', null, false);
 
 
+  public static RIVER_DOWN_TILE: MapTileModel = new MapTileModel(
+    'assets/images/map-tiles/rivers/river-down.jpeg', null, false);
   public static RIVER_TILE: MapTileModel = new MapTileModel(
     'assets/images/map-tiles/rivers/river.jpeg', null, false);
+  public static RIVER_UP_TILE: MapTileModel = new MapTileModel(
+    'assets/images/map-tiles/rivers/river-up.jpeg', null, false);
   public static WIDE_RIVER_TILE: MapTileModel = new MapTileModel(
     'assets/images/map-tiles/rivers/wide-river.jpeg', null, false);
 
@@ -28,6 +32,6 @@ export class MapTilesSettings {
   public static FOREST_TILE: MapTileModel = new MapTileModel(
     'assets/images/map-tiles/forest.jpeg', null, false);
   public static TAVERN_IN_FOREST_TILE: MapTileModel = new MapTileModel(
-    'assets/images/map-tiles/map-tavern.png',
+    'assets/images/map-tiles/map-tavern2.png',
     'assets/images/map-tiles/roads/half-wide-road.jpeg', true, '/tavern');
 }

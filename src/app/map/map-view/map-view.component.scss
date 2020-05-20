@@ -2,7 +2,7 @@
 
 .map {
   border: 1px solid $dark-platinum;
-  
+
   &__row {
     display: flex;
     flex-wrap: nowrap;
@@ -22,7 +22,7 @@
       cursor: pointer;
       pointer-events: auto;
       & .map__tile-image:hover {
-        filter: saturate(1.3);
+        filter: saturate(1.4);
       }
     }
 
