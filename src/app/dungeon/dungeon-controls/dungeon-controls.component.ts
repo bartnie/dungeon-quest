@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DungeonService} from "../../shared/dungeon.service";
 import {AttackType} from "../../shared/domain/hero/attack-type.enum";
 import {BattleInfoService} from "../../shared/battle-info.service";
 import {BattleInfoType} from "../../shared/domain/battle-info/battle-info-type.enum";
 import {BattleInfoModel} from "../../shared/domain/battle-info/battle-info.model";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {BattleSettings} from "../../constants/battle.settings";
+import {BattleMechanicsService} from "../../shared/battle-mechanics.service";
 
 
 @Component({
@@ -28,7 +28,7 @@ export class DungeonControlsComponent implements OnInit, OnDestroy {
   maxEntries: number;
 
 
-  constructor(private dungeonService: DungeonService, private battleInfoService: BattleInfoService) {
+  constructor(private battleMechanicsService: BattleMechanicsService, private battleInfoService: BattleInfoService) {
   }
 
   ngOnInit() {
@@ -46,6 +46,6 @@ export class DungeonControlsComponent implements OnInit, OnDestroy {
   }
 
   onAttack(attackType: AttackType) {
-    this.dungeonService.nextTurn(attackType);
+    this.battleMechanicsService.nextTurn(attackType);
   }
 }
