@@ -12,5 +12,5 @@ export class RepeatDirective {
     for (let i = 0; i < count; i++) {
       this.container.createEmbeddedView(this.template);
     }
-  };
+  }
 }

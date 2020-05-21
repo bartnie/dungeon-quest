@@ -18,6 +18,7 @@
       <img class="map__hero"
            src="assets/images/map/hero.png"
            alt="Hero image"
+           (click)="onHeroClick()"
            [ngClass]="{'map__hero--flip' : !heroFacingRight}"
            *ngIf="rowIdx === position.row && columnIdx === position.column">
     </div>

@@ -4,7 +4,7 @@
   border: 1px solid $dark-platinum;
 
   &:focus {
-    outline: 0.5rem solid $yellow;
+    outline: 0.3rem solid $yellow;
   }
 
   &__row {
@@ -14,8 +14,8 @@
   }
 
   &__tile {
-    width: 17rem;
-    height: 15rem;
+    width: 20%;
+    height: 33vh;
     border: 0.0625rem solid $dark-platinum;
     display: inline-block;
     position: relative;
