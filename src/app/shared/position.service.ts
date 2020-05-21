@@ -10,6 +10,7 @@ import {MapCoordinatesModel} from "./domain/map/map-coordinates.model";
 })
 export class PositionService {
   private _currentPosition: PositionModel;
+  private _previousPosition: PositionModel;
   currentPosition: BehaviorSubject<PositionModel>;
   private _heroFacingRight: boolean;
   heroFacingRight: BehaviorSubject<boolean>;
@@ -24,13 +25,27 @@ export class PositionService {
   }
 
   changePosition(relativePosition: PositionModel): boolean {
-    this.applyChanges(relativePosition);
+    this._previousPosition = this._currentPosition;
+    this._currentPosition = new PositionModel(this._currentPosition.column + relativePosition.column,
+      this._currentPosition.row + relativePosition.row);
+    this.handleHeroFacing(relativePosition);
 
     const mapExceed = this.checkMapExceed();
     let mapChanged = false;
     if (mapExceed) mapChanged = this.handleMapExceed();
-    if (mapExceed && !mapChanged) this.applyChanges(relativePosition, true);
-    this.handleHeroFacing(relativePosition);
+    if (mapExceed && !mapChanged) {
+      this.rollbackChanges();
+      return
+
+    }
+
+    if (!this.mapService.checkTileAccessible(this._currentPosition.column, this._currentPosition.row)) {
+      console.log(`2 - rolling back position: ${this._currentPosition.column}, ${this._currentPosition.row}`);
+      this.rollbackChanges();
+      console.log(`2 - rolled back position: ${this._currentPosition.column}, ${this._currentPosition.row}`);
+      if (mapChanged) this.mapService.rollbackLastMapChange();
+      return
+    }
 
     this.currentPosition.next(this._currentPosition);
     return true;
@@ -71,12 +86,12 @@ export class PositionService {
     return this.mapService.changeMap(new MapCoordinatesModel(relativeChangeX, relativeChangeY));
   }
 
-  private applyChanges(relativePosition: PositionModel, rollback: boolean = false) {
-    let signum = 1;
-    if (rollback) signum = -1;
+  private rollbackChanges() {
+    const tempPosition = this._previousPosition;
+    this._previousPosition = this._currentPosition;
+    this._currentPosition = tempPosition;
 
-    this._currentPosition.column += relativePosition.column * signum;
-    this._currentPosition.row += relativePosition.row * signum;
+    this.currentPosition.next(this._currentPosition)
   }
 
   private handleHeroFacing(relativePosition: PositionModel) {
