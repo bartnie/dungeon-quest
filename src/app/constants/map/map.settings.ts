@@ -9,6 +9,7 @@ export class MapSettings {
 
   public static INITIAL_COLUMN_POSITION = 1;
   public static INITIAL_ROW_POSITION = 0;
+  public static HERO_FACING_RIGHT = true;
 
   private static MAP_N1_1: MapRowModel[] = [
     new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE]),

@@ -14,6 +14,7 @@ import {RoutingService} from "../../shared/routing.service";
 export class MapViewComponent implements OnInit, OnDestroy {
   map: MapModel;
   position: PositionModel;
+  heroFacingRight: boolean;
   private componentActive: boolean;
 
   constructor(private mapService: MapService, private positionService: PositionService, private routingService: RoutingService) {
@@ -29,6 +30,11 @@ export class MapViewComponent implements OnInit, OnDestroy {
     this.positionService.currentPosition.pipe(takeWhile(() => this.componentActive))
       .subscribe(
         (position: PositionModel) => this.position = position
+      );
+
+    this.positionService.heroFacingRight.pipe(takeWhile(() => this.componentActive))
+      .subscribe(
+        (heroFacingRight: boolean) => this.heroFacingRight = heroFacingRight
       );
   }
 

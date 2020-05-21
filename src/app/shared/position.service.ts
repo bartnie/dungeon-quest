@@ -11,8 +11,13 @@ import {MapCoordinatesModel} from "./domain/map/map-coordinates.model";
 export class PositionService {
   private _currentPosition: PositionModel;
   currentPosition: BehaviorSubject<PositionModel>;
+  private _heroFacingRight: boolean;
+  heroFacingRight: BehaviorSubject<boolean>;
 
   constructor(private mapService: MapService) {
+    this._heroFacingRight = MapSettings.HERO_FACING_RIGHT;
+    this.heroFacingRight = new BehaviorSubject<boolean>(this._heroFacingRight);
+
     this._currentPosition = new PositionModel(
       MapSettings.INITIAL_COLUMN_POSITION, MapSettings.INITIAL_ROW_POSITION);
     this.currentPosition = new BehaviorSubject<PositionModel>(this._currentPosition);
@@ -24,8 +29,8 @@ export class PositionService {
     const mapExceed = this.checkMapExceed();
     let mapChanged = false;
     if (mapExceed) mapChanged = this.handleMapExceed();
-
     if (mapExceed && !mapChanged) this.applyChanges(relativePosition, true);
+    this.handleHeroFacing(relativePosition);
 
     this.currentPosition.next(this._currentPosition);
     return true;
@@ -66,13 +71,18 @@ export class PositionService {
     return this.mapService.changeMap(new MapCoordinatesModel(relativeChangeX, relativeChangeY));
   }
 
-
   private applyChanges(relativePosition: PositionModel, rollback: boolean = false) {
     let signum = 1;
     if (rollback) signum = -1;
 
     this._currentPosition.column += relativePosition.column * signum;
     this._currentPosition.row += relativePosition.row * signum;
+  }
 
+  private handleHeroFacing(relativePosition: PositionModel) {
+    if (relativePosition.column === -1) this._heroFacingRight = false;
+    else if (relativePosition.column === 1) this._heroFacingRight = true;
+    else return;
+    this.heroFacingRight.next(this._heroFacingRight);
   }
 }
