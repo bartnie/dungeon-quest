@@ -1,15 +1,26 @@
-<section class="map">
+<section class="map"
+         (keydown.arrowUp)="onChangePosition(0, -1)"
+         (keydown.arrowDown)="onChangePosition(0, 1)"
+         (keydown.arrowRight)="onChangePosition(1, 0)"
+         (keydown.arrowLeft)="onChangePosition(-1,0)"
+         [tabIndex]="0"
+>
   <div class="map__row"
-       *ngFor="let row of map.rows">
+       *ngFor="let row of map.rows; let rowIdx = index">
 
     <div class="map__tile"
-         *ngFor="let tile of row.tiles"
+         *ngFor="let tile of row.tiles; let columnIdx = index"
          [routerLink]="[tile.link]"
          [ngClass]="{'map__tile--clickable': tile.clickable}"
          [ngStyle]="{'background': tile.backgroundImagePath !== null ? 'url(' + tile.backgroundImagePath + ')' : 'none'}">
       <img class="map__tile-image"
            [src]="tile.imagePath"
            [alt]="tile.clickable ? ('Map tile with link to ' + tile.link) : 'Not functional map tile'">
+      <img class="map__hero"
+           src="assets/images/map/hero.png"
+           alt="Hero image"
+           (click)="onHeroClick()"
+           *ngIf="rowIdx === position.row && columnIdx === position.column">
     </div>
 
   </div>

@@ -20,4 +20,8 @@ export class RoutingService {
   showGameFinishedPage() {
     this.router.navigate(['the-end']);
   }
+
+  goToEquipmentPage() {
+    this.router.navigate(['equipment']);
+  }
 }

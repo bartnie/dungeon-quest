@@ -34,5 +34,6 @@ export class MapService {
     this._currentCoordinates = newCoordinates;
     this._currentMap = newMap;
     this.currentMap.next(this._currentMap);
+    return true;
   }
 }

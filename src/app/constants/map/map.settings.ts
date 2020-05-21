@@ -4,6 +4,12 @@ import {MapRowModel} from "../../shared/domain/map/map-row.model";
 import {MapTilesSettings} from "./map-tiles.settings";
 
 export class MapSettings {
+  public static LAST_COLUMN_INDEX = 4;
+  public static LAST_ROW_INDEX = 2;
+
+  public static INITIAL_COLUMN_POSITION = 1;
+  public static INITIAL_ROW_POSITION = 0;
+
   private static MAP_N1_1: MapRowModel[] = [
     new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE]),
     new MapRowModel([MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE, MapTilesSettings.FOREST_TILE]),

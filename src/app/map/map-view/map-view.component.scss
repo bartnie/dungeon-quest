@@ -2,10 +2,13 @@
 
 .map {
   border: 1px solid $dark-platinum;
+  outline-width: 1.5rem;
+  outline-color: $yellow;
 
   &__row {
     display: flex;
     flex-wrap: nowrap;
+
   }
 
   &__tile {
@@ -14,6 +17,7 @@
     border: 0.0625rem solid $dark-platinum;
     display: inline-block;
     pointer-events: none;
+    position: relative;
 
     //only way to overwrite size for the customizable background, set in html
     background-size: cover !important;
@@ -21,14 +25,29 @@
     &--clickable {
       cursor: pointer;
       pointer-events: auto;
+
       & .map__tile-image:hover {
-        filter: saturate(1.6) drop-shadow(0.4rem 0.4rem 0.6rem  $dark-yellow) invert(10%);
+        filter: saturate(1.6) drop-shadow(0.4rem 0.4rem 0.6rem $dark-yellow) invert(10%);
       }
     }
 
     &-image {
       width: 100%;
       height: 100%;
+    }
+  }
+
+  &__hero {
+    max-width: 80%;
+    max-height: 80%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: auto;
+
+    &:hover {
+      cursor: pointer;
+      filter: saturate(1.1) drop-shadow(0.1rem 0.1rem 0.1rem $dark-yellow) invert(5%);
     }
   }
 }
