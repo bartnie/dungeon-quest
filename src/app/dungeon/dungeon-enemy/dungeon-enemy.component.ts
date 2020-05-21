@@ -55,6 +55,14 @@ export class DungeonEnemyComponent implements OnInit, OnDestroy {
     );
   }
 
+  onChangeLevel(change: number) {
+    this.dungeonService.navigateDungeonLevel(change);
+  }
+
+  canChangeLevel(change: number): boolean {
+    return this.dungeonService.canNavigateDungeonLevel(change);
+  }
+
   get heroHealth() {
     return this.heroService.health;
   }

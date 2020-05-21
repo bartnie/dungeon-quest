@@ -14,7 +14,23 @@
   </section>
 
   <span class="dungeon__name dungeon__name--hero">{{heroName}}</span>
-  <span class="dungeon__level-text">Tier {{dungeonLevel}}</span>
+  <span class="dungeon__level">
+    <span class="dungeon__navigation">
+      <img class="dungeon__navigation-arrow dungeon__navigation-arrow--previous"
+           src="assets/images/map/arrow.png"
+           alt="Navigation arrow"
+           (click)="onChangeLevel(-1)"
+           *ngIf="canChangeLevel(-1)">
+    </span>
+    Tier {{dungeonLevel}}
+    <span class="dungeon__navigation">
+      <img class="dungeon__navigation-arrow dungeon__navigation-arrow--next"
+           src="assets/images/map/arrow.png"
+           alt="Navigation arrow"
+           (click)="onChangeLevel(1)"
+           *ngIf="canChangeLevel(1)">
+    </span>
+  </span>
   <span class="dungeon__name dungeon__name--enemy">{{currentEnemy.name}} the {{currentEnemy.type}}</span>
   <span class="dungeon__enemy-stats">
       (Offence: {{currentEnemy.offence}} | Defence: {{currentEnemy.defence}}
@@ -24,7 +40,7 @@
 </section>
 
 <section class="dungeon__image-slot"
-[ngStyle]="{'background': 'url(assets/images/places/dungeon.jpg)'}">
+         [ngStyle]="{'background': 'url(assets/images/places/dungeon.jpg)'}">
 
   <img class="dungeon__image"
        [alt]="currentEnemy.type"

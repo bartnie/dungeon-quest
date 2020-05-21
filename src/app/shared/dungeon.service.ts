@@ -18,6 +18,7 @@ export class DungeonService {
   private _dungeonMaxLevel: number;
   private _lastLevelPassed: boolean;
   private _currentEnemy: EnemyModel;
+  private _currentMaxLevelEnemy: EnemyModel;
   currentEnemy: BehaviorSubject<EnemyModel>;
   oldEnemy: BehaviorSubject<EnemyModel>;
 
@@ -33,6 +34,28 @@ export class DungeonService {
 
   get dungeonLevel(): number {
     return this._dungeonCurrentLevel;
+  }
+
+  navigateDungeonLevel(change: number) {
+    if (!this.canNavigateDungeonLevel(change)) return;
+
+    this.handleHeroQuit();
+    if (this._dungeonCurrentLevel == this._dungeonMaxLevel) {
+      this._currentMaxLevelEnemy = this._currentEnemy;
+    }
+
+    this._dungeonCurrentLevel += change;
+    if (this._dungeonCurrentLevel == this._dungeonMaxLevel) {
+      this._currentEnemy = this._currentMaxLevelEnemy;
+    } else {
+      this._currentEnemy = this.enemyFactoryService.prepareEnemy(this._dungeonCurrentLevel);
+    }
+    this.currentEnemy.next({...this._currentEnemy})
+  }
+
+  canNavigateDungeonLevel(change: number) {
+    const newLevel = this._dungeonCurrentLevel + change;
+    return newLevel >= 1 && newLevel <= this._dungeonMaxLevel;
   }
 
   updateEnemyName(name: string) {
