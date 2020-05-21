@@ -4,6 +4,7 @@ import {BehaviorSubject} from "rxjs";
 import {MapSettings} from "../constants/map/map.settings";
 import {MapService} from "./map.service";
 import {MapCoordinatesModel} from "./domain/map/map-coordinates.model";
+import {RoutingService} from "./routing.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class PositionService {
   private _heroFacingRight: boolean;
   heroFacingRight: BehaviorSubject<boolean>;
 
-  constructor(private mapService: MapService) {
+  constructor(private mapService: MapService, private routingService: RoutingService) {
     this._heroFacingRight = MapSettings.HERO_FACING_RIGHT;
     this.heroFacingRight = new BehaviorSubject<boolean>(this._heroFacingRight);
 
@@ -35,16 +36,17 @@ export class PositionService {
     if (mapExceed) mapChanged = this.handleMapExceed();
     if (mapExceed && !mapChanged) {
       this.rollbackChanges();
-      return
+      return;
+    }
 
+    if (!mapChanged && this.mapService.checkTileRedirecting(this._currentPosition.column, this._currentPosition.row)) {
+      this.routingService.navigate(this.mapService.getTileLink(this._currentPosition.column, this._currentPosition.row));
     }
 
     if (!this.mapService.checkTileAccessible(this._currentPosition.column, this._currentPosition.row)) {
-      console.log(`2 - rolling back position: ${this._currentPosition.column}, ${this._currentPosition.row}`);
       this.rollbackChanges();
-      console.log(`2 - rolled back position: ${this._currentPosition.column}, ${this._currentPosition.row}`);
       if (mapChanged) this.mapService.rollbackLastMapChange();
-      return
+      return;
     }
 
     this.currentPosition.next(this._currentPosition);

@@ -1,26 +1,24 @@
 <section class="map"
-         (keydown.arrowUp)="onChangePosition(0, -1)"
-         (keydown.arrowDown)="onChangePosition(0, 1)"
-         (keydown.arrowRight)="onChangePosition(1, 0)"
-         (keydown.arrowLeft)="onChangePosition(-1,0)"
+         (keyup.arrowUp)="onChangePosition(0, -1)"
+         (keyup.arrowDown)="onChangePosition(0, 1)"
+         (keyup.arrowRight)="onChangePosition(1, 0)"
+         (keyup.arrowLeft)="onChangePosition(-1,0)"
          [tabIndex]="0"
->
+         [autofocus]>
   <div class="map__row"
        *ngFor="let row of map.rows; let rowIdx = index">
 
     <div class="map__tile"
          *ngFor="let tile of row.tiles; let columnIdx = index"
-         [routerLink]="[tile.link]"
-         [ngClass]="{'map__tile--clickable': tile.clickable}"
+         [ngClass]="{'map__tile--redirecting': tile.isRedirecting}"
          [ngStyle]="{'background': tile.backgroundImagePath !== null ? 'url(' + tile.backgroundImagePath + ')' : 'none'}">
       <img class="map__tile-image"
            [src]="tile.imagePath"
-           [alt]="tile.clickable ? ('Map tile with link to ' + tile.link) : 'Not functional map tile'">
+           [alt]="tile.isRedirecting ? ('Map tile with link to ' + tile.link) : 'Not functional map tile'">
       <img class="map__hero"
            src="assets/images/map/hero.png"
            alt="Hero image"
            [ngClass]="{'map__hero--flip' : !heroFacingRight}"
-           (click)="onHeroClick()"
            *ngIf="rowIdx === position.row && columnIdx === position.column">
     </div>
 

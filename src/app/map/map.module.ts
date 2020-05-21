@@ -4,6 +4,7 @@ import {MapComponent} from "./map.component";
 import {MapViewComponent} from "./map-view/map-view.component";
 import {MapNavigationComponent} from "./map-navigation/map-navigation.component";
 import {AppRoutingModule} from "../app-routing.module";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,7 @@ import {AppRoutingModule} from "../app-routing.module";
     MapViewComponent,
     MapNavigationComponent
   ],
-  imports: [CommonModule, AppRoutingModule],
+    imports: [CommonModule, AppRoutingModule, SharedModule],
   exports: [MapComponent]
 })
 export class MapModule {

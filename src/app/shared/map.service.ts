@@ -45,6 +45,18 @@ export class MapService {
     return this._currentMap.rows[row].tiles[column].accessible;
   }
 
+  checkTileRedirecting(column: number, row: number): boolean {
+    if (row < 0 || row > this._currentMap.rows.length) return false;
+    if (column < 0 || column > this._currentMap.rows[row].tiles.length) return false;
+    return this._currentMap.rows[row].tiles[column].isRedirecting;
+  }
+
+  getTileLink(column: number, row: number): string {
+    if (row < 0 || row > this._currentMap.rows.length) return '';
+    if (column < 0 || column > this._currentMap.rows[row].tiles.length) return '';
+    return this._currentMap.rows[row].tiles[column].link;
+  }
+
   rollbackLastMapChange() {
     const tempCoordinates = this._currentCoordinates;
     this._currentCoordinates = this._previousCoordinates;

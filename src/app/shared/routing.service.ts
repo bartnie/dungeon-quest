@@ -24,4 +24,8 @@ export class RoutingService {
   goToEquipmentPage() {
     this.router.navigate(['equipment']);
   }
+
+  navigate(link: string) {
+    this.router.navigate([link]);
+  }
 }

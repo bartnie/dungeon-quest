@@ -1,19 +1,7 @@
 @import "../../_variables.scss";
 
 .map {
-  &__centre {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__navigation {
-    &--up {
-      text-align: center;
-    }
-    &--down {
-      text-align: center;
-    }
-  }
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
 }
