@@ -1,10 +1,8 @@
 @import "../../../_variables.scss";
 
 .map {
-  border: 1px solid $dark-platinum;
-
   &:focus {
-    outline: 0.3rem solid $yellow;
+    outline: 0.5vh solid $yellow;
   }
 
   &__row {

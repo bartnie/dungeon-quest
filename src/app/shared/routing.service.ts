@@ -25,6 +25,10 @@ export class RoutingService {
     this.router.navigate(['equipment']);
   }
 
+  goToMap() {
+    this.router.navigate(['map']);
+  }
+
   navigate(link: string) {
     this.router.navigate([link]);
   }

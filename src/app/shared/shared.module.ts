@@ -5,6 +5,7 @@ import {RepeatDirective} from "./repeat-directive/repeat.directive";
 import {CharacterGoldComponent} from "./character-gold/character-gold.component";
 import {StatusBarComponent} from "./status-bar/status-bar.component";
 import {AutoFocusDirective} from "./autofocus-directive/auto-focus.directive";
+import {ToMapComponent} from "./to-map/to-map.component";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import {AutoFocusDirective} from "./autofocus-directive/auto-focus.directive";
     CharacterGoldComponent,
     StatusBarComponent,
     RepeatDirective,
-    AutoFocusDirective
+    AutoFocusDirective,
+    ToMapComponent
   ],
   imports: [
     CommonModule
@@ -22,7 +24,8 @@ import {AutoFocusDirective} from "./autofocus-directive/auto-focus.directive";
     StatusBarComponent,
     RepeatDirective,
     CharacterGoldComponent,
-    AutoFocusDirective
+    AutoFocusDirective,
+    ToMapComponent
   ]
 })
 export class SharedModule {
