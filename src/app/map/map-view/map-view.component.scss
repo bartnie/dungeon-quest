@@ -41,6 +41,7 @@
     top: 0px;
     left: 0px;
     pointer-events: auto;
+    cursor: pointer;
 
     &:hover {
       filter: drop-shadow(0.2rem 0.2rem 0.2rem $platinum) invert(5%);

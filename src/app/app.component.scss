@@ -1,5 +1,8 @@
+@import '../variables';
+
 .app-view {
   display: flex;
+
 
   &__stats {
     width: 12%;
@@ -7,7 +10,7 @@
   }
 
   &__stats-list {
-    margin: 1rem 0.5rem;
+    margin: 2rem 0.5rem;
     font-size: 0.5rem;
   }
 
@@ -17,7 +20,7 @@
 }
 
 .stamina, .health {
-  margin: 0.75rem;
+  margin: 1.5rem 0.75rem;
 
   &__label {
     margin: 0;
@@ -27,6 +30,31 @@
 }
 
 .gold {
-  margin: 2rem 0.75rem;
+  margin: 3rem 0.75rem;
   text-align: center;
+}
+
+.equipment {
+  &__button {
+    display: block;
+    margin: 4rem auto;
+
+    min-width: 8rem;
+    height: 3rem;
+
+    border-radius: 0.5rem;
+    box-shadow: 0 0.15rem $platinum;
+    font-size: 1.3rem;
+    cursor: pointer;
+
+    color: $white;
+    background-color: $dark-blue;
+    border: 0.125rem solid $dark-grey;
+
+    &:hover {
+      font-weight: bold;
+      transform: scale(1.04);
+      box-shadow: 0 0;
+    }
+  }
 }

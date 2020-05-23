@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HeroService} from "./shared/hero.service";
 import {StatusBarType} from "./shared/status-bar/status-bar-type.enum";
+import {RoutingService} from "./shared/routing.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import {StatusBarType} from "./shared/status-bar/status-bar-type.enum";
 export class AppComponent {
   statusBarType = StatusBarType;
 
-  constructor(private heroService: HeroService) {
+  constructor(private heroService: HeroService, private routingService: RoutingService) {
   }
 
   get stamina() {
@@ -27,5 +28,9 @@ export class AppComponent {
 
   get maxHealth() {
     return this.heroService.maxHealth;
+  }
+
+  onGoToMenu() {
+    this.routingService.goToEquipmentPage();
   }
 }
