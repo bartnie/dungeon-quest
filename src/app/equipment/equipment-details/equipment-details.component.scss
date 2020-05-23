@@ -1,12 +1,9 @@
 @import "../../../_variables.scss";
 
 .eq-details {
-  width: 20rem;
-  min-height: 30rem;
+  min-width: 14rem;
   background-color: $light-platinum;
-
   border-radius: 0.25rem;
-  overflow: hidden;
 
   &--common {
     border: 0.4rem solid $dark-grey;

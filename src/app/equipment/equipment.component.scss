@@ -1,7 +1,17 @@
 .eq-area {
   display: flex;
 
+
+  &__dummy {
+    width: 25%;
+  }
+
   &__list {
-    margin: 0 2rem;
+    margin: 0 4%;
+    width: 35%;
+  }
+
+  &__details {
+    width: 25%;
   }
 }
