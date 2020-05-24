@@ -8,14 +8,14 @@ export class EnemySettings {
     [EnemyType.TROGLODYTE, {
       health: new Range(10, 15),
       offence: new Range(2, 4),
-      defence: new Range(1, 4),
-      armor: new Range(0, 2),
+      defence: new Range(3, 6),
+      armor: new Range(1, 2),
       damage: new Range(2, 3),
       gold: new Range(10, 20),
       equipmentProbabilities: [
-        {probability: 0.6, equipmentType: EquipmentType.GREAT_SWORD},
-        {probability: 0.4, equipmentType: EquipmentType.GALAXY_HELMET},
-        {probability: 0.3, equipmentType: EquipmentType.KNIGHTS_BOOTS}],
+        {probability: 0.2, equipmentType: EquipmentType.GREAT_SWORD},
+        {probability: 0.1, equipmentType: EquipmentType.GALAXY_HELMET},
+        {probability: 0.1, equipmentType: EquipmentType.KNIGHTS_BOOTS}],
       maxEquipmentDropped: 2,
       imagePath: 'assets/images/enemies/troglodyte.gif'
     }],
@@ -27,10 +27,10 @@ export class EnemySettings {
       damage: new Range(3, 5),
       gold: new Range(50, 150),
       equipmentProbabilities: [
-        {probability: 0.7, equipmentType: EquipmentType.GREAT_SWORD},
-        {probability: 0.5, equipmentType: EquipmentType.NOBLE_ARMOR},
-        {probability: 0.4, equipmentType: EquipmentType.FIRE_SWORD},
-        {probability: 0.4, equipmentType: EquipmentType.ANCIENT_SHIELD}],
+        {probability: 0.3, equipmentType: EquipmentType.GREAT_SWORD},
+        {probability: 0.2, equipmentType: EquipmentType.NOBLE_ARMOR},
+        {probability: 0.1, equipmentType: EquipmentType.FIRE_SWORD},
+        {probability: 0.1, equipmentType: EquipmentType.ANCIENT_SHIELD}],
       maxEquipmentDropped: 2,
       imagePath: 'assets/images/enemies/behemoth.gif'
     }],
@@ -42,9 +42,9 @@ export class EnemySettings {
       damage: new Range(15, 25),
       gold: new Range(200, 1500),
       equipmentProbabilities: [
-        {probability: 0.7, equipmentType: EquipmentType.FIRE_SWORD},
-        {probability: 0.5, equipmentType: EquipmentType.ANCIENT_SHIELD},
-        {probability: 0.4, equipmentType: EquipmentType.DRAGON_ARMOR}],
+        {probability: 0.4, equipmentType: EquipmentType.FIRE_SWORD},
+        {probability: 0.3, equipmentType: EquipmentType.ANCIENT_SHIELD},
+        {probability: 0.3, equipmentType: EquipmentType.DRAGON_ARMOR}],
       maxEquipmentDropped: 3,
       imagePath: 'assets/images/enemies/black-dragon.gif'
     }],
@@ -56,8 +56,11 @@ export class EnemySettings {
       damage: new Range(30, 45),
       gold: new Range(2000, 5000),
       equipmentProbabilities: [
+        {probability: 1, equipmentType: EquipmentType.GALAXY_HELMET},
+        {probability: 1, equipmentType: EquipmentType.FIRE_SWORD},
         {probability: 1, equipmentType: EquipmentType.ANCIENT_SHIELD},
-        {probability: 1, equipmentType: EquipmentType.DRAGON_ARMOR}],
+        {probability: 1, equipmentType: EquipmentType.DRAGON_ARMOR},
+        {probability: 1, equipmentType: EquipmentType.KNIGHTS_BOOTS}],
       maxEquipmentDropped: 5,
       imagePath: 'assets/images/enemies/boss.gif'
     }]

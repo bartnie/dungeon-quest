@@ -6,7 +6,7 @@ import {Range} from "../shared/domain/util/range.model";
 
 export class EquipmentSettings {
   public static BAG_CAPACITY = 20;
-  public static INCREASE_RARITY_THRESHOLD = 0.75;
+  public static INCREASE_RARITY_THRESHOLD = 0.85;
 
   public static EQUIPMENT_TEMPLATES: Map<EquipmentType, EquipmentTemplate> = new Map<EquipmentType, EquipmentTemplate>(
     [
@@ -30,7 +30,7 @@ export class EquipmentSettings {
         health: new Range(0, 0),
         stamina: new Range(0, 0),
         offence: new Range(0, 0),
-        defence: new Range(1, 3),
+        defence: new Range(1, 2),
         armor: new Range(0, 0),
         damage: new Range(0, 0),
         value: new Range(10, 20),
@@ -70,7 +70,7 @@ export class EquipmentSettings {
         offence: new Range(0, 2),
         defence: new Range(0, 0),
         armor: new Range(0, 0),
-        damage: new Range(1, 3),
+        damage: new Range(1, 2),
         value: new Range(10, 15),
         imagePath: 'assets/images/items/wooden-stick.jpg'
       }],
@@ -106,7 +106,7 @@ export class EquipmentSettings {
         health: new Range(0, 0),
         stamina: new Range(0, 0),
         offence: new Range(0, 0),
-        defence: new Range(0, 2),
+        defence: new Range(0, 1),
         armor: new Range(1, 1),
         damage: new Range(0, 0),
         value: new Range(20, 30),
