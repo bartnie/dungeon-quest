@@ -10,10 +10,10 @@
     <li class="battle-win__item"
         *ngFor="let item of defeatedEnemy.items"
         [ngClass]="{
-        'battle-win__item--equipment-common' : item.rarity === rarityType.COMMON,
-        'battle-win__item--equipment-rare' : item.rarity === rarityType.RARE,
-        'battle-win__item--equipment-epic' : item.rarity === rarityType.EPIC,
-        'battle-win__item--equipment-legendary' : item.rarity === rarityType.LEGENDARY}">
+        'battle-win__item--equipment-common' : item.rarity === RARITY_TYPE.COMMON,
+        'battle-win__item--equipment-rare' : item.rarity === RARITY_TYPE.RARE,
+        'battle-win__item--equipment-epic' : item.rarity === RARITY_TYPE.EPIC,
+        'battle-win__item--equipment-legendary' : item.rarity === RARITY_TYPE.LEGENDARY}">
       {{item.name}}
     </li>
     <li class="battle-win__item battle-win__item--gold">{{defeatedEnemy.gold}} gold</li>

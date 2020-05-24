@@ -14,12 +14,17 @@ export class DungeonComponent {
 
   ngOnInit() {
     const dungeonTypeParam: number = +this.route.snapshot.params['dungeonType'];
+    this.dungeonType = this.parseEnum(dungeonTypeParam);
+  }
+
+  private parseEnum(enumValue: number): DungeonType {
     let parsedEnumMember: number;
     for (let enumMember in DungeonType) {
       parsedEnumMember = parseInt(enumMember, 10);
-      if (parsedEnumMember === dungeonTypeParam) {
-        this.dungeonType = parsedEnumMember as DungeonType;
+      if (parsedEnumMember === enumValue) {
+        return  parsedEnumMember as DungeonType;
       }
     }
+    throw new Error(`${enumValue} is not a proper enum value.`);
   }
 }

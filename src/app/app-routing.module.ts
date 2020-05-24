@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'tavern', component: TavernComponent, canActivate: [EmptyNameGuard]},
   {path: 'training', component: TrainingComponent, canActivate: [EmptyNameGuard]},
   {path: 'map', component: MapComponent, canActivate: [EmptyNameGuard]},
-  {path: 'battle-win', component: BattleWinInfoComponent, canActivate: [EmptyNameGuard]},
+  {path: 'battle-win/:dungeonType', component: BattleWinInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'battle-loss', component: BattleLossInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'the-end', component: GameFinishedInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'name', component: EmptyNameInfoComponent},

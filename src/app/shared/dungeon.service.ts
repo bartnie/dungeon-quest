@@ -143,7 +143,7 @@ export class DungeonService {
       this.handleLastLevelPassed(dungeonType);
       return;
     }
-    this.routingService.showBattleWinPage();
+    this.routingService.showBattleWinPage(dungeonType);
   }
 
   private handleLoot(dungeonType: DungeonType) {

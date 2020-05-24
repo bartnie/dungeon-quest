@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
+import {DungeonType} from "./domain/enemy/dungeon-type.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class RoutingService {
   constructor(private router: Router) {
   }
 
-  showBattleWinPage() {
-    this.router.navigate(['battle-win']);
+  showBattleWinPage(dungeonType: DungeonType) {
+    this.router.navigate(['battle-win', dungeonType.toString()]);
   }
 
   showBattleLossPage() {
@@ -23,6 +24,10 @@ export class RoutingService {
 
   goToEquipmentPage() {
     this.router.navigate(['equipment']);
+  }
+
+  goToDungeon(dungeonType: DungeonType) {
+    this.router.navigate(['dungeon', dungeonType.toString()]);
   }
 
   goToMap() {
