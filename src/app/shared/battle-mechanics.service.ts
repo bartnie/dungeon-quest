@@ -9,6 +9,8 @@ import {DungeonService} from "./dungeon.service";
 import {RoutingService} from "./routing.service";
 import {EnemyModel} from "./domain/enemy/enemy.model";
 import {HeroModel} from "./domain/hero/hero.model";
+import {DungeonType} from "./domain/enemy/dungeon-type.enum";
+import {Subscription} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,28 +18,34 @@ import {HeroModel} from "./domain/hero/hero.model";
 export class BattleMechanicsService {
   private _currentEnemy: EnemyModel;
   private _hero: HeroModel;
+  private enemySubscription: Subscription;
 
   constructor(private heroService: HeroService, private dungeonService: DungeonService,
               private battleInfoService: BattleInfoService, private routingService: RoutingService) {
-    this.dungeonService.currentEnemy.subscribe(
-      (enemy: EnemyModel) => this._currentEnemy = enemy
-    );
-
     this.heroService.hero.subscribe(
       (hero: HeroModel) => (this._hero = hero)
     );
-
   }
 
-  nextTurn(attackType: AttackType) {
+  beginBattle(dungeonType: DungeonType) {
+    this.enemySubscription = this.dungeonService.currentEnemies.get(dungeonType).subscribe(
+      (enemy: EnemyModel) => this._currentEnemy = enemy
+    );
+  }
+
+  endBattle() {
+    this.enemySubscription.unsubscribe();
+  }
+
+  nextTurn(dungeonType: DungeonType, attackType: AttackType) {
     if (!this.heroService.removeHealth(
       this.calculateDamage(BattleInfoType.ENEMY_DAMAGE, attackType, this._currentEnemy.offence, this._currentEnemy.damage, this._hero.defence, this._hero.armor)
     )) {
       this.handleHeroDeath();
-    } else if (!this.dungeonService.removeEnemyHealth(
+    } else if (!this.dungeonService.removeEnemyHealth(dungeonType,
       this.calculateDamage(BattleInfoType.HERO_DAMAGE, attackType, this._hero.offence, this._hero.damage, this._currentEnemy.defence, this._currentEnemy.armor)
     )) {
-      this.dungeonService.levelPassed();
+      this.dungeonService.levelPassed(dungeonType);
     }
   }
 

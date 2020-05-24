@@ -1,16 +1,25 @@
 import {Component} from "@angular/core";
-import {DungeonService} from "../shared/dungeon.service";
-import {StatusBarType} from "../shared/status-bar/status-bar-type.enum";
-import {HeroService} from "../shared/hero.service";
+import {DungeonType} from "../shared/domain/enemy/dungeon-type.enum";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   templateUrl: './dungeon.component.html',
   styleUrls: ['./dungeon.component.scss']
 })
 export class DungeonComponent {
-  statusBarType = StatusBarType;
+  dungeonType: DungeonType;
 
-  constructor(private dungeonService: DungeonService, private heroService: HeroService) {
+  constructor(private route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+    const dungeonTypeParam: number = +this.route.snapshot.params['dungeonType'];
+    let parsedEnumMember: number;
+    for (let enumMember in DungeonType) {
+      parsedEnumMember = parseInt(enumMember, 10);
+      if (parsedEnumMember === dungeonTypeParam) {
+        this.dungeonType = parsedEnumMember as DungeonType;
+      }
+    }
+  }
 }

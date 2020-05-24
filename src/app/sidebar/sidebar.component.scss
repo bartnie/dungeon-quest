@@ -2,12 +2,14 @@
 
 
 .sidebar {
-  margin: 2rem 0.5rem;
-  //font-size: 0.5rem;
+  margin: 0 0.5rem;
 
+  &__stats-list {
+    margin: 3rem 0;
+  }
 
   &__stamina, &__health {
-    margin: 1.5rem 0.75rem;
+    margin: 1.5rem 0.25rem;
 
     &-label {
       margin: 0;

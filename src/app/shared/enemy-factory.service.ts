@@ -8,6 +8,7 @@ import {EquipmentModel} from "./domain/equipment/equipment.model";
 import {EnemySettings} from "../constants/enemy.settings";
 import {DungeonSettings} from "../constants/dungeon.settings";
 import {Range} from "./domain/util/range.model";
+import {DungeonType} from "./domain/enemy/dungeon-type.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class EnemyFactoryService {
   constructor(private equipmentFactoryService: EquipmentFactoryService) {
   }
 
-  prepareEnemy(level: number): EnemyModel {
-    const enemyType = this.randomizeEnemyType(DungeonSettings.ENEMY_PROBABILITY_MAP.get(level));
+  prepareEnemy(dungeontype: DungeonType, level: number): EnemyModel {
+    const enemyType = this.randomizeEnemyType(DungeonSettings.ENEMY_PROBABILITY_MAP.get(dungeontype).get(level));
     return this.prepareEnemyWithType(enemyType);
   }
 

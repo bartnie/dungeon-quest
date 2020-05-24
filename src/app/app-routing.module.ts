@@ -13,7 +13,7 @@ import {MapComponent} from "./map/map.component";
 
 const routes: Routes = [
   {path: 'equipment', component: MenuComponent, canActivate: [EmptyNameGuard]},
-  {path: 'dungeon', component: DungeonComponent, canActivate: [EmptyNameGuard]},
+  {path: 'dungeon/:dungeonType', component: DungeonComponent, canActivate: [EmptyNameGuard]},
   {path: 'tavern', component: TavernComponent, canActivate: [EmptyNameGuard]},
   {path: 'training', component: TrainingComponent, canActivate: [EmptyNameGuard]},
   {path: 'map', component: MapComponent, canActivate: [EmptyNameGuard]},

@@ -43,6 +43,14 @@ export class MapTilesSettings {
     'assets/images/map/rivers/wide-desert-river-right.jpg', null, false, false);
 
 
+  public static BRIDGE_RIVER_DOWN_TILE: MapTileModel = new MapTileModel(
+    'assets/images/map/rivers/bridge-river-down.jpeg', null, false, true);
+  public static BRIDGE_RIVER_TILE: MapTileModel = new MapTileModel(
+    'assets/images/map/rivers/bridge-river.jpeg', null, false, true);
+  public static BRIDGE_WIDE_DESERT_RIVER_LEFT_TILE: MapTileModel = new MapTileModel(
+    'assets/images/map/rivers/bridge-wide-desert-river-left.jpg', null, false, true);
+
+
   public static DESERT_TILE: MapTileModel = new MapTileModel(
     'assets/images/map/desert.jpg', null, false, true);
   public static FOREST_TILE: MapTileModel = new MapTileModel(
@@ -55,7 +63,10 @@ export class MapTilesSettings {
     'assets/images/map/roads/half-wide-road-left.jpeg', true, false, '/training');
   public static DUNGEON_IN_FOREST_TILE: MapTileModel = new MapTileModel(
     'assets/images/map/dungeon.png',
-    'assets/images/map/forest.jpeg', true, false, '/dungeon');
+    'assets/images/map/forest.jpeg', true, false, '/dungeon/0');
+  public static DUNGEON_IN_DESERT_TILE: MapTileModel = new MapTileModel(
+    'assets/images/map/dungeon.png',
+    'assets/images/map/desert.jpg', true, false, '/dungeon/1');
   public static BLACKSMITH_IN_FOREST_TILE: MapTileModel = new MapTileModel(
     'assets/images/map/blacksmith.png',
     'assets/images/map/roads/half-wide-road-up.jpeg', true, false, '/blacksmith');

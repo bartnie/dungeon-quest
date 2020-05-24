@@ -8,114 +8,178 @@ import {BehaviorSubject} from "rxjs";
 import {RoutingService} from "./routing.service";
 import {DungeonSettings} from "../constants/dungeon.settings";
 import {DigitPrecisionSettings} from "../constants/digit-precision.settings";
+import {DungeonType} from "./domain/enemy/dungeon-type.enum";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DungeonService {
-  private _dungeonCurrentLevel: number;
-  private _dungeonMaxLevel: number;
-  private _lastLevelPassed: boolean;
-  private _currentEnemy: EnemyModel;
-  private _currentMaxLevelEnemy: EnemyModel;
-  currentEnemy: BehaviorSubject<EnemyModel>;
-  oldEnemy: BehaviorSubject<EnemyModel>;
+  private _dungeonCurrentLevels: Map<DungeonType, number>;
+  private _dungeonMaxAchievedLevels: Map<DungeonType, number>;
+  private _lastLevelsPassed: Map<DungeonType, boolean>;
+  private _currentEnemies: Map<DungeonType, EnemyModel>;
+  private _currentMaxLevelEnemies: Map<DungeonType, EnemyModel>;
+  currentEnemies: Map<DungeonType, BehaviorSubject<EnemyModel>>;
+  oldEnemies: Map<DungeonType, BehaviorSubject<EnemyModel>>;
 
   constructor(private enemyFactoryService: EnemyFactoryService, private goldService: GoldService, private equipmentService: EquipmentService,
               private routingService: RoutingService) {
-    this._lastLevelPassed = false
-    this._dungeonCurrentLevel = 1;
-    this._dungeonMaxLevel = this._dungeonCurrentLevel;
-    this._currentEnemy = enemyFactoryService.prepareEnemy(this._dungeonCurrentLevel);
-    this.currentEnemy = new BehaviorSubject<EnemyModel>(this._currentEnemy);
-    this.oldEnemy = new BehaviorSubject<EnemyModel>(null);
+    this._dungeonCurrentLevels = this.prepareDungeonsMap<number>();
+    this._dungeonCurrentLevels.forEach((value: number, key: DungeonType, map: Map<DungeonType, number>) =>
+      map.set(key, 1)
+    );
+
+    this._dungeonMaxAchievedLevels = this.prepareDungeonsMap<number>();
+    this._dungeonMaxAchievedLevels.forEach((value: number, key: DungeonType, map: Map<DungeonType, number>) =>
+      map.set(key, 1)
+    );
+
+    this._lastLevelsPassed = this.prepareDungeonsMap<boolean>();
+    this._lastLevelsPassed.forEach((value: boolean, key: DungeonType, map: Map<DungeonType, boolean>) =>
+      map.set(key, false)
+    );
+
+    this._currentEnemies = this.prepareDungeonsMap<EnemyModel>();
+    this._currentEnemies.forEach((value: EnemyModel, key: DungeonType, map: Map<DungeonType, EnemyModel>) =>
+      map.set(key, enemyFactoryService.prepareEnemy(key, this._dungeonCurrentLevels.get(key)))
+    );
+
+    this._currentMaxLevelEnemies = this.prepareDungeonsMap<EnemyModel>();
+    this._currentMaxLevelEnemies.forEach((value: EnemyModel, key: DungeonType, map: Map<DungeonType, EnemyModel>) =>
+      map.set(key, this._currentEnemies.get(key))
+    );
+
+    this.currentEnemies = this.prepareDungeonsMap<BehaviorSubject<EnemyModel>>();
+    this.currentEnemies.forEach((value: BehaviorSubject<EnemyModel>, key: DungeonType, map: Map<DungeonType, BehaviorSubject<EnemyModel>>) =>
+      map.set(key, new BehaviorSubject<EnemyModel>({...this._currentEnemies.get(key)}))
+    );
+
+    this.oldEnemies = this.prepareDungeonsMap<BehaviorSubject<EnemyModel>>();
+    this.oldEnemies.forEach((value: BehaviorSubject<EnemyModel>, key: DungeonType, map: Map<DungeonType, BehaviorSubject<EnemyModel>>) =>
+      map.set(key, new BehaviorSubject<EnemyModel>(null))
+    );
   }
 
-  get dungeonLevel(): number {
-    return this._dungeonCurrentLevel;
+  getDungeonLevel(dungeonType: DungeonType): number {
+    return this._dungeonCurrentLevels.get(dungeonType);
   }
 
-  navigateDungeonLevel(change: number) {
-    if (!this.canNavigateDungeonLevel(change)) return;
+  navigateDungeonLevel(dungeonType: DungeonType, change: number) {
+    let currentLevel: number = this._dungeonCurrentLevels.get(dungeonType);
+    const maxAchievedLevel: number = this._dungeonMaxAchievedLevels.get(dungeonType);
 
-    this.handleHeroQuit();
-    if (this._dungeonCurrentLevel == this._dungeonMaxLevel) {
-      this._currentMaxLevelEnemy = this._currentEnemy;
+
+    if (!this.canNavigateDungeonLevel(dungeonType, change)) return;
+    this.handleHeroQuit(dungeonType);
+
+    if (currentLevel === maxAchievedLevel) {
+      this._currentMaxLevelEnemies.set(dungeonType, this._currentEnemies.get(dungeonType));
     }
 
-    this._dungeonCurrentLevel += change;
-    if (this._dungeonCurrentLevel == this._dungeonMaxLevel) {
-      this._currentEnemy = this._currentMaxLevelEnemy;
+    currentLevel += change;
+    this._dungeonCurrentLevels.set(dungeonType, currentLevel);
+    if (currentLevel === maxAchievedLevel) {
+      this._currentEnemies.set(dungeonType, this._currentMaxLevelEnemies.get(dungeonType));
     } else {
-      this._currentEnemy = this.enemyFactoryService.prepareEnemy(this._dungeonCurrentLevel);
+      this._currentEnemies.set(dungeonType, this.enemyFactoryService.prepareEnemy(dungeonType, currentLevel));
     }
-    this.currentEnemy.next({...this._currentEnemy})
+    this.currentEnemies.get(dungeonType).next({...this._currentEnemies.get(dungeonType)})
   }
 
-  canNavigateDungeonLevel(change: number) {
-    const newLevel = this._dungeonCurrentLevel + change;
-    return newLevel >= 1 && newLevel <= this._dungeonMaxLevel;
+  canNavigateDungeonLevel(dungeonType: DungeonType, change: number) {
+    const currentLevel: number = this._dungeonCurrentLevels.get(dungeonType);
+    const maxAchievedLevel: number = this._dungeonMaxAchievedLevels.get(dungeonType);
+
+    const newLevel = currentLevel + change;
+    return newLevel >= 1 && newLevel <= maxAchievedLevel;
   }
 
-  updateEnemyName(name: string) {
-    this._currentEnemy.name = name;
-    this.currentEnemy.next({...this._currentEnemy})
+  updateEnemyName(dungeonType: DungeonType, name: string) {
+    const currentEnemy: EnemyModel = this._currentEnemies.get(dungeonType);
+    const currentEnemySubject: BehaviorSubject<EnemyModel> = this.currentEnemies.get(dungeonType);
+
+    currentEnemy.name = name;
+    currentEnemySubject.next({...currentEnemy})
   }
 
-  removeEnemyHealth(amount: number): boolean {
-    if (this._currentEnemy.currentHealth <= amount) {
-      this._currentEnemy.currentHealth = 0;
-      this.currentEnemy.next({...this._currentEnemy});
+  removeEnemyHealth(dungeonType: DungeonType, amount: number): boolean {
+    const currentEnemy: EnemyModel = this._currentEnemies.get(dungeonType);
+    const currentEnemySubject: BehaviorSubject<EnemyModel> = this.currentEnemies.get(dungeonType);
+
+    if (currentEnemy.currentHealth <= amount) {
+      currentEnemy.currentHealth = 0;
+      currentEnemySubject.next({...currentEnemy})
       return false;
     }
-    this._currentEnemy.currentHealth -= amount;
-    this._currentEnemy.currentHealth = Math.round(
-      this._currentEnemy.currentHealth * (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION))
+    currentEnemy.currentHealth -= amount;
+    currentEnemy.currentHealth = Math.round(
+      currentEnemy.currentHealth * (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION))
       / (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION);
-    this.currentEnemy.next({...this._currentEnemy});
+    currentEnemySubject.next({...currentEnemy})
     return true;
   }
 
-  levelPassed() {
-    let lastLevelPassed = false;
+  levelPassed(dungeonType: DungeonType) {
+    let firstTimeFinished = false;
+    const currentLevel: number = this._dungeonCurrentLevels.get(dungeonType);
+    const maxAchievedLevel: number = this._dungeonMaxAchievedLevels.get(dungeonType);
+    const maxPossibleLevel: number = DungeonSettings.MAX_DUNGEONS_LEVELS.get(dungeonType);
+    const lastLevelPassed: boolean = this._lastLevelsPassed.get(dungeonType);
 
-    if (this._dungeonCurrentLevel == this._dungeonMaxLevel && this._dungeonCurrentLevel != DungeonSettings.MAX_DUNGEON_LEVEL) {
-      this._dungeonCurrentLevel += 1;
-      this._dungeonMaxLevel += 1;
-    } else if (this._dungeonCurrentLevel === DungeonSettings.MAX_DUNGEON_LEVEL && !this._lastLevelPassed) {
-      this._lastLevelPassed = true;
-      lastLevelPassed = true;
+    if (currentLevel === maxAchievedLevel
+      && currentLevel != maxPossibleLevel) {
+      this._dungeonCurrentLevels.set(dungeonType, currentLevel + 1);
+      this._dungeonMaxAchievedLevels.set(dungeonType, maxAchievedLevel + 1);
+    } else if (currentLevel === maxPossibleLevel && !lastLevelPassed) {
+      this._lastLevelsPassed.set(dungeonType, true);
+      firstTimeFinished = true;
     }
-    this.handleLoot();
-    this.oldEnemy.next(this._currentEnemy);
-    this._currentEnemy = this.enemyFactoryService.prepareEnemy(this._dungeonCurrentLevel);
-    this.currentEnemy.next({...this._currentEnemy});
+    this.handleLoot(dungeonType);
+    this.oldEnemies.get(dungeonType).next(this._currentEnemies.get(dungeonType));
+    this._currentEnemies.set(dungeonType, this.enemyFactoryService.prepareEnemy(dungeonType, this._dungeonCurrentLevels.get(dungeonType)));
+    this.currentEnemies.get(dungeonType).next({...this._currentEnemies.get(dungeonType)});
 
-    if (lastLevelPassed) {
-      this.handleLastLevelPassed();
+    if (firstTimeFinished) {
+      this.handleLastLevelPassed(dungeonType);
       return;
     }
     this.routingService.showBattleWinPage();
   }
 
-  private handleLoot() {
-    this.goldService.addGold(this._currentEnemy.gold);
-    this._currentEnemy.items.forEach(
+  private handleLoot(dungeonType: DungeonType) {
+    const currentEnemy: EnemyModel = this._currentEnemies.get(dungeonType);
+    this.goldService.addGold(currentEnemy.gold);
+    currentEnemy.items.forEach(
       (item: EquipmentModel) => {
         if (!this.equipmentService.addItem(item)) {
           this.goldService.sellItem(item);
-          this._currentEnemy.goldFromDiscardedItems += item.value;
+          currentEnemy.goldFromDiscardedItems += item.value;
         }
       }
     );
   }
 
-  private handleLastLevelPassed() {
-    this.routingService.showGameFinishedPage();
+  private handleLastLevelPassed(dungeonType: DungeonType) {
+    if (dungeonType === DungeonSettings.LAST_DUNGEON) {
+      this.routingService.showGameFinishedPage();
+    }
   }
 
-  handleHeroQuit() {
-    this._currentEnemy.currentHealth = this._currentEnemy.maxHealth;
-    this.currentEnemy.next({...this._currentEnemy})
+  handleHeroQuit(dungeonType: DungeonType) {
+    const currentEnemy = this._currentEnemies.get(dungeonType);
+    currentEnemy.currentHealth = currentEnemy.maxHealth;
+    this.currentEnemies.get(dungeonType).next({...currentEnemy})
+  }
+
+  private prepareDungeonsMap<T>(): Map<DungeonType, T> {
+    const dungeonsMap = new Map<DungeonType, T>();
+    for (let type of Object.keys(DungeonType)) {
+      let dungeonTypeElement = DungeonType[type];
+
+    }
+
+    dungeonsMap.set(DungeonType.FOREST, null);
+    dungeonsMap.set(DungeonType.DESERT, null);
+    return dungeonsMap;
   }
 }

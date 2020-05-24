@@ -19,7 +19,7 @@
     position: relative;
 
     //only way to overwrite size for the customizable background, set in html
-    background-size: cover !important;
+    background-size: 100% 100% !important;
 
     &--redirecting {
 
