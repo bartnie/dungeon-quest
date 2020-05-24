@@ -5,6 +5,7 @@ import {BattleLossInfoComponent} from "./battle-loss-info/battle-loss-info.compo
 import {EmptyNameInfoComponent} from "./empty-name-info/empty-name-info.component";
 import {FormsModule} from "@angular/forms";
 import {GameFinishedInfoComponent} from "./game-finished-info/game-finished-info.component";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -13,10 +14,11 @@ import {GameFinishedInfoComponent} from "./game-finished-info/game-finished-info
     EmptyNameInfoComponent,
     GameFinishedInfoComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        SharedModule
+    ],
   exports: [
     BattleWinInfoComponent,
     BattleLossInfoComponent,

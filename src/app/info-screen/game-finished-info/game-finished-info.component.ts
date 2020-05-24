@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {HeroService} from "../../shared/hero.service";
+import {RoutingService} from "../../shared/routing.service";
 
 @Component({
   templateUrl: './game-finished-info.component.html',
@@ -9,14 +10,14 @@ import {HeroService} from "../../shared/hero.service";
 export class GameFinishedInfoComponent implements OnInit{
   heroName: string;
 
-  constructor(private router: Router, private heroService: HeroService) {
+  constructor(private routingService: RoutingService, private heroService: HeroService) {
   }
 
   ngOnInit() {
-    this.heroName = this.heroService.name;
+    this.heroName = this.heroService.getName();
   }
 
   onContinueAdventure() {
-    this.router.navigate(['tavern']);
+    this.routingService.goToMap();
   }
 }
