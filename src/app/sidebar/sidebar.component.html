@@ -1,0 +1,28 @@
+<main class="sidebar">
+  <section class="sidebar__stats-list">
+    <app-character-stats></app-character-stats>
+  </section>
+  <section class="sidebar__stamina">
+    <p class="sidebar__stamina-label">Stamina:</p>
+    <app-status-bar [current]="stamina"
+                    [max]="maxStamina"
+                    [type]="STATUSBAR_TYPES.STAMINA">
+    </app-status-bar>
+  </section>
+  <section class="sidebar__health">
+    <p class="sidebar__health-label">Health:</p>
+    <app-status-bar [current]="health"
+                    [max]="maxHealth"
+                    [type]="STATUSBAR_TYPES.HEALTH">
+    </app-status-bar>
+  </section>
+  <section class="sidebar__gold">
+    <app-character-gold></app-character-gold>
+  </section>
+  <section class="sidebar__equipment">
+    <button class="sidebar__equipment-button"
+            (click)="onGoToMenu()">
+      Menu
+    </button>
+  </section>
+</main>

@@ -25,8 +25,8 @@ export class EquipmentService {
         this.equipmentFactoryService.createEquipment(InitialSettings.INITIAL_ITEMS.get(slot)));
     }
 
-    this.currentEquipment = new BehaviorSubject<Map<SlotType, EquipmentModel>>(this._currentEquipment);
-    this.bag = new BehaviorSubject<EquipmentModel[]>(this._bag);
+    this.currentEquipment = new BehaviorSubject<Map<SlotType, EquipmentModel>>(new Map(this._currentEquipment));
+    this.bag = new BehaviorSubject<EquipmentModel[]>([...this._bag]);
   }
 
   equip(item: EquipmentModel) {
@@ -84,8 +84,8 @@ export class EquipmentService {
   }
 
   private sendChangesEvents() {
-    this.currentEquipment.next(new Map<SlotType, EquipmentModel>(this._currentEquipment));
-    this.bag.next(this._bag.slice());
+    this.currentEquipment.next(new Map<SlotType, EquipmentModel>(new Map(this._currentEquipment)));
+    this.bag.next([...this._bag]);
   }
 
   isBagFull(): boolean {

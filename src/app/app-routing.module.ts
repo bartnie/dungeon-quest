@@ -21,8 +21,8 @@ const routes: Routes = [
   {path: 'battle-loss', component: BattleLossInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'the-end', component: GameFinishedInfoComponent, canActivate: [EmptyNameGuard]},
   {path: 'name', component: EmptyNameInfoComponent},
-  {path: '', redirectTo: 'equipment', pathMatch: 'full'},
-  {path: '**', redirectTo: 'equipment'}
+  {path: '', redirectTo: 'map', pathMatch: 'full'},
+  {path: '**', redirectTo: 'map'}
 ];
 
 @NgModule({

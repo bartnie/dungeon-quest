@@ -7,6 +7,7 @@ import {HeroService} from "../../shared/hero.service";
 import {Observable, Subscriber} from "rxjs";
 import {NameService} from "../../shared/name.service";
 import {NameSettings} from "../../constants/name.settings";
+import {HeroModel} from "../../shared/domain/hero/hero.model";
 
 @Component({
   selector: 'app-dungeon-enemy',
@@ -14,8 +15,13 @@ import {NameSettings} from "../../constants/name.settings";
   styleUrls: ['./dungeon-enemy.component.scss']
 })
 export class DungeonEnemyComponent implements OnInit, OnDestroy {
-  statusBarType = StatusBarType;
+  STATUSBAR_TYPES = StatusBarType;
   currentEnemy: EnemyModel;
+  dungeonLevel: number;
+
+  heroMaxHealth: number;
+  heroHealth: number;
+  heroName: string;
   private componentActive: boolean;
 
   constructor(private dungeonService: DungeonService, private heroService: HeroService, private nameService: NameService) {
@@ -26,12 +32,20 @@ export class DungeonEnemyComponent implements OnInit, OnDestroy {
     this.dungeonService.currentEnemy.pipe(takeWhile(() => this.componentActive))
       .subscribe(
         (enemy: EnemyModel) => {
+          this.dungeonLevel = this.dungeonService.dungeonLevel;
           this.currentEnemy = enemy;
           if (this.currentEnemy.name === null) {
             this.setEnemyName();
           }
         }
       );
+
+    this.heroService.hero.pipe(takeWhile(() => this.componentActive))
+      .subscribe((hero: HeroModel) => {
+        this.heroName = hero.name;
+        this.heroMaxHealth = hero.maxHealth;
+        this.heroHealth = hero.currentHealth;
+      });
   }
 
   ngOnDestroy() {
@@ -61,21 +75,5 @@ export class DungeonEnemyComponent implements OnInit, OnDestroy {
 
   canChangeLevel(change: number): boolean {
     return this.dungeonService.canNavigateDungeonLevel(change);
-  }
-
-  get heroHealth() {
-    return this.heroService.health;
-  }
-
-  get heroMaxHealth() {
-    return this.heroService.maxHealth;
-  }
-
-  get heroName() {
-    return this.heroService.name;
-  }
-
-  get dungeonLevel() {
-    return this.dungeonService.dungeonLevel;
   }
 }

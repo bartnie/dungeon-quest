@@ -11,7 +11,7 @@ export class EmptyNameGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot,): boolean {
-    if (this.heroService.name === undefined) {
+    if (this.heroService.getName() === undefined) {
       this.router.navigate(['name']);
       return false;
     }

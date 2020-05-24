@@ -12,13 +12,13 @@ export class TrainingService {
 
   trainOffence(): void {
     if (this.heroService.removeStamina(TrainingSettings.STAMINA_PER_TRAINING)) {
-      this.heroService.addOffence(TrainingSettings.OFFENCE_PER_TRAINING);
+      this.heroService.addBaseOffence(TrainingSettings.OFFENCE_PER_TRAINING);
     }
   }
 
   trainDefence(): void {
     if (this.heroService.removeStamina(TrainingSettings.STAMINA_PER_TRAINING)) {
-      this.heroService.addDefence(TrainingSettings.DEFENCE_PER_TRAINING);
+      this.heroService.addBaseDefence(TrainingSettings.DEFENCE_PER_TRAINING);
     }
   }
 }

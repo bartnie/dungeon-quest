@@ -8,27 +8,34 @@ import {HeroService} from "./hero.service";
 import {DungeonService} from "./dungeon.service";
 import {RoutingService} from "./routing.service";
 import {EnemyModel} from "./domain/enemy/enemy.model";
+import {HeroModel} from "./domain/hero/hero.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BattleMechanicsService {
-  private currentEnemy: EnemyModel;
+  private _currentEnemy: EnemyModel;
+  private _hero: HeroModel;
 
   constructor(private heroService: HeroService, private dungeonService: DungeonService,
               private battleInfoService: BattleInfoService, private routingService: RoutingService) {
     this.dungeonService.currentEnemy.subscribe(
-      (enemy: EnemyModel) => this.currentEnemy = enemy
+      (enemy: EnemyModel) => this._currentEnemy = enemy
     );
+
+    this.heroService.hero.subscribe(
+      (hero: HeroModel) => (this._hero = hero)
+    );
+
   }
 
   nextTurn(attackType: AttackType) {
     if (!this.heroService.removeHealth(
-      this.calculateDamage(BattleInfoType.ENEMY_DAMAGE, attackType, this.currentEnemy.offence, this.currentEnemy.damage, this.heroService.defence, this.heroService.armor)
+      this.calculateDamage(BattleInfoType.ENEMY_DAMAGE, attackType, this._currentEnemy.offence, this._currentEnemy.damage, this._hero.defence, this._hero.armor)
     )) {
       this.handleHeroDeath();
     } else if (!this.dungeonService.removeEnemyHealth(
-      this.calculateDamage(BattleInfoType.HERO_DAMAGE, attackType, this.heroService.offence, this.heroService.damage, this.currentEnemy.defence, this.currentEnemy.armor)
+      this.calculateDamage(BattleInfoType.HERO_DAMAGE, attackType, this._hero.offence, this._hero.damage, this._currentEnemy.defence, this._currentEnemy.armor)
     )) {
       this.dungeonService.levelPassed();
     }

@@ -1,0 +1,48 @@
+@import "../../_variables.scss";
+
+
+.sidebar {
+  margin: 2rem 0.5rem;
+  //font-size: 0.5rem;
+
+
+  &__stamina, &__health {
+    margin: 1.5rem 0.75rem;
+
+    &-label {
+      margin: 0;
+      padding: 0;
+      font-weight: bold;
+    }
+  }
+
+  &__gold {
+    margin: 3rem 0.75rem;
+    text-align: center;
+  }
+
+  &__equipment {
+    &-button {
+      display: block;
+      margin: 4rem auto;
+
+      min-width: 8rem;
+      height: 3rem;
+
+      border-radius: 0.5rem;
+      box-shadow: 0 0.15rem $platinum;
+      font-size: 1.3rem;
+      cursor: pointer;
+
+      color: $white;
+      background-color: $dark-blue;
+      border: 0.125rem solid $dark-grey;
+
+      &:hover {
+        font-weight: bold;
+        transform: scale(1.04);
+        box-shadow: 0 0;
+      }
+    }
+  }
+}

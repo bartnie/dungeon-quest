@@ -1,36 +1,6 @@
 <main class="app-view">
   <aside class="app-view__stats">
-
-    <section class="app-view__stats-list">
-      <app-character-stats></app-character-stats>
-    </section>
-
-    <section class="stamina">
-      <p class="stamina__label">Stamina:</p>
-      <app-status-bar [current]="stamina"
-                      [max]="maxStamina"
-                      [type]="statusBarType.STAMINA">
-      </app-status-bar>
-    </section>
-
-    <section class="health">
-      <p class="health__label">Health:</p>
-      <app-status-bar [current]="health"
-                      [max]="maxHealth"
-                      [type]="statusBarType.HEALTH">
-      </app-status-bar>
-    </section>
-    <section class="gold">
-      <app-character-gold></app-character-gold>
-    </section>
-
-    <section class="equipment">
-      <button class="equipment__button"
-      (click)="onGoToMenu()">
-        Menu
-      </button>
-    </section>
-
+    <app-sidebar></app-sidebar>
   </aside>
   <div class="app-view__outlet">
     <router-outlet></router-outlet>

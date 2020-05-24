@@ -1,99 +1,127 @@
 import {Injectable} from '@angular/core';
 import {StatsService} from "./stats.service";
 import {HeroModel} from "./domain/hero/hero.model";
+import {BehaviorSubject} from "rxjs";
+import {BonusesModel} from "./domain/hero/bonuses.model";
 import {DigitPrecisionSettings} from "../constants/digit-precision.settings";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
-  private hero: HeroModel;
+  private readonly _baseHero: HeroModel;
+  private readonly _hero: HeroModel;
+  private _bonuses: BonusesModel;
+  readonly hero: BehaviorSubject<HeroModel>;
 
   constructor(private statsService: StatsService) {
-    this.hero = new HeroModel();
+    this._baseHero = new HeroModel();
+    this._hero = new HeroModel();
+    this.hero = new BehaviorSubject<HeroModel>(this._hero);
+
+    this.statsService.bonuses.subscribe(
+      (bonuses: BonusesModel) => {
+        this._bonuses = bonuses;
+        this.updateHero();
+      }
+    );
   }
 
-  get name(): string {
-    return this.hero.name;
+  private updateHero() {
+    this._hero.offence = this._baseHero.offence + this._bonuses.bonusOffence;
+    this._hero.defence = this._baseHero.defence + this._bonuses.bonusDefence;
+    this._hero.armor = this._baseHero.armor + this._bonuses.bonusArmor;
+    this._hero.damage = this._baseHero.damage + this._bonuses.bonusDamage;
+    this._hero.maxStamina = this._baseHero.maxStamina + this._bonuses.bonusStamina;
+    this._hero.maxHealth = this._baseHero.maxHealth + this._bonuses.bonusHealth;
+    this.hero.next({...this._hero});
   }
+
 
   setName(name: string) {
-    this.hero.name = name;
+    this._hero.name = name;
+    this.hero.next({...this._hero});
   }
 
-  get stamina(): number {
-    return this.hero.currentStamina;
-  }
-
-  get maxStamina(): number {
-    return this.hero.maxStamina + this.statsService.bonusStamina;
+  getName(): string {
+    return this._hero.name;
   }
 
   addStamina(amount: number): void {
-    this.hero.currentStamina = this.hero.currentStamina + amount > this.maxStamina ? (this.maxStamina > this.hero.currentStamina ? this.maxStamina : this.hero.currentStamina) : this.hero.currentStamina + amount;
+    this._hero.currentStamina = this.calculateRegardingMax(this._hero.currentStamina, amount, this._hero.maxStamina);
+    this.hero.next({...this._hero});
   }
 
   removeStamina(amount: number): boolean {
-    if (this.hero.currentStamina < amount) {
+    if (this._hero.currentStamina < amount) {
       return false;
     }
-    this.hero.currentStamina -= amount;
+    this._hero.currentStamina -= amount;
+    this.hero.next({...this._hero});
     return true;
-  }
-
-  removeHealth(amount: number): boolean {
-    if (this.hero.currentHealth <= amount) {
-      this.hero.currentHealth = 0;
-      return false;
-    }
-    this.hero.currentHealth -= amount;
-    this.hero.currentHealth = Math.round(
-      this.hero.currentHealth * (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION))
-      / (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION);
-    return true;
-  }
-
-  get health(): number {
-    return this.hero.currentHealth;
-  }
-
-  get maxHealth(): number {
-    return this.hero.maxHealth + this.statsService.bonusHealth;
   }
 
   addHealth(amount: number): void {
-    this.hero.currentHealth = this.hero.currentHealth + amount > this.maxHealth ? (this.maxHealth > this.hero.currentHealth ? this.maxHealth : this.hero.currentHealth) : this.hero.currentHealth + amount;
+    this._hero.currentHealth = this.calculateRegardingMax(this._hero.currentHealth, amount, this._hero.maxHealth);
+    this.hero.next({...this._hero});
   }
 
-  get offence(): number {
-    return this.hero.offence + this.statsService.bonusOffence;
+  removeHealth(amount: number): boolean {
+    if (this._hero.currentHealth <= amount) {
+      this._hero.currentHealth = 0;
+      this.hero.next({...this._hero});
+      return false;
+    }
+    this._hero.currentHealth -= amount;
+    this._hero.currentHealth = Math.round(
+      this._hero.currentHealth * (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION))
+      / (1 / DigitPrecisionSettings.VALUES_DIGIT_PRECISION);
+
+    this.hero.next({...this._hero});
+    return true;
   }
 
-  addOffence(amount: number): void {
-    this.hero.offence += amount;
+  addBaseOffence(amount: number): void {
+    this._baseHero.offence += amount;
+    this._hero.offence = this._baseHero.offence + this._bonuses.bonusOffence;
+    this.hero.next({...this._hero});
   }
 
-  get defence(): number {
-    return this.hero.defence + this.statsService.bonusDefence;
+  addBaseDefence(amount: number): void {
+    this._baseHero.defence += amount;
+    this._hero.defence = this._baseHero.defence + this._bonuses.bonusDefence;
+    this.hero.next({...this._hero});
   }
 
-  addDefence(amount: number): void {
-    this.hero.defence += amount;
+  addBaseArmor(amount: number): void {
+    this._baseHero.armor += amount;
+    this._hero.armor = this._baseHero.armor + this._bonuses.bonusArmor;
+    this.hero.next({...this._hero});
   }
 
-  get armor(): number {
-    return this.hero.armor + this.statsService.bonusArmor;
+  addBaseDamage(amount: number): void {
+    this._baseHero.damage += amount;
+    this._hero.damage = this._baseHero.damage + this._bonuses.bonusDamage;
+    this.hero.next({...this._hero});
   }
 
-  addArmor(amount: number): void {
-    this.hero.armor += amount;
+  addBaseMaxStamina(amount: number): void {
+    this._baseHero.maxStamina += amount;
+    this._hero.maxStamina = this._baseHero.maxStamina + this._bonuses.bonusStamina;
+    this.hero.next({...this._hero});
   }
 
-  get damage(): number {
-    return this.hero.damage + this.statsService.bonusDamage;
+  addBaseMaxHealth(amount: number): void {
+    this._baseHero.maxHealth += amount;
+    this._hero.maxHealth = this._baseHero.maxHealth + this._bonuses.bonusHealth;
+    this.hero.next({...this._hero});
   }
 
-  addDamage(amount: number): void {
-    this.hero.damage += amount;
+  private calculateRegardingMax(current: number, toAdd: number, max: number) {
+    const exceedMax = current + toAdd > max;
+    current = exceedMax ?
+      (max > current ? max : current) :
+      current + toAdd;
+    return current;
   }
 }

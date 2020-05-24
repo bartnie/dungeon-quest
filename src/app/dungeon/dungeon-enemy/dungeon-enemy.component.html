@@ -2,12 +2,12 @@
   <section class="dungeon__bar dungeon__bar--hero">
     <app-status-bar [current]="heroHealth"
                     [max]="heroMaxHealth"
-                    [type]="statusBarType.HEALTH">
+                    [type]="STATUSBAR_TYPES.HEALTH">
     </app-status-bar>
   </section>
   <section class="dungeon__bar dungeon__bar--enemy">
     <app-status-bar
-      [type]="statusBarType.ENEMY_HEALTH"
+      [type]="STATUSBAR_TYPES.ENEMY_HEALTH"
       [current]="currentEnemy.currentHealth"
       [max]="currentEnemy.maxHealth">
     </app-status-bar>

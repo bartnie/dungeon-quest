@@ -4,7 +4,6 @@ import {EnemyModel} from "./domain/enemy/enemy.model";
 import {GoldService} from "./gold.service";
 import {EquipmentService} from "./equipment.service";
 import {EquipmentModel} from "./domain/equipment/equipment.model";
-import {HeroService} from "./hero.service";
 import {BehaviorSubject} from "rxjs";
 import {RoutingService} from "./routing.service";
 import {DungeonSettings} from "../constants/dungeon.settings";
@@ -23,7 +22,7 @@ export class DungeonService {
   oldEnemy: BehaviorSubject<EnemyModel>;
 
   constructor(private enemyFactoryService: EnemyFactoryService, private goldService: GoldService, private equipmentService: EquipmentService,
-              private heroService: HeroService, private routingService: RoutingService) {
+              private routingService: RoutingService) {
     this._lastLevelPassed = false
     this._dungeonCurrentLevel = 1;
     this._dungeonMaxLevel = this._dungeonCurrentLevel;
